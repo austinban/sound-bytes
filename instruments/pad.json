@@ -1,0 +1,5 @@
+{
+  "name": "Soft Pad",
+  "wave": "pulse",
+  "params": {"duty": 0.5, "volume": 0.3, "attack": 0.08, "decay": 0.0, "sustain": 0.8, "release": 0.15, "sub": 0.3, "detune": 14, "echo": 0.3}
+}

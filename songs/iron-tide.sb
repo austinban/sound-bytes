@@ -1,0 +1,81 @@
+title: Iron Tide
+tempo: 160
+
+# Tense battle theme in E phrygian (the F against E is where the dread comes from).
+# 16 bars = four 4-bar sections; the last bar of each section is a snare-roll fill.
+
+instrument lead:  @pulse-lead volume=0.45
+instrument arp:   @thin-pulse volume=0.28
+instrument pad:   @pad volume=0.22
+instrument bass:  @triangle-bass
+instrument drums: @noise-drums
+
+# --- lead
+# Section A: alarm-bell motif
+lead: E5:0.5 E5:0.5 F5:1 E5:0.5 R:0.5 B4:1
+lead: E5:0.5 E5:0.5 F5:1 G5:1 F5:0.5 E5:0.5
+lead: E5:0.5 E5:0.5 F5:1 E5:0.5 R:0.5 B4:1
+lead: G5:0.5 F5:0.5 E5:0.5 D5:0.5 E5:2
+# Section B: climbing over E | F | G | F-B
+lead: B5:1 B5:0.5 A5:0.5 G5:1 F5:1
+lead: F5:1 F5:0.5 G5:0.5 A5:1 G5:1
+lead: G5:0.5 A5:0.5 B5:1 C6:1 B5:1
+lead: C6:0.5 B5:0.5 A5:0.5 G5:0.5 F5:1 B4:1
+# Section A': busier, sixteenth-note stabs
+lead: E5:0.25 F5:0.25 E5:0.25 F5:0.25 E5:1 B4:1 G5:1
+lead: E5:0.5 E5:0.5 F5:1 G5:1 A5:1
+lead: E5:0.25 F5:0.25 E5:0.25 F5:0.25 E5:1 B4:1 G5:1
+lead: G5:0.5 F5:0.5 E5:0.5 D5:0.5 E5:0.5 F5:0.5 E5:1
+# Section B' (same as B)
+lead: B5:1 B5:0.5 A5:0.5 G5:1 F5:1
+lead: F5:1 F5:0.5 G5:0.5 A5:1 G5:1
+lead: G5:0.5 A5:0.5 B5:1 C6:1 B5:1
+lead: C6:0.5 B5:0.5 A5:0.5 G5:0.5 F5:1 B4:1
+
+# --- arp: driving sixteenth-note root/fifth pulse (the harmony)
+arp: [E4:0.25 B4:0.25]x8
+arp: [E4:0.25 B4:0.25]x8
+arp: [E4:0.25 B4:0.25]x8
+arp: [E4:0.25 B4:0.25]x4 [F4:0.25 C5:0.25]x4
+arp: [E4:0.25 B4:0.25]x8
+arp: [F4:0.25 C5:0.25]x8
+arp: [G4:0.25 D5:0.25]x8
+arp: [F4:0.25 C5:0.25]x4 [B3:0.25 F#4:0.25]x4
+arp: [E4:0.25 B4:0.25]x8
+arp: [E4:0.25 B4:0.25]x8
+arp: [E4:0.25 B4:0.25]x8
+arp: [E4:0.25 B4:0.25]x4 [F4:0.25 C5:0.25]x4
+arp: [E4:0.25 B4:0.25]x8
+arp: [F4:0.25 C5:0.25]x8
+arp: [G4:0.25 D5:0.25]x8
+arp: [F4:0.25 C5:0.25]x4 [B3:0.25 F#4:0.25]x4
+
+# --- pad: low drone that follows the roots
+pad: E3:16
+pad: E3:4 F3:4 G3:4 F3:2 B2:2
+pad: E3:16
+pad: E3:4 F3:4 G3:4 F3:2 B2:2
+
+# --- bass: relentless sixteenth ostinato (root, root, octave, root)
+bass: [E2:0.25 E2:0.25 E3:0.25 E2:0.25]x12
+bass: [E2:0.25 E2:0.25 E3:0.25 E2:0.25]x2 [F2:0.25 F2:0.25 F3:0.25 F2:0.25]x2
+bass: [E2:0.25 E2:0.25 E3:0.25 E2:0.25]x4
+bass: [F2:0.25 F2:0.25 F3:0.25 F2:0.25]x4
+bass: [G2:0.25 G2:0.25 G3:0.25 G2:0.25]x4
+bass: [F2:0.25 F2:0.25 F3:0.25 F2:0.25]x2 [B2:0.25 B2:0.25 B3:0.25 B2:0.25]x2
+bass: [E2:0.25 E2:0.25 E3:0.25 E2:0.25]x12
+bass: [E2:0.25 E2:0.25 E3:0.25 E2:0.25]x2 [F2:0.25 F2:0.25 F3:0.25 F2:0.25]x2
+bass: [E2:0.25 E2:0.25 E3:0.25 E2:0.25]x4
+bass: [F2:0.25 F2:0.25 F3:0.25 F2:0.25]x4
+bass: [G2:0.25 G2:0.25 G3:0.25 G2:0.25]x4
+bass: [F2:0.25 F2:0.25 F3:0.25 F2:0.25]x2 [B2:0.25 B2:0.25 B3:0.25 B2:0.25]x2
+
+# --- drums: kick/kick/snare/hat groove, snare-roll fill on every 4th bar
+drums: [K:0.5 K:0.5 S:0.5 H:0.5]x6
+drums: K:0.5 K:0.5 S:0.5 H:0.5 [S:0.25]x8
+drums: [K:0.5 K:0.5 S:0.5 H:0.5]x6
+drums: K:0.5 K:0.5 S:0.5 H:0.5 [S:0.25]x8
+drums: [K:0.5 K:0.5 S:0.5 H:0.5]x6
+drums: K:0.5 K:0.5 S:0.5 H:0.5 [S:0.25]x8
+drums: [K:0.5 K:0.5 S:0.5 H:0.5]x6
+drums: K:0.5 K:0.5 S:0.5 H:0.5 [S:0.25]x8

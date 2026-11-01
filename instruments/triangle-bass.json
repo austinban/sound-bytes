@@ -1,0 +1,5 @@
+{
+  "name": "Triangle Bass",
+  "wave": "triangle",
+  "params": {"volume": 0.6, "sub": 0.7}
+}

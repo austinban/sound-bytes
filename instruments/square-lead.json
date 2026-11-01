@@ -1,0 +1,5 @@
+{
+  "name": "Square Lead",
+  "wave": "pulse",
+  "params": {"duty": 0.5, "volume": 0.5, "attack": 0.005, "decay": 0.1, "sustain": 0.7, "release": 0.04, "sub": 0.3, "detune": 6, "echo": 0.25}
+}

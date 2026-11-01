@@ -1,0 +1,5 @@
+{
+  "name": "Pluck",
+  "wave": "pulse",
+  "params": {"duty": 0.25, "volume": 0.5, "attack": 0.002, "decay": 0.15, "sustain": 0.0, "release": 0.01, "sub": 0.2, "detune": 6, "echo": 0.35}
+}

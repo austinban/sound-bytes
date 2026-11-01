@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>sound-bytes</title>
+<style>
+  :root { --bg:#1b1b1f; --panel:#26262c; --line:#3a3a42; --text:#e6e6ea; --dim:#9a9aa6; --accent:#ff4040; }
+  * { box-sizing: border-box; }
+  body { margin:0; height:100vh; display:flex; flex-direction:column; background:var(--bg); color:var(--text);
+         font:13px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  #top { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; padding:8px 12px; background:var(--panel); border-bottom:1px solid var(--line); }
+  #top label { color:var(--dim); display:flex; align-items:center; gap:4px; }
+  button, select, input { background:#34343c; color:var(--text); border:1px solid var(--line); border-radius:4px; padding:4px 8px; font:inherit; }
+  button { cursor:pointer; } button:hover { background:#41414b; }
+  button.on { background:var(--accent); border-color:var(--accent); color:#fff; }
+  input[type=number] { width:64px; } input[type=text] { width:150px; }
+  #status { margin-left:auto; color:var(--dim); font-family:ui-monospace, Menlo, monospace; }
+  #main { flex:1; display:flex; min-height:0; }
+  #side { width:300px; flex:none; overflow-y:auto; background:var(--panel); border-right:1px solid var(--line); padding:8px; }
+  .track { display:grid; grid-template-columns:10px 1fr auto; gap:4px 6px; align-items:center; padding:6px; margin-bottom:6px;
+           border:1px solid var(--line); border-radius:6px; cursor:pointer; }
+  .track.sel { border-color:var(--accent); background:#2f2f36; }
+  .track .sw { width:10px; height:100%; border-radius:3px; grid-row:1 / span 3; }
+  .track input[type=text] { width:100%; }
+  .track .row { grid-column:2 / span 2; display:flex; gap:6px; align-items:center; }
+  .track .row select { flex:1; min-width:0; }
+  .track .row input[type=range] { flex:1; min-width:0; padding:0; }
+  .track small { color:var(--dim); }
+  #addtrack { display:flex; gap:6px; margin-top:8px; } #addtrack select { flex:1; min-width:0; }
+  #rollwrap { flex:1; overflow:auto; position:relative; }
+  #roll { display:flex; width:max-content; }
+  #keys { position:sticky; left:0; z-index:2; flex:none; }
+  #gridbox { position:relative; flex:none; }
+  #grid { display:block; cursor:crosshair; }
+  #playhead { position:absolute; top:0; bottom:0; width:2px; background:#fff; opacity:.85; pointer-events:none; display:none; }
+</style>
+</head>
+<body>
+<div id="top">
+  <select id="songsel" title="Song"></select>
+  <button id="newsong">New</button>
+  <label>Title <input id="title" type="text"></label>
+  <label>Tempo <input id="tempo" type="number" min="40" max="300"></label>
+  <label>Bars <input id="bars" type="number" min="1" max="64"></label>
+  <label>Note length
+    <select id="notelen">
+      <option value="1">16th</option><option value="2" selected>8th</option><option value="4">quarter</option>
+      <option value="8">half</option><option value="16">whole</option>
+    </select>
+  </label>
+  <button id="play">▶ Play</button>
+  <button id="stop">■ Stop</button>
+  <button id="loop" class="on">Loop</button>
+  <button id="save">Save</button>
+  <button id="render" title="Save, then render per-instrument WAV files with the Python renderer">Render WAVs</button>
+  <span id="status">click to add a note · drag to set length · click a note to delete</span>
+</div>
+<div id="main">
+  <div id="side">
+    <div id="tracks"></div>
+    <div id="addtrack"><select id="newpreset"></select><button id="addbtn">+ Track</button></div>
+  </div>
+  <div id="rollwrap">
+    <div id="roll">
+      <canvas id="keys"></canvas>
+      <div id="gridbox"><canvas id="grid"></canvas><div id="playhead"></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+// ---------------------------------------------------------------- constants
+const SR = 44100;
+const CW = 18, RH = 16, KEYW = 56;     // cell width (one 16th), row height, keyboard width
+const LO = 36, HI = 96;                // pitch range shown: midi 36..95 (C2..B6)
+const DRUMROWS = ["H", "S", "K"];
+const NAMES = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
+const COLORS = ["#ff4040","#ffb020","#40d0ff","#60e060","#c070ff","#ff70c0"];
+const DRUMS = { K:{rate:1200,decay:0.05,level:1.0}, S:{rate:9000,decay:0.06,level:0.8}, H:{rate:24000,decay:0.015,level:0.5} };
+const isBlack = m => [1,3,6,8,10].includes(((m % 12) + 12) % 12);
+const noteName = m => NAMES[m % 12] + (Math.floor(m / 12) - 1);
+const $ = id => document.getElementById(id);
+
+// ---------------------------------------------------------------- state
+const S = { name:null, title:"untitled", tempo:120, bars:8, tracks:[], sel:0, presets:[], dirty:false, loop:true, selLen:2 };
+let drag = null;
+
+// ---------------------------------------------------------------- synth (JS port of sound_bytes/synth.py)
+function mulberry32(a) { return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a);
+  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+
+function renderNote(wave, p, note, n, rng) {
+  const out = new Float32Array(n);
+  const vol = p.volume ?? 0.5;
+  if (note.drum) {
+    const d = DRUMS[note.drum], steps = Math.floor(n * d.rate / SR) + 2;
+    const vals = Float32Array.from({length: steps}, () => rng() < 0.5 ? -1 : 1);
+    let ph = 0;
+    for (let i = 0; i < n; i++) {
+      const t = i / SR, noise = vals[Math.floor(i * d.rate / SR)] * Math.exp(-t / d.decay);
+      let v = noise;
+      if (note.drum === "K") { ph += (45 + 110 * Math.exp(-t / 0.035)) / SR; v = 0.9 * Math.sin(2 * Math.PI * ph) * Math.exp(-t / 0.14) + 0.3 * noise; }
+      else if (note.drum === "S") v = noise + 0.35 * Math.sin(2 * Math.PI * 190 * t) * Math.exp(-t / 0.05);
+      out[i] = v * d.level * vol;
+    }
+    return out;
+  }
+  const freq = 440 * Math.pow(2, (note.midi - 69) / 12);
+  const duty = p.duty ?? 0.5, a = p.attack ?? 0.005, dec = p.decay ?? 0, sus = p.sustain ?? 1, rel = p.release ?? 0.02;
+  const sub = p.sub ?? 0, detune = p.detune ?? 0, spread = Math.pow(2, detune / 1200);
+  const voice = (f, i) => { const ph = (i * f / SR) % 1;
+    return wave === "pulse" ? (ph < duty ? 1 : -1) - (2 * duty - 1) : Math.round((4 * Math.abs(ph - 0.5)) * 7.5) / 7.5 - 1; };  // triangle: 16 steps
+  for (let i = 0; i < n; i++) {
+    const t = i / SR;
+    let w = detune > 0 ? 0.5 * (voice(freq * spread, i) + voice(freq / spread, i)) : voice(freq, i);
+    if (sub > 0) w = (w + sub * Math.sin(2 * Math.PI * (i * freq / 2 / SR))) / (1 + 0.5 * sub);
+    let e = 1;
+    if (a > 0) e = Math.min(e, t / a);
+    if (dec > 0) e *= 1 - Math.min(Math.max((t - a) / dec, 0), 1) * (1 - sus);
+    else e *= t >= a ? sus : 1;
+    if (rel > 0) e *= Math.min(1, (n / SR - t) / rel);
+    out[i] = w * e * vol;
+  }
+  return out;
+}
+
+function renderTrack(track, idx) {
+  const key = JSON.stringify([track.notes, track.wave, track.params, S.tempo, S.bars]);
+  if (track._key === key) return track._buf;
+  const spb = 60 / S.tempo, rng = mulberry32(idx + 1);
+  const out = new Float32Array(Math.round(S.bars * 4 * spb * SR));
+  for (const note of track.notes) {
+    const s = Math.round(note.start * spb * SR), e = Math.min(out.length, Math.round((note.start + note.len) * spb * SR));
+    if (e > s) out.set(renderNote(track.wave, track.params, note, e - s, rng), s);
+  }
+  const echo = track.params.echo ?? 0, delay = Math.round(0.375 * spb * SR);
+  if (echo > 0) {                                   // tempo-synced three-tap echo, same length as dry
+    const dry = out.slice();
+    for (const k of [1, 2, 3]) { const d = k * delay, g = echo * Math.pow(0.5, k);
+      for (let i = d; i < out.length; i++) out[i] += dry[i - d] * g; }
+  }
+  track._key = key; track._buf = out;
+  return out;
+}
+
+function renderMix() {
+  const anySolo = S.tracks.some(t => t.solo);
+  const len = Math.round(S.bars * 4 * (60 / S.tempo) * SR);
+  const mix = new Float32Array(len);
+  S.tracks.forEach((t, i) => {
+    if (anySolo ? !t.solo : t.muted) return;
+    const b = renderTrack(t, i);
+    for (let k = 0; k < len; k++) mix[k] += b[k];
+  });
+  let peak = 0; for (let k = 0; k < len; k++) peak = Math.max(peak, Math.abs(mix[k]));
+  if (peak > 0.95) for (let k = 0; k < len; k++) mix[k] *= 0.95 / peak;
+  return mix;
+}
+
+// ---------------------------------------------------------------- playback
+let ctx = null, src = null, startedAt = 0, playing = false, raf = 0, refreshTimer = 0;
+function audio() { if (!ctx) ctx = new AudioContext({ sampleRate: SR }); if (ctx.state === "suspended") ctx.resume(); return ctx; }
+
+function startAt(from) {
+  const c = audio(), mix = renderMix();
+  const buf = c.createBuffer(1, Math.max(mix.length, 1), SR); buf.copyToChannel(mix, 0);
+  src = c.createBufferSource(); src.buffer = buf; src.loop = S.loop; src.connect(c.destination);
+  src.onended = () => { if (playing && !S.loop) stopPlayback(); };
+  const dur = buf.duration;
+  src.start(0, from % dur);
+  startedAt = c.currentTime - (from % dur);
+  playing = true; $("play").classList.add("on");
+  cancelAnimationFrame(raf); raf = requestAnimationFrame(tick);
+}
+function position() { const dur = S.bars * 4 * 60 / S.tempo, e = ctx.currentTime - startedAt; return S.loop ? e % dur : Math.min(e, dur); }
+function stopSource() { if (src) { src.onended = null; try { src.stop(); } catch (e) {} src.disconnect(); src = null; } }
+function stopPlayback() { stopSource(); playing = false; $("play").classList.remove("on"); $("playhead").style.display = "none"; cancelAnimationFrame(raf); }
+function tick() {
+  if (!playing) return;
+  const ph = $("playhead"); ph.style.display = "block";
+  ph.style.left = (position() / (60 / S.tempo) * 4 * CW) + "px";
+  raf = requestAnimationFrame(tick);
+}
+function refreshPlayback() {            // after edits/mute/solo while playing: re-render and continue from the same spot
+  if (!playing) return;
+  clearTimeout(refreshTimer);
+  refreshTimer = setTimeout(() => { const p = position(); stopSource(); startAt(p); }, 120);
+}
+function previewNote(track, note) {
+  const c = audio(), n = Math.round(Math.min(0.3, Math.max(0.12, note.len * 60 / S.tempo)) * SR);
+  const buf = c.createBuffer(1, n, SR); buf.copyToChannel(renderNote(track.wave, track.params, { ...note, start: 0 }, n, mulberry32(7)), 0);
+  const s = c.createBufferSource(); s.buffer = buf; s.connect(c.destination); s.start();
+}
+
+// ---------------------------------------------------------------- track helpers
+const cur = () => S.tracks[S.sel];
+const isDrum = t => t.wave === "noise";
+const nRows = t => isDrum(t) ? DRUMROWS.length : HI - LO;
+const rowOf = (t, n) => isDrum(t) ? DRUMROWS.indexOf(n.drum) : (HI - 1) - n.midi;
+const labelOfRow = (t, r) => isDrum(t) ? DRUMROWS[r] : noteName(HI - 1 - r);
+const colorOf = i => COLORS[i % COLORS.length];
+
+function touch() { S.dirty = true; updateTitle(); draw(); refreshPlayback(); }
+function updateTitle() { document.title = (S.dirty ? "● " : "") + S.title + " — sound-bytes"; }
+
+function addNote(track, startStep, lenSteps, row) {
+  const maxStep = S.bars * 16;
+  if (startStep >= maxStep) return null;
+  lenSteps = Math.min(lenSteps, maxStep - startStep);
+  const s = startStep / 4, e = (startStep + lenSteps) / 4;
+  track.notes = track.notes.flatMap(n => {           // channels are monophonic: trim/remove whatever overlaps
+    if (n.start >= s && n.start < e) return [];
+    if (n.start < s && n.start + n.len > s) return [{ ...n, len: s - n.start }];
+    return [n];
+  });
+  const note = { start: s, len: lenSteps / 4 };
+  if (isDrum(track)) note.drum = DRUMROWS[row]; else note.midi = HI - 1 - row;
+  track.notes.push(note);
+  return note;
+}
+function noteAt(track, step, row) {
+  return track.notes.find(n => rowOf(track, n) === row && step >= n.start * 4 && step < (n.start + n.len) * 4);
+}
+
+// ---------------------------------------------------------------- drawing
+function draw() {
+  const t = cur(); if (!t) return;
+  const grid = $("grid"), keys = $("keys"), rows = nRows(t), cols = S.bars * 16;
+  const W = cols * CW, H = rows * RH;
+  grid.width = W; grid.height = H; keys.width = KEYW; keys.height = H;
+  const g = grid.getContext("2d"), k = keys.getContext("2d");
+
+  for (let r = 0; r < rows; r++) {
+    const midi = HI - 1 - r, black = !isDrum(t) && isBlack(midi);
+    g.fillStyle = black ? "#2b2b30" : "#3b3b41"; g.fillRect(0, r * RH, W, RH);
+    g.fillStyle = "#222226"; g.fillRect(0, r * RH + RH - 1, W, 1);
+    k.fillStyle = black ? "#222" : "#d8d8dc"; k.fillRect(0, r * RH, KEYW, RH);
+    k.fillStyle = "#555"; k.fillRect(0, r * RH + RH - 1, KEYW, 1);
+    const lbl = isDrum(t) ? DRUMROWS[r] : (midi % 12 === 0 ? noteName(midi) : "");
+    if (lbl) { k.fillStyle = "#222"; k.font = "10px ui-monospace, Menlo, monospace"; k.fillText(lbl, 6, r * RH + 12); }
+  }
+  for (let c = 0; c <= cols; c++) {
+    g.fillStyle = c % 16 === 0 ? "#111" : c % 4 === 0 ? "#26262b" : "#2f2f35";
+    g.fillRect(c * CW, 0, c % 16 === 0 ? 2 : 1, H);
+  }
+  S.tracks.forEach((o, i) => {                         // other tracks, faded (only if same row layout)
+    if (i === S.sel || isDrum(o) !== isDrum(t)) return;
+    g.fillStyle = colorOf(i); g.globalAlpha = 0.3;
+    for (const n of o.notes) g.fillRect(n.start * 4 * CW, rowOf(o, n) * RH + 2, n.len * 4 * CW - 1, RH - 4);
+    g.globalAlpha = 1;
+  });
+  const box = (n, alpha) => {
+    const x = n.start * 4 * CW, y = rowOf(t, n) * RH, w = n.len * 4 * CW - 1;
+    g.globalAlpha = alpha; g.fillStyle = colorOf(S.sel); g.fillRect(x, y + 1, w, RH - 2);
+    g.strokeStyle = "#000"; g.lineWidth = 1; g.strokeRect(x + .5, y + 1.5, w - 1, RH - 3); g.globalAlpha = 1;
+  };
+  t.notes.forEach(n => box(n, 1));
+  if (drag) box({ start: drag.start / 4, len: (drag.end - drag.start + 1) / 4, midi: HI - 1 - drag.row, drum: DRUMROWS[drag.row] }, 0.55);
+  $("gridbox").style.width = W + "px";
+}
+
+function renderTracks() {
+  const box = $("tracks"); box.innerHTML = "";
+  S.tracks.forEach((t, i) => {
+    const el = document.createElement("div"); el.className = "track" + (i === S.sel ? " sel" : "");
+    el.innerHTML = `<div class="sw" style="background:${colorOf(i)}"></div>
+      <input type="text" value="${t.name}" title="Track name">
+      <span><button class="m ${t.muted ? "on" : ""}" title="Mute">M</button> <button class="s ${t.solo ? "on" : ""}" title="Solo">S</button> <button class="x" title="Delete track">✕</button></span>
+      <div class="row"><select title="Instrument"></select></div>
+      <div class="row"><small>vol</small><input type="range" data-p="volume" min="0" max="1" step="0.05" value="${t.params.volume ?? 0.5}"></div>
+      ${isDrum(t) ? "" : `<div class="row"><small>sub</small><input type="range" data-p="sub" min="0" max="1" step="0.05" value="${t.params.sub ?? 0}">
+        <small>wide</small><input type="range" data-p="detune" min="0" max="30" step="1" value="${t.params.detune ?? 0}"></div>`}
+      <div class="row"><small>echo</small><input type="range" data-p="echo" min="0" max="1" step="0.05" value="${t.params.echo ?? 0}"></div>`;
+    const sel = el.querySelector("select");
+    const norm = o => JSON.stringify(Object.keys(o).filter(k => k !== "volume").sort().map(k => [k, o[k]]));
+    const match = S.presets.find(p => p.wave === t.wave && norm(p.params) === norm(t.params));
+    sel.innerHTML = `<option value="">custom (${t.wave})</option>` + S.presets.map(p => `<option value="${p.id}">${p.name}</option>`).join("");
+    sel.value = match ? match.id : "";
+    sel.onchange = () => {
+      const p = S.presets.find(p => p.id === sel.value); if (!p) return;
+      t.wave = p.wave; t.params = { ...p.params };
+      if (p.wave === "noise" || t.notes.some(n => n.drum)) t.notes = t.notes.filter(n => (p.wave === "noise") === !!n.drum);
+      renderTracks(); touch();
+    };
+    el.onclick = e => { if (e.target.closest("button,input,select")) return; S.sel = i; renderTracks(); draw(); };
+    el.querySelector("input[type=text]").onchange = e => {
+      const v = e.target.value.trim();
+      if (!/^[A-Za-z_][A-Za-z0-9_-]*$/.test(v) || S.tracks.some((o, j) => j !== i && o.name === v)) { e.target.value = t.name; return; }
+      t.name = v; touch();
+    };
+    el.querySelectorAll("input[type=range]").forEach(r => r.oninput = e => { t.params[r.dataset.p] = parseFloat(r.value); touch(); });
+    el.querySelector(".m").onclick = () => { t.muted = !t.muted; renderTracks(); refreshPlayback(); };
+    el.querySelector(".s").onclick = () => { t.solo = !t.solo; renderTracks(); refreshPlayback(); };
+    el.querySelector(".x").onclick = () => {
+      if (!confirm(`Delete track "${t.name}" and its notes?`)) return;
+      S.tracks.splice(i, 1); S.sel = Math.max(0, Math.min(S.sel, S.tracks.length - 1)); renderTracks(); touch();
+    };
+    box.appendChild(el);
+  });
+}
+
+function scrollToNotes() {
+  const t = cur(); if (!t) return;
+  const wrap = $("rollwrap");
+  if (isDrum(t) || !t.notes.length) { wrap.scrollTop = 0; return; }
+  const top = Math.min(...t.notes.map(n => rowOf(t, n)));
+  wrap.scrollTop = Math.max(0, top * RH - 80);
+}
+
+// ---------------------------------------------------------------- mouse
+function cellOf(e) {
+  const r = $("grid").getBoundingClientRect();
+  return { step: Math.floor((e.clientX - r.left) / CW), row: Math.floor((e.clientY - r.top) / RH) };
+}
+$("grid").addEventListener("mousedown", e => {
+  const t = cur(); if (!t) return;
+  const { step, row } = cellOf(e);
+  if (row < 0 || row >= nRows(t) || step < 0 || step >= S.bars * 16) return;
+  const hit = noteAt(t, step, row);
+  if (hit) { t.notes.splice(t.notes.indexOf(hit), 1); touch(); return; }
+  drag = { start: step, end: step, row };
+  draw();
+});
+window.addEventListener("mousemove", e => {
+  const t = cur();
+  if (t && e.target === $("grid")) {
+    const { step, row } = cellOf(e);
+    if (row >= 0 && row < nRows(t)) $("status").textContent = `${labelOfRow(t, row)}  ·  bar ${Math.floor(step / 16) + 1}, beat ${Math.floor((step % 16) / 4) + 1}`;
+  }
+  if (!drag) return;
+  drag.end = Math.max(drag.start, Math.min(S.bars * 16 - 1, cellOf(e).step)); draw();
+});
+window.addEventListener("mouseup", () => {
+  if (!drag) return;
+  const t = cur(), d = drag; drag = null;
+  const len = d.end > d.start ? d.end - d.start + 1 : S.selLen;
+  const note = addNote(t, d.start, len, d.row);
+  if (note) { previewNote(t, note); touch(); } else draw();
+});
+
+// ---------------------------------------------------------------- API / songs
+async function api(path, opts) {
+  const r = await fetch(path, opts), body = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(body.error || r.statusText);
+  return body;
+}
+function songPayload() {
+  return { title: S.title, tempo: S.tempo, bars: S.bars,
+    tracks: S.tracks.map(t => ({ name: t.name, wave: t.wave, params: t.params, notes: [...t.notes].sort((a, b) => a.start - b.start) })) };
+}
+async function save() {
+  if (!S.name) return false;
+  try { await api("/api/songs/" + S.name, { method: "PUT", body: JSON.stringify(songPayload()) }); S.dirty = false; updateTitle(); flash("saved"); return true; }
+  catch (e) { alert("Save failed: " + e.message); return false; }
+}
+function flash(msg) { $("status").textContent = msg; }
+
+function loadSong(name, data) {
+  stopPlayback();
+  S.name = name; S.title = data.title; S.tempo = data.tempo; S.bars = data.bars;
+  S.tracks = data.tracks.map(t => ({ ...t, muted: false, solo: false })); S.sel = 0; S.dirty = false;
+  $("title").value = S.title; $("tempo").value = S.tempo; $("bars").value = S.bars;
+  renderTracks(); updateTitle(); draw(); scrollToNotes();
+}
+async function openSong(name) {
+  try { loadSong(name, await api("/api/songs/" + name)); } catch (e) { alert("Couldn't open " + name + ": " + e.message); }
+}
+async function refreshSongList(select) {
+  const names = await api("/api/songs");
+  $("songsel").innerHTML = names.map(n => `<option>${n}</option>`).join("");
+  if (select) $("songsel").value = select;
+}
+function newTrackFromPreset(id) {
+  const p = S.presets.find(p => p.id === id) || S.presets[0];
+  let base = p ? p.id : "track", name = base, k = 2;
+  while (S.tracks.some(t => t.name === name)) name = base + "-" + k++;
+  return { name, wave: p ? p.wave : "pulse", params: p ? { ...p.params } : { volume: 0.5 }, notes: [], muted: false, solo: false };
+}
+
+// ---------------------------------------------------------------- UI wiring
+$("play").onclick = () => { if (playing) { stopPlayback(); } else startAt(0); };
+$("stop").onclick = stopPlayback;
+$("loop").onclick = () => { S.loop = !S.loop; $("loop").classList.toggle("on", S.loop); if (src) src.loop = S.loop; };
+$("save").onclick = save;
+$("render").onclick = async () => {
+  if (!(await save())) return;
+  flash("rendering…");
+  try { const r = await api("/api/render/" + S.name, { method: "POST" }); flash("rendered"); window.open(r.url, "_blank"); }
+  catch (e) { alert("Render failed: " + e.message); }
+};
+$("songsel").onchange = async e => { if (S.dirty && !confirm("Discard unsaved changes?")) { e.target.value = S.name; return; } openSong(e.target.value); };
+$("newsong").onclick = async () => {
+  if (S.dirty && !confirm("Discard unsaved changes?")) return;
+  const name = (prompt("Name for the new song (letters, numbers, - and _):") || "").trim();
+  if (!/^[A-Za-z0-9_-]{1,64}$/.test(name)) { if (name) alert("Use only letters, numbers, - and _"); return; }
+  const existing = await api("/api/songs");
+  if (existing.includes(name)) { alert("That song already exists."); return; }
+  const tracks = ["pulse-lead", "triangle-bass", "noise-drums"].filter(id => S.presets.some(p => p.id === id)).map(newTrackFromPreset);
+  loadSong(name, { title: name, tempo: 120, bars: 8, tracks });
+  const opt = document.createElement("option"); opt.textContent = name; $("songsel").appendChild(opt); $("songsel").value = name;
+  S.dirty = true; updateTitle();
+};
+$("title").oninput = e => { S.title = e.target.value; S.dirty = true; updateTitle(); };
+$("tempo").onchange = e => { S.tempo = Math.min(300, Math.max(40, parseFloat(e.target.value) || 120)); e.target.value = S.tempo; touch(); };
+$("bars").onchange = e => {
+  const v = Math.min(64, Math.max(1, parseInt(e.target.value) || 8));
+  const lastEnd = Math.max(0, ...S.tracks.flatMap(t => t.notes.map(n => n.start + n.len)));
+  const min = Math.max(1, Math.ceil(lastEnd / 4));
+  S.bars = Math.max(v, min); e.target.value = S.bars; touch();
+};
+$("notelen").onchange = e => { S.selLen = parseInt(e.target.value); };
+$("addbtn").onclick = () => { S.tracks.push(newTrackFromPreset($("newpreset").value)); S.sel = S.tracks.length - 1; renderTracks(); touch(); scrollToNotes(); };
+window.addEventListener("keydown", e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === "s") { e.preventDefault(); save(); }
+  else if (e.code === "Space" && !/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) { e.preventDefault(); $("play").click(); }
+});
+window.addEventListener("beforeunload", e => { if (S.dirty) { e.preventDefault(); e.returnValue = ""; } });
+
+(async function init() {
+  S.presets = await api("/api/instruments");
+  $("newpreset").innerHTML = S.presets.map(p => `<option value="${p.id}">${p.name}</option>`).join("");
+  await refreshSongList();
+  const first = $("songsel").value;
+  if (first) openSong(first); else $("newsong").click();
+})();
+</script>
+</body>
+</html>

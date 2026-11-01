@@ -1,0 +1,5 @@
+{
+  "name": "Thin Pulse (12.5%)",
+  "wave": "pulse",
+  "params": {"duty": 0.125, "volume": 0.3, "attack": 0.002, "decay": 0.05, "sustain": 0.6, "release": 0.02, "detune": 10, "echo": 0.4}
+}

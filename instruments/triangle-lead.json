@@ -1,0 +1,5 @@
+{
+  "name": "Triangle Lead",
+  "wave": "triangle",
+  "params": {"volume": 0.55, "attack": 0.01, "release": 0.05, "sub": 0.3, "echo": 0.25}
+}

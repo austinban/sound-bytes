@@ -1,0 +1,5 @@
+{
+  "name": "Noise Drums (K/S/H)",
+  "wave": "noise",
+  "params": {"volume": 0.6, "echo": 0.1}
+}

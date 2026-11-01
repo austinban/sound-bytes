@@ -1,0 +1,5 @@
+{
+  "name": "Pulse Lead (25%)",
+  "wave": "pulse",
+  "params": {"duty": 0.25, "volume": 0.55, "attack": 0.005, "decay": 0.08, "sustain": 0.7, "release": 0.04, "sub": 0.25, "detune": 8, "echo": 0.3}
+}
