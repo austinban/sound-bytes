@@ -1,207 +1,30 @@
 title: The Last Save Room (8-bit take)
 tempo: 80
+bars: 61
 
-# An original piece written to match the *feel* measured from a reference track: ~80 bpm, dark and
-# minor (G#m / E / B / F# and C#m), extremely bass-heavy (about half the energy under 100Hz) and
-# dark overall, with almost nothing above 4kHz. It is not a transcription of the reference's melody.
-# Uses the non-square voices: sine sub bass, FM bells and electric piano, organ pads.
-#
-# 61 bars: intro 6 | A 10 | B (loud) 8 | C (build) 16 | D (breakdown) 8 | E (loud) 8 | outro 5
-# `bass` (sine) carries the quiet parts; `bass_hi` (FM, louder) takes over for the loud sections.
+instrument lead: sine duty=0.5 volume=0.3 attack=0.08 decay=0 sustain=0.8 release=0.15 sub=0.3 detune=14 echo=0.3
+instrument lead2: fm volume=0.22 attack=0.002 decay=0.5 sustain=0.2 release=0.1 echo=0.2 ratio=1 index=1.5 index_decay=0.5
+instrument arp: fm duty=0.5 volume=0.3 attack=0.08 decay=0 sustain=0.8 release=0.15 sub=0.3 detune=14 echo=0.3
+instrument pluck: fm volume=0.2 attack=0.002 decay=0.5 sustain=0.2 release=0.1 echo=0.2 ratio=1 index=1.5 index_decay=0.5
+instrument pad_lo: organ volume=0.3 attack=0.01 sustain=0.9 release=0.06 tremolo=0.2 tremolo_rate=6
+instrument pad_hi: organ volume=0.26 attack=0.01 sustain=0.9 release=0.06 tremolo=0.2 tremolo_rate=6
+instrument bass: sine volume=0.3 attack=0.01 release=0.05
+instrument bass_hi: fm volume=0.95 attack=0.002 decay=0.2 sustain=0.6 release=0.05 sub=0.15 ratio=1 index=2.5 index_decay=0.12
+instrument kick: noise volume=0.7 echo=0
+instrument snare: noise volume=0.55 echo=0.1
+instrument hat: noise volume=0.2 echo=0
+instrument zap: pulse duty=0.25 volume=0.15 attack=0.001 decay=0.12 sustain=0 release=0.01 detune=12 echo=0.55 slide=24 slide_time=0.09
 
-instrument lead:    @bell volume=0.3
-instrument lead2:   @epiano volume=0.22
-instrument arp:     @bell volume=0.12
-instrument pluck:   @epiano volume=0.2
-instrument pad_lo:  @organ volume=0.3
-instrument pad_hi:  @organ volume=0.26
-instrument bass:    @sine-sub volume=0.3
-instrument bass_hi: @fm-bass volume=0.95 sub=0.15
-instrument kick:    @noise-drums volume=0.7 echo=0
-instrument snare:   @noise-drums volume=0.55
-instrument hat:     @noise-drums volume=0.2 echo=0
-
-# ---- intro (6 bars, nearly silent)
-lead: R:4
-lead: R:4
-lead: R:4
-lead: D#5:4
-lead: R:4
-lead: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-arp: R:4
-arp: R:4
-arp: B4:1 D#5:1 F#5:1 D#5:1
-arp: F#4:1 A#4:1 C#5:1 A#4:1
-arp: G#4:1 B4:1 D#5:1 B4:1
-arp: E4:1 G#4:1 B4:1 G#4:1
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pad_lo: R:4
-pad_lo: R:4
-pad_lo: R:4
-pad_lo: R:4
-pad_lo: R:4
-pad_lo: R:4
-pad_hi: B4:4
-pad_hi: G#4:4
-pad_hi: D#4:4
-pad_hi: A#4:4
-pad_hi: B4:4
-pad_hi: G#4:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass: G#1:4
-bass: E1:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-kick: R:4
-kick: R:4
-kick: R:4
-kick: R:4
-kick: R:4
-kick: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-
-# ---- A (10 bars)
-lead: R:4
-lead: R:4
-lead: R:4
-lead: R:4
+lead: R:8
+lead: B4:2 D#5:2
+lead: F#5:3 R:1
+lead: G#5:2 B5:2
+lead: G#5:3 R:17
 lead: G#4:2 B4:1 C#5:1
 lead: B4:2 G#4:2
 lead: F#4:1 B4:1 D#5:2
 lead: C#5:2 A#4:1 C#5:1
-lead: R:4
-lead: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-arp: G#4:1 B4:1 D#5:1 B4:1
-arp: E4:1 G#4:1 B4:1 G#4:1
-arp: B4:1 D#5:1 F#5:1 D#5:1
-arp: F#4:1 A#4:1 C#5:1 A#4:1
-arp: [G#4:0.5 B4:0.5 D#5:0.5 B4:0.5]x2
-arp: [E4:0.5 G#4:0.5 B4:0.5 G#4:0.5]x2
-arp: [B4:0.5 D#5:0.5 F#5:0.5 D#5:0.5]x2
-arp: [F#4:0.5 A#4:0.5 C#5:0.5 A#4:0.5]x2
-arp: [G#4:0.5 B4:0.5 D#5:0.5 B4:0.5]x2
-arp: [E4:0.5 G#4:0.5 B4:0.5 G#4:0.5]x2
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pad_lo: D#3:4
-pad_lo: B3:4
-pad_lo: F#3:4
-pad_lo: C#3:4
-pad_lo: D#3:4
-pad_lo: B3:4
-pad_lo: F#3:4
-pad_lo: C#3:4
-pad_lo: D#3:4
-pad_lo: B3:4
-pad_hi: B4:4
-pad_hi: G#4:4
-pad_hi: D#4:4
-pad_hi: A#4:4
-pad_hi: B4:4
-pad_hi: G#4:4
-pad_hi: D#4:4
-pad_hi: A#4:4
-pad_hi: B4:4
-pad_hi: G#4:4
-bass: [G#1:0.75 G#1:0.25 R:0.5 G#1:0.5]x2
-bass: [E1:0.75 E1:0.25 R:0.5 E1:0.5]x2
-bass: [B1:0.75 B1:0.25 R:0.5 B1:0.5]x2
-bass: [F#1:0.75 F#1:0.25 R:0.5 F#1:0.5]x2
-bass: [G#1:0.75 G#1:0.25 R:0.5 G#1:0.5]x2
-bass: [E1:0.75 E1:0.25 R:0.5 E1:0.5]x2
-bass: [B1:0.75 B1:0.25 R:0.5 B1:0.5]x2
-bass: [F#1:0.75 F#1:0.25 R:0.5 F#1:0.5]x2
-bass: [G#1:0.75 G#1:0.25 R:0.5 G#1:0.5]x2
-bass: [E1:0.75 E1:0.25 R:0.5 E1:0.5]x2
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-
-# ---- B: first loud section (8 bars)
+lead: R:8
 lead: E5:2 D#5:1 C#5:1
 lead: B4:1 E5:1 G#5:2
 lead: D#5:2 B4:2
@@ -210,92 +33,7 @@ lead: G#5:2 E5:1 C#5:1
 lead: E5:1 G#5:1 B5:2
 lead: G#5:2 D#5:1 B4:1
 lead: F#5:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: G#4:2 E4:1 C#4:1
-lead2: E4:1 G#4:1 B4:2
-lead2: G#4:2 D#4:1 B3:1
-lead2: F#4:4
-arp: [C#4:0.25 E4:0.25 G#4:0.25 E4:0.25]x4
-arp: [E4:0.25 G#4:0.25 B4:0.25 G#4:0.25]x4
-arp: [G#4:0.25 B4:0.25 D#5:0.25 B4:0.25]x4
-arp: [F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25]x4
-arp: [C#4:0.25 E4:0.25 G#4:0.25 E4:0.25]x4
-arp: [E4:0.25 G#4:0.25 B4:0.25 G#4:0.25]x4
-arp: [G#4:0.25 B4:0.25 D#5:0.25 B4:0.25]x4
-arp: [F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25]x4
-pluck: R:0.5 C#5:0.5 R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 E5:0.5
-pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
-pluck: R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
-pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
-pluck: R:0.5 C#5:0.5 R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 E5:0.5
-pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
-pluck: R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
-pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
-pad_lo: G#3:4
-pad_lo: B3:4
-pad_lo: D#3:4
-pad_lo: C#3:4
-pad_lo: G#3:4
-pad_lo: B3:4
-pad_lo: D#3:4
-pad_lo: C#3:4
-pad_hi: E4:4
-pad_hi: G#4:4
-pad_hi: B4:4
-pad_hi: A#4:4
-pad_hi: E4:4
-pad_hi: G#4:4
-pad_hi: B4:4
-pad_hi: A#4:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass_hi: [C#2:0.5 C#2:0.5 C#3:0.5 C#2:0.5]x2
-bass_hi: [E1:0.5 E1:0.5 E2:0.5 E1:0.5]x2
-bass_hi: [G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5]x2
-bass_hi: [F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5]x2
-bass_hi: [C#2:0.5 C#2:0.5 C#3:0.5 C#2:0.5]x2
-bass_hi: [E1:0.5 E1:0.5 E2:0.5 E1:0.5]x2
-bass_hi: [G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5]x2
-bass_hi: [F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5]x2
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 [S:0.25]x4
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-
-# ---- C: slow build (16 bars, adds a layer every 4 bars)
-lead: R:4
-lead: R:4
-lead: R:4
-lead: R:4
+lead: R:16
 lead: G#4:2 B4:1 C#5:1
 lead: B4:2 G#4:2
 lead: F#4:1 B4:1 D#5:2
@@ -308,168 +46,6 @@ lead: G#4:2 B4:1 C#5:1
 lead: B4:2 G#4:2
 lead: F#4:1 B4:1 D#5:2
 lead: C#5:2 A#4:1 C#5:1
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-arp: G#4:1 B4:1 D#5:1 B4:1
-arp: E4:1 G#4:1 B4:1 G#4:1
-arp: B4:1 D#5:1 F#5:1 D#5:1
-arp: F#4:1 A#4:1 C#5:1 A#4:1
-arp: G#4:1 B4:1 D#5:1 B4:1
-arp: E4:1 G#4:1 B4:1 G#4:1
-arp: B4:1 D#5:1 F#5:1 D#5:1
-arp: F#4:1 A#4:1 C#5:1 A#4:1
-arp: G#4:1 B4:1 D#5:1 B4:1
-arp: E4:1 G#4:1 B4:1 G#4:1
-arp: B4:1 D#5:1 F#5:1 D#5:1
-arp: F#4:1 A#4:1 C#5:1 A#4:1
-arp: [G#4:0.5 B4:0.5 D#5:0.5 B4:0.5]x2
-arp: [E4:0.5 G#4:0.5 B4:0.5 G#4:0.5]x2
-arp: [B4:0.5 D#5:0.5 F#5:0.5 D#5:0.5]x2
-arp: [F#4:0.5 A#4:0.5 C#5:0.5 A#4:0.5]x2
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
-pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
-pluck: R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 F#6:0.5 R:0.5 D#6:0.5
-pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
-pluck: R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
-pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
-pluck: R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 F#6:0.5 R:0.5 D#6:0.5
-pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
-pluck: R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
-pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
-pluck: R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 F#6:0.5 R:0.5 D#6:0.5
-pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
-pad_lo: D#3:4
-pad_lo: B3:4
-pad_lo: F#3:4
-pad_lo: C#3:4
-pad_lo: D#3:4
-pad_lo: B3:4
-pad_lo: F#3:4
-pad_lo: C#3:4
-pad_lo: D#3:4
-pad_lo: B3:4
-pad_lo: F#3:4
-pad_lo: C#3:4
-pad_lo: D#3:4
-pad_lo: B3:4
-pad_lo: F#3:4
-pad_lo: C#3:4
-pad_hi: B4:4
-pad_hi: G#4:4
-pad_hi: D#4:4
-pad_hi: A#4:4
-pad_hi: B4:4
-pad_hi: G#4:4
-pad_hi: D#4:4
-pad_hi: A#4:4
-pad_hi: B4:4
-pad_hi: G#4:4
-pad_hi: D#4:4
-pad_hi: A#4:4
-pad_hi: B4:4
-pad_hi: G#4:4
-pad_hi: D#4:4
-pad_hi: A#4:4
-bass: [G#1:0.75 G#1:0.25 R:0.5 G#1:0.5]x2
-bass: [E1:0.75 E1:0.25 R:0.5 E1:0.5]x2
-bass: [B1:0.75 B1:0.25 R:0.5 B1:0.5]x2
-bass: [F#1:0.75 F#1:0.25 R:0.5 F#1:0.5]x2
-bass: [G#1:0.75 G#1:0.25 R:0.5 G#1:0.5]x2
-bass: [E1:0.75 E1:0.25 R:0.5 E1:0.5]x2
-bass: [B1:0.75 B1:0.25 R:0.5 B1:0.5]x2
-bass: [F#1:0.75 F#1:0.25 R:0.5 F#1:0.5]x2
-bass: [G#1:0.75 G#1:0.25 R:0.5 G#1:0.5]x2
-bass: [E1:0.75 E1:0.25 R:0.5 E1:0.5]x2
-bass: [B1:0.75 B1:0.25 R:0.5 B1:0.5]x2
-bass: [F#1:0.75 F#1:0.25 R:0.5 F#1:0.5]x2
-bass: R:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: [G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5]x2
-bass_hi: [E1:0.5 E1:0.5 E2:0.5 E1:0.5]x2
-bass_hi: [B1:0.5 B1:0.5 B2:0.5 B1:0.5]x2
-bass_hi: [F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5]x2
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: K:1 R:1.5 K:0.5 R:1
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: [R:0.5 H:0.5]x4
-hat: [R:0.5 H:0.5]x4
-hat: [R:0.5 H:0.5]x4
-hat: [R:0.5 H:0.5]x4
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-
-# ---- D: breakdown (8 bars)
 lead: E5:4
 lead: B4:4
 lead: G#4:4
@@ -478,88 +54,6 @@ lead: E5:4
 lead: B4:4
 lead: G#4:4
 lead: A#4:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-arp: C#4:1 E4:1 G#4:1 E4:1
-arp: E4:1 G#4:1 B4:1 G#4:1
-arp: G#4:1 B4:1 D#5:1 B4:1
-arp: F#4:1 A#4:1 C#5:1 A#4:1
-arp: C#4:1 E4:1 G#4:1 E4:1
-arp: E4:1 G#4:1 B4:1 G#4:1
-arp: G#4:1 B4:1 D#5:1 B4:1
-arp: F#4:1 A#4:1 C#5:1 A#4:1
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pad_lo: G#3:4
-pad_lo: B3:4
-pad_lo: D#3:4
-pad_lo: C#3:4
-pad_lo: G#3:4
-pad_lo: B3:4
-pad_lo: D#3:4
-pad_lo: C#3:4
-pad_hi: E4:4
-pad_hi: G#4:4
-pad_hi: B4:4
-pad_hi: A#4:4
-pad_hi: E4:4
-pad_hi: G#4:4
-pad_hi: B4:4
-pad_hi: A#4:4
-bass: C#2:4
-bass: E1:4
-bass: G#1:4
-bass: F#1:4
-bass: C#2:4
-bass: E1:4
-bass: G#1:4
-bass: F#1:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-kick: R:4
-kick: R:4
-kick: R:4
-kick: R:4
-kick: R:4
-kick: R:4
-kick: R:4
-kick: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
-
-# ---- E: final loud section (8 bars, octave-doubled lead)
 lead: E5:2 D#5:1 C#5:1
 lead: B4:1 E5:1 G#5:2
 lead: D#5:2 B4:2
@@ -568,6 +62,15 @@ lead: G#5:2 E5:1 C#5:1
 lead: E5:1 G#5:1 B5:2
 lead: G#5:2 D#5:1 B4:1
 lead: F#5:4
+lead: G#4:2 B4:1 C#5:1
+lead: R:16
+
+lead2: R:80
+lead2: G#4:2 E4:1 C#4:1
+lead2: E4:1 G#4:1 B4:2
+lead2: G#4:2 D#4:1 B3:1
+lead2: F#4:4
+lead2: R:96
 lead2: E4:2 D#4:1 C#4:1
 lead2: B3:1 E4:1 G#4:2
 lead2: D#4:2 B3:2
@@ -576,132 +79,374 @@ lead2: G#4:2 E4:1 C#4:1
 lead2: E4:1 G#4:1 B4:2
 lead2: G#4:2 D#4:1 B3:1
 lead2: F#4:4
-arp: [C#4:0.25 E4:0.25 G#4:0.25 E4:0.25]x4
-arp: [E4:0.25 G#4:0.25 B4:0.25 G#4:0.25]x4
-arp: [G#4:0.25 B4:0.25 D#5:0.25 B4:0.25]x4
-arp: [F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25]x4
-arp: [C#4:0.25 E4:0.25 G#4:0.25 E4:0.25]x4
-arp: [E4:0.25 G#4:0.25 B4:0.25 G#4:0.25]x4
-arp: [G#4:0.25 B4:0.25 D#5:0.25 B4:0.25]x4
-arp: [F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25]x4
-pluck: R:0.5 C#5:0.5 R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 E5:0.5
-pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
-pluck: R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
-pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
-pluck: R:0.5 C#5:0.5 R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 E5:0.5
-pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
-pluck: R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
-pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
-pad_lo: G#3:4
-pad_lo: B3:4
-pad_lo: D#3:4
-pad_lo: C#3:4
-pad_lo: G#3:4
-pad_lo: B3:4
-pad_lo: D#3:4
-pad_lo: C#3:4
-pad_hi: E4:4
-pad_hi: G#4:4
-pad_hi: B4:4
-pad_hi: A#4:4
-pad_hi: E4:4
-pad_hi: G#4:4
-pad_hi: B4:4
-pad_hi: A#4:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass_hi: [C#2:0.5 C#2:0.5 C#3:0.5 C#2:0.5]x2
-bass_hi: [E1:0.5 E1:0.5 E2:0.5 E1:0.5]x2
-bass_hi: [G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5]x2
-bass_hi: [F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5]x2
-bass_hi: [C#2:0.5 C#2:0.5 C#3:0.5 C#2:0.5]x2
-bass_hi: [E1:0.5 E1:0.5 E2:0.5 E1:0.5]x2
-bass_hi: [G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5]x2
-bass_hi: [F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5]x2
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-kick: [K:1]x4
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 R:1
-snare: R:2 S:1 [S:0.25]x4
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
-hat: [H:0.5]x8
+lead2: R:20
 
-# ---- outro (5 bars, fades to silence)
-lead: G#4:2 B4:1 C#5:1
-lead: R:4
-lead: R:4
-lead: R:4
-lead: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
-lead2: R:4
 arp: R:4
-arp: [E4:0.5 G#4:0.5 B4:0.5 G#4:0.5]x2
+arp: E4:2 G#4:2
 arp: B4:1 D#5:1 F#5:1 D#5:1
+arp: F#4:1 A#4:1 C#5:1 A#4:1
+arp: G#4:1 B4:1 D#5:1 B4:1
+arp: E4:1 G#4:1 B4:1 G#4:1
+arp: G#4:1 B4:1 D#5:1 B4:1
+arp: E4:1 G#4:1 B4:1 G#4:1
+arp: B4:1 D#5:1 F#5:1 D#5:1
+arp: F#4:1 A#4:1 C#5:1 A#4:1
+arp: G#4:0.5 B4:0.5 D#5:0.5 B4:0.5 G#4:0.5 B4:0.5 D#5:0.5 B4:0.5
+arp: E4:0.5 G#4:0.5 B4:0.5 G#4:0.5 E4:0.5 G#4:0.5 B4:0.5 G#4:0.5
+arp: B4:0.5 D#5:0.5 F#5:0.5 D#5:0.5 B4:0.5 D#5:0.5 F#5:0.5 D#5:0.5
+arp: F#4:0.5 A#4:0.5 C#5:0.5 A#4:0.5 F#4:0.5 A#4:0.5 C#5:0.5 A#4:0.5
+arp: G#4:0.5 B4:0.5 D#5:0.5 B4:0.5 G#4:0.5 B4:0.5 D#5:0.5 B4:0.5
+arp: E4:0.5 G#4:0.5 B4:0.5 G#4:0.5 E4:0.5 G#4:0.5 B4:0.5 G#4:0.5
+arp: C#4:0.25 E4:0.25 G#4:0.25 E4:0.25 C#4:0.25 E4:0.25 G#4:0.25 E4:0.25 C#4:0.25 E4:0.25 G#4:0.25 E4:0.25 C#4:0.25 E4:0.25 G#4:0.25 E4:0.25
+arp: E4:0.25 G#4:0.25 B4:0.25 G#4:0.25 E4:0.25 G#4:0.25 B4:0.25 G#4:0.25 E4:0.25 G#4:0.25 B4:0.25 G#4:0.25 E4:0.25 G#4:0.25 B4:0.25 G#4:0.25
+arp: G#4:0.25 B4:0.25 D#5:0.25 B4:0.25 G#4:0.25 B4:0.25 D#5:0.25 B4:0.25 G#4:0.25 B4:0.25 D#5:0.25 B4:0.25 G#4:0.25 B4:0.25 D#5:0.25 B4:0.25
+arp: F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25 F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25 F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25 F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25
+arp: C#4:0.25 E4:0.25 G#4:0.25 E4:0.25 C#4:0.25 E4:0.25 G#4:0.25 E4:0.25 C#4:0.25 E4:0.25 G#4:0.25 E4:0.25 C#4:0.25 E4:0.25 G#4:0.25 E4:0.25
+arp: E4:0.25 G#4:0.25 B4:0.25 G#4:0.25 E4:0.25 G#4:0.25 B4:0.25 G#4:0.25 E4:0.25 G#4:0.25 B4:0.25 G#4:0.25 E4:0.25 G#4:0.25 B4:0.25 G#4:0.25
+arp: G#4:0.25 B4:0.25 D#5:0.25 B4:0.25 G#4:0.25 B4:0.25 D#5:0.25 B4:0.25 G#4:0.25 B4:0.25 D#5:0.25 B4:0.25 G#4:0.25 B4:0.25 D#5:0.25 B4:0.25
+arp: F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25 F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25 F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25 F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25
+arp: G#4:1 B4:1 D#5:1 B4:1
+arp: E4:1 G#4:1 B4:1 G#4:1
+arp: B4:1 D#5:1 F#5:1 D#5:1
+arp: F#4:1 A#4:1 C#5:1 A#4:1
+arp: G#4:1 B4:1 D#5:1 B4:1
+arp: E4:1 G#4:1 B4:1 G#4:1
+arp: B4:1 D#5:1 F#5:1 D#5:1
+arp: F#4:1 A#4:1 C#5:1 A#4:1
+arp: G#4:1 B4:1 D#5:1 B4:1
+arp: E4:1 G#4:1 B4:1 G#4:1
+arp: B4:1 D#5:1 F#5:1 D#5:1
+arp: F#4:1 A#4:1 C#5:1 A#4:1
+arp: G#4:0.5 B4:0.5 D#5:0.5 B4:0.5 G#4:0.5 B4:0.5 D#5:0.5 B4:0.5
+arp: E4:0.5 G#4:0.5 B4:0.5 G#4:0.5 E4:0.5 G#4:0.5 B4:0.5 G#4:0.5
+arp: B4:0.5 D#5:0.5 F#5:0.5 D#5:0.5 B4:0.5 D#5:0.5 F#5:0.5 D#5:0.5
+arp: F#4:0.5 A#4:0.5 C#5:0.5 A#4:0.5 F#4:0.5 A#4:0.5 C#5:0.5 A#4:0.5
+arp: C#4:1 E4:1 G#4:1 E4:1
+arp: E4:1 G#4:1 B4:1 G#4:1
+arp: G#4:1 B4:1 D#5:1 B4:1
+arp: F#4:1 A#4:1 C#5:1 A#4:1
+arp: C#4:1 E4:1 G#4:1 E4:1
+arp: E4:1 G#4:1 B4:1 G#4:1
+arp: G#4:1 B4:1 D#5:1 B4:1
+arp: F#4:1 A#4:1 C#5:1 A#4:1
+arp: C#4:0.25 E4:0.25 G#4:0.25 E4:0.25 C#4:0.25 E4:0.25 G#4:0.25 E4:0.25 C#4:0.25 E4:0.25 G#4:0.25 E4:0.25 C#4:0.25 E4:0.25 G#4:0.25 E4:0.25
+arp: E4:0.25 G#4:0.25 B4:0.25 G#4:0.25 E4:0.25 G#4:0.25 B4:0.25 G#4:0.25 E4:0.25 G#4:0.25 B4:0.25 G#4:0.25 E4:0.25 G#4:0.25 B4:0.25 G#4:0.25
+arp: G#4:0.25 B4:0.25 D#5:0.25 B4:0.25 G#4:0.25 B4:0.25 D#5:0.25 B4:0.25 G#4:0.25 B4:0.25 D#5:0.25 B4:0.25 G#4:0.25 B4:0.25 D#5:0.25 B4:0.25
+arp: F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25 F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25 F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25 F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25
+arp: C#4:0.25 E4:0.25 G#4:0.25 E4:0.25 C#4:0.25 E4:0.25 G#4:0.25 E4:0.25 C#4:0.25 E4:0.25 G#4:0.25 E4:0.25 C#4:0.25 E4:0.25 G#4:0.25 E4:0.25
+arp: E4:0.25 G#4:0.25 B4:0.25 G#4:0.25 E4:0.25 G#4:0.25 B4:0.25 G#4:0.25 E4:0.25 G#4:0.25 B4:0.25 G#4:0.25 E4:0.25 G#4:0.25 B4:0.25 G#4:0.25
+arp: G#4:0.25 B4:0.25 D#5:0.25 B4:0.25 G#4:0.25 B4:0.25 D#5:0.25 B4:0.25 G#4:0.25 B4:0.25 D#5:0.25 B4:0.25 G#4:0.25 B4:0.25 D#5:0.25 B4:0.25
+arp: F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25 F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25 F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25 F#4:0.25 A#4:0.25 C#5:0.25 A#4:0.25
 arp: R:4
-arp: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
-pluck: R:4
+arp: E4:0.5 G#4:0.5 B4:0.5 G#4:0.5 E4:0.5 G#4:0.5 B4:0.5 G#4:0.5
+arp: B4:1 D#5:1 F#5:1 D#5:1
+arp: R:8
+
+pluck: R:2 B5:1 G#5:1
+pluck: R:2 G#5:1 E5:1
+pluck: R:2 F#5:1 D#5:1
+pluck: R:2 C#5:1 A#4:1
+pluck: R:48.5 C#5:0.5 R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 E5:0.5
+pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
+pluck: R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
+pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
+pluck: R:0.5 C#5:0.5 R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 E5:0.5
+pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
+pluck: R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
+pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
+pluck: R:16.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
+pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
+pluck: R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 F#6:0.5 R:0.5 D#6:0.5
+pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
+pluck: R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
+pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
+pluck: R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 F#6:0.5 R:0.5 D#6:0.5
+pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
+pluck: R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
+pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
+pluck: R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 F#6:0.5 R:0.5 D#6:0.5
+pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
+pluck: R:32.5 C#5:0.5 R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 E5:0.5
+pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
+pluck: R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
+pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
+pluck: R:0.5 C#5:0.5 R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 E5:0.5
+pluck: R:0.5 E5:0.5 R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 G#5:0.5
+pluck: R:0.5 G#5:0.5 R:0.5 B5:0.5 R:0.5 D#6:0.5 R:0.5 B5:0.5
+pluck: R:0.5 F#5:0.5 R:0.5 A#5:0.5 R:0.5 C#6:0.5 R:0.5 A#5:0.5
+pluck: R:20
+
+pad_lo: R:8
+pad_lo: F#3:4
+pad_lo: C#3:4
+pad_lo: D#3:4
+pad_lo: B3:4
 pad_lo: D#3:4
 pad_lo: B3:4
 pad_lo: F#3:4
-pad_lo: R:4
-pad_lo: R:4
+pad_lo: C#3:4
+pad_lo: D#3:4
+pad_lo: B3:4
+pad_lo: F#3:4
+pad_lo: C#3:4
+pad_lo: D#3:4
+pad_lo: B3:4
+pad_lo: G#3:4
+pad_lo: B3:4
+pad_lo: D#3:4
+pad_lo: C#3:4
+pad_lo: G#3:4
+pad_lo: B3:4
+pad_lo: D#3:4
+pad_lo: C#3:4
+pad_lo: D#3:4
+pad_lo: B3:4
+pad_lo: F#3:4
+pad_lo: C#3:4
+pad_lo: D#3:4
+pad_lo: B3:4
+pad_lo: F#3:4
+pad_lo: C#3:4
+pad_lo: D#3:4
+pad_lo: B3:4
+pad_lo: F#3:4
+pad_lo: C#3:4
+pad_lo: D#3:4
+pad_lo: B3:4
+pad_lo: F#3:4
+pad_lo: C#3:4
+pad_lo: G#3:4
+pad_lo: B3:4
+pad_lo: D#3:4
+pad_lo: C#3:4
+pad_lo: G#3:4
+pad_lo: B3:4
+pad_lo: D#3:4
+pad_lo: C#3:4
+pad_lo: G#3:4
+pad_lo: B3:4
+pad_lo: D#3:4
+pad_lo: C#3:4
+pad_lo: G#3:4
+pad_lo: B3:4
+pad_lo: D#3:4
+pad_lo: C#3:4
+pad_lo: D#3:4
+pad_lo: B3:4
+pad_lo: F#3:4
+pad_lo: R:8
+
+pad_hi: B4:4
+pad_hi: G#4:4
+pad_hi: D#4:4
+pad_hi: A#4:4
+pad_hi: B4:4
+pad_hi: G#4:4
+pad_hi: B4:4
+pad_hi: G#4:4
+pad_hi: D#4:4
+pad_hi: A#4:4
+pad_hi: B4:4
+pad_hi: G#4:4
+pad_hi: D#4:4
+pad_hi: A#4:4
+pad_hi: B4:4
+pad_hi: G#4:4
+pad_hi: E4:4
+pad_hi: G#4:4
+pad_hi: B4:4
+pad_hi: A#4:4
+pad_hi: E4:4
+pad_hi: G#4:4
+pad_hi: B4:4
+pad_hi: A#4:4
+pad_hi: B4:4
+pad_hi: G#4:4
+pad_hi: D#4:4
+pad_hi: A#4:4
+pad_hi: B4:4
+pad_hi: G#4:4
+pad_hi: D#4:4
+pad_hi: A#4:4
+pad_hi: B4:4
+pad_hi: G#4:4
+pad_hi: D#4:4
+pad_hi: A#4:4
+pad_hi: B4:4
+pad_hi: G#4:4
+pad_hi: D#4:4
+pad_hi: A#4:4
+pad_hi: E4:4
+pad_hi: G#4:4
+pad_hi: B4:4
+pad_hi: A#4:4
+pad_hi: E4:4
+pad_hi: G#4:4
+pad_hi: B4:4
+pad_hi: A#4:4
+pad_hi: E4:4
+pad_hi: G#4:4
+pad_hi: B4:4
+pad_hi: A#4:4
+pad_hi: E4:4
+pad_hi: G#4:4
+pad_hi: B4:4
+pad_hi: A#4:4
 pad_hi: B4:4
 pad_hi: G#4:4
 pad_hi: D#4:4
 pad_hi: A#4:4
 pad_hi: R:4
-bass: R:4
+
+bass: R:8
+bass: B1:4
+bass: F#1:4
+bass: G#1:0.75 G#1:0.25 R:0.5 G#1:0.5 G#1:0.75 G#1:0.25 R:0.5 G#1:0.5
+bass: E1:0.75 E1:0.25 R:0.5 E1:0.5 E1:0.75 E1:0.25 R:0.5 E1:0.5
+bass: G#1:0.75 G#1:0.25 R:0.5 G#1:0.5 G#1:0.75 G#1:0.25 R:0.5 G#1:0.5
+bass: E1:0.75 E1:0.25 R:0.5 E1:0.5 E1:0.75 E1:0.25 R:0.5 E1:0.5
+bass: B1:0.75 B1:0.25 R:0.5 B1:0.5 B1:0.75 B1:0.25 R:0.5 B1:0.5
+bass: F#1:0.75 F#1:0.25 R:0.5 F#1:0.5 F#1:0.75 F#1:0.25 R:0.5 F#1:0.5
+bass: G#1:0.75 G#1:0.25 R:0.5 G#1:0.5 G#1:0.75 G#1:0.25 R:0.5 G#1:0.5
+bass: E1:0.75 E1:0.25 R:0.5 E1:0.5 E1:0.75 E1:0.25 R:0.5 E1:0.5
+bass: B1:0.75 B1:0.25 R:0.5 B1:0.5 B1:0.75 B1:0.25 R:0.5 B1:0.5
+bass: F#1:0.75 F#1:0.25 R:0.5 F#1:0.5 F#1:0.75 F#1:0.25 R:0.5 F#1:0.5
+bass: G#1:0.75 G#1:0.25 R:0.5 G#1:0.5 G#1:0.75 G#1:0.25 R:0.5 G#1:0.5
+bass: E1:0.75 E1:0.25 R:0.5 E1:0.5 E1:0.75 E1:0.25 R:0.5 E1:0.5
+bass: R:32
+bass: G#1:0.75 G#1:0.25 R:0.5 G#1:0.5 G#1:0.75 G#1:0.25 R:0.5 G#1:0.5
+bass: E1:0.75 E1:0.25 R:0.5 E1:0.5 E1:0.75 E1:0.25 R:0.5 E1:0.5
+bass: B1:0.75 B1:0.25 R:0.5 B1:0.5 B1:0.75 B1:0.25 R:0.5 B1:0.5
+bass: F#1:0.75 F#1:0.25 R:0.5 F#1:0.5 F#1:0.75 F#1:0.25 R:0.5 F#1:0.5
+bass: G#1:0.75 G#1:0.25 R:0.5 G#1:0.5 G#1:0.75 G#1:0.25 R:0.5 G#1:0.5
+bass: E1:0.75 E1:0.25 R:0.5 E1:0.5 E1:0.75 E1:0.25 R:0.5 E1:0.5
+bass: B1:0.75 B1:0.25 R:0.5 B1:0.5 B1:0.75 B1:0.25 R:0.5 B1:0.5
+bass: F#1:0.75 F#1:0.25 R:0.5 F#1:0.5 F#1:0.75 F#1:0.25 R:0.5 F#1:0.5
+bass: G#1:0.75 G#1:0.25 R:0.5 G#1:0.5 G#1:0.75 G#1:0.25 R:0.5 G#1:0.5
+bass: E1:0.75 E1:0.25 R:0.5 E1:0.5 E1:0.75 E1:0.25 R:0.5 E1:0.5
+bass: B1:0.75 B1:0.25 R:0.5 B1:0.5 B1:0.75 B1:0.25 R:0.5 B1:0.5
+bass: F#1:0.75 F#1:0.25 R:0.5 F#1:0.5 F#1:0.75 F#1:0.25 R:0.5 F#1:0.5
+bass: R:16
+bass: C#2:4
 bass: E1:4
-bass: R:4
-bass: R:4
-bass: R:4
-bass_hi: [G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5]x2
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-bass_hi: R:4
-kick: [K:1]x4
-kick: R:4
-kick: R:4
-kick: R:4
-kick: R:4
-snare: R:2 S:1 R:1
-snare: R:4
-snare: R:4
-snare: R:4
-snare: R:4
-hat: [H:0.5]x8
-hat: R:4
-hat: R:4
-hat: R:4
-hat: R:4
+bass: G#1:4
+bass: F#1:4
+bass: C#2:4
+bass: E1:4
+bass: G#1:4
+bass: F#1:4
+bass: R:36
+bass: E1:4
+bass: R:12
+
+bass_hi: R:64
+bass_hi: C#2:0.5 C#2:0.5 C#3:0.5 C#2:0.5 C#2:0.5 C#2:0.5 C#3:0.5 C#2:0.5
+bass_hi: E1:0.5 E1:0.5 E2:0.5 E1:0.5 E1:0.5 E1:0.5 E2:0.5 E1:0.5
+bass_hi: G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5 G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5
+bass_hi: F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5 F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5
+bass_hi: C#2:0.5 C#2:0.5 C#3:0.5 C#2:0.5 C#2:0.5 C#2:0.5 C#3:0.5 C#2:0.5
+bass_hi: E1:0.5 E1:0.5 E2:0.5 E1:0.5 E1:0.5 E1:0.5 E2:0.5 E1:0.5
+bass_hi: G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5 G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5
+bass_hi: F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5 F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5
+bass_hi: R:48
+bass_hi: G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5 G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5
+bass_hi: E1:0.5 E1:0.5 E2:0.5 E1:0.5 E1:0.5 E1:0.5 E2:0.5 E1:0.5
+bass_hi: B1:0.5 B1:0.5 B2:0.5 B1:0.5 B1:0.5 B1:0.5 B2:0.5 B1:0.5
+bass_hi: F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5 F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5
+bass_hi: R:32
+bass_hi: C#2:0.5 C#2:0.5 C#3:0.5 C#2:0.5 C#2:0.5 C#2:0.5 C#3:0.5 C#2:0.5
+bass_hi: E1:0.5 E1:0.5 E2:0.5 E1:0.5 E1:0.5 E1:0.5 E2:0.5 E1:0.5
+bass_hi: G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5 G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5
+bass_hi: F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5 F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5
+bass_hi: C#2:0.5 C#2:0.5 C#3:0.5 C#2:0.5 C#2:0.5 C#2:0.5 C#3:0.5 C#2:0.5
+bass_hi: E1:0.5 E1:0.5 E2:0.5 E1:0.5 E1:0.5 E1:0.5 E2:0.5 E1:0.5
+bass_hi: G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5 G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5
+bass_hi: F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5 F#1:0.5 F#1:0.5 F#2:0.5 F#1:0.5
+bass_hi: G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5 G#1:0.5 G#1:0.5 G#2:0.5 G#1:0.5
+bass_hi: R:16
+
+kick: R:16
+kick: K:1 R:3
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 R:1.5 K:0.5 R:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: R:32
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: K:1 K:1 K:1 K:1
+kick: R:16
+
+snare: R:23 S:0.25 S:0.25 S:0.25 S:0.25
+snare: R:42 S:1 R:3 S:1 R:3 S:1 R:3 S:1 R:3 S:1 R:3 S:1 R:3 S:1 R:3 S:1 S:0.25 S:0.25 S:0.25 S:0.25
+snare: R:34 S:1 R:3 S:1 R:3 S:1 R:3 S:1 R:3 S:1 R:3 S:1 R:3 S:1 R:3 S:1 R:35 S:1 R:3 S:1 R:3 S:1 R:3 S:1 R:3 S:1 R:3 S:1 R:3 S:1 R:3 S:1 S:0.25 S:0.25 S:0.25 S:0.25
+snare: R:2 S:1 R:17
+
+hat: R:20.5 H:0.5 R:0.5 H:0.5 R:0.5 H:0.5 R:0.5 H:0.5
+hat: R:40
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: R:32.5 H:0.5 R:0.5 H:0.5 R:0.5 H:0.5 R:0.5 H:0.5
+hat: R:0.5 H:0.5 R:0.5 H:0.5 R:0.5 H:0.5 R:0.5 H:0.5
+hat: R:0.5 H:0.5 R:0.5 H:0.5 R:0.5 H:0.5 R:0.5 H:0.5
+hat: R:0.5 H:0.5 R:0.5 H:0.5 R:0.5 H:0.5 R:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: R:32
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5 H:0.5
+hat: R:16
+
+zap: B3:2 R:242
