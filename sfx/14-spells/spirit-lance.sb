@@ -1,0 +1,14 @@
+title: Spirit Lance
+tempo: 120
+# desc: A piercing beam of spirit light: a fast falling pulse zip and a clean bell ring.
+# use: The player casts a pure spirit projectile or lance.
+# tags: spells, spirit, lance, pure, spell, spirit light, projectile, cast
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.125 volume=0.35 attack=0.002 release=0.02 slide=24 slide_time=0.06 decay=0.08 sustain=0.2
+instrument v2: fm volume=0.28 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.5 sustain=0 release=0.05 echo=0.3
+
+v1: C6:0.32 R:1.58
+v2: R:0.1 A6:0.8 R:1

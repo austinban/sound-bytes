@@ -1,0 +1,12 @@
+title: Wing Flap
+tempo: 120
+# desc: Two soft flaps.
+# use: A flying creature or the player gliding flaps.
+# tags: movement, wing, flap, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.25 attack=0.02 release=0.05 slide=4 slide_time=0.05
+
+v1: A4:0.18 R:0.08 A4:0.18

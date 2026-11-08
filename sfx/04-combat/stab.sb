@@ -1,0 +1,14 @@
+title: Stab
+tempo: 120
+# desc: Quick thrust.
+# use: A quick thrust attack.
+# tags: combat, stab, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.125 volume=0.4 attack=0.002 release=0.02 slide=-12 slide_time=0.03 decay=0.05 sustain=0.2
+instrument v2: noise volume=0.3 attack=0.001 release=0.01 decay=0.03 sustain=0
+
+v1: C5:0.2
+v2: G5:0.1 R:0.1

@@ -1,0 +1,14 @@
+title: Spirit Sight Off
+tempo: 120
+# desc: The veil closes: the shimmer sinks and fades.
+# use: The player deactivates spirit sight.
+# tags: spirit, sight, off, pure, spirit sight, vision, toggle
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.25 ratio=3.5 index=2 index_decay=0.6 attack=0.01 decay=0.4 sustain=0 release=0.05 echo=0.3
+instrument v2: pulse duty=0.125 volume=0.18 attack=0.002 release=0.02 slide=12 slide_time=0.3 pwm=0.3 pwm_rate=10
+
+v1: G5:1 R:1
+v2: C6:0.8 R:1.2

@@ -1,0 +1,14 @@
+title: Gravity Well
+tempo: 120
+# desc: A sucking void: a slow falling sub tone beneath noise that sweeps upward.
+# use: A gravity or pull spell drags enemies in.
+# tags: spells, gravity, well, corrupted, spell, pull, void, control
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: sine volume=0.6 attack=0.1 release=0.2 slide=-24 slide_time=0.7 sustain=0.7 vibrato=20 vibrato_rate=6
+instrument v2: noise volume=0.25 attack=0.1 release=0.2 slide=-20 slide_time=0.7 tremolo=0.4 tremolo_rate=14
+
+v1: C2:2
+v2: C3:2

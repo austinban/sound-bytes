@@ -1,0 +1,14 @@
+title: Corrupted Save
+tempo: 120
+# desc: Save chime, tainted: a falling run of dark bells that leaves a hollow organ tone.
+# use: Saving the game away from sanctuary (corrupted zones).
+# tags: corrupted, save, ui, tainted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.3 ratio=2.76 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.4
+instrument v2: organ volume=0.18 attack=0.1 release=0.4
+
+v1: F5:0.24 Ab5:0.24 B5:1.1 R:1.02
+v2: F3:1.6 R:1

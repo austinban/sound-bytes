@@ -1,0 +1,12 @@
+title: Whisper 1
+tempo: 120
+# desc: Breathy spectral whisper #1: pitched noise with a slow wavering pulse, like unintelligible speech just out of earshot.
+# use: Ambient flavour, a haunted object, an NPC the player can't quite hear, or the realm 'speaking' near corruption. Pick randomly among whisper-1..3.
+# tags: spirit, whisper, corrupted, voices, ambience, variant, haunted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.16 attack=0.25 release=0.3 tremolo=0.7 tremolo_rate=6 slide=-4 slide_time=0.5 echo=0.3
+
+v1: A5:2 R:1

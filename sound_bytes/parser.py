@@ -18,7 +18,7 @@ Rules:
   * Blank lines are ignored; comments start with `#` at the beginning of a line
     or after whitespace (so `C#4` is fine).
   * A note is NAME:BEATS, e.g. `C#4:0.5`. `R:1` is a rest. Default length is 1 beat.
-  * Noise channels use drum names instead of pitches: K (kick), S (snare), H (hat).
+  * Noise channels use drum names: K (kick), S (snare), H (hat); or a pitch for pitched noise (sound effects).
   * `[ ... ]xN` repeats the bracketed tokens N times (no nesting).
   * A channel can appear on several lines; the lines are joined in order.
 """
@@ -104,9 +104,12 @@ def _parse_token(token: str, inst: Instrument, lineno: int) -> Note:
     if name.upper() == "R":
         return Note("rest", beats)
     if inst.wave == "noise":
-        if name.upper() not in DRUMS:
-            raise ScoreError(f"line {lineno}: noise channel {inst.name!r} expects K, S, H or R, got {token!r}")
-        return Note("drum", beats, drum=name.upper())
+        if name.upper() in DRUMS:
+            return Note("drum", beats, drum=name.upper())
+        try:  # a pitch on a noise channel = pitched noise (explosions, whooshes, wind): the pitch sets the hiss rate
+            return Note("pitch", beats, midi=pitch_to_midi(name))
+        except ValueError:
+            raise ScoreError(f"line {lineno}: noise channel {inst.name!r} expects K, S, H, R or a pitch, got {token!r}")
     try:
         return Note("pitch", beats, midi=pitch_to_midi(name))
     except ValueError:

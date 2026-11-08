@@ -1,0 +1,16 @@
+title: Cursed Applied
+tempo: 120
+# desc: A curse lands: a dissonant tritone stab with a trembling low tail.
+# use: The Cursed status is applied.
+# tags: status, cursed, applied, corrupted, curse, debuff
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: saw volume=0.32 attack=0.002 release=0.2 detune=18 tremolo=0.5 tremolo_rate=9 decay=0.3 sustain=0.4
+instrument v2: saw volume=0.3 attack=0.002 release=0.2 detune=18 tremolo=0.5 tremolo_rate=9 decay=0.3 sustain=0.4
+instrument v3: fm volume=0.25 ratio=2.76 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.4
+
+v1: F3:1.2 R:1
+v2: B3:1.2 R:1
+v3: R:0.1 F4:1 R:1.1

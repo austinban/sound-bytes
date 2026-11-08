@@ -1,0 +1,14 @@
+title: Shield Up
+tempo: 120
+# desc: Protective barrier swelling into place.
+# use: Raising a magic shield (see 14-spells/ward-barrier).
+# tags: magic, shield, up, pure
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.4 ratio=2 index=3 index_decay=1 attack=0.2 decay=0.3 sustain=0.6 release=0.15 vibrato=15
+instrument v2: pulse duty=0.125 volume=0.25 attack=0.002 release=0.02 slide=-12 slide_time=0.2
+
+v1: C4:1.2
+v2: C6:0.6 R:0.6

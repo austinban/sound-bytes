@@ -1,0 +1,14 @@
+title: Whisper Rustle
+tempo: 120
+# desc: A dry rustle of dead leaves with a hint of voice.
+# use: Ambient one-shot in the Hollow Wood: movement just out of sight.
+# tags: zones, whisper, rustle, corrupted, forest, leaves, ambience
+# palette: corrupted
+# zone: hollow-wood
+# fit: core
+
+instrument v1: noise volume=0.18 attack=0.05 release=0.2 tremolo=0.9 tremolo_rate=14 slide=-3 slide_time=0.3
+instrument v2: noise volume=0.08 attack=0.2 release=0.25 tremolo=0.6 tremolo_rate=7
+
+v1: A5:1.2
+v2: E5:1.2

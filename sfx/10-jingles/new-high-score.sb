@@ -1,0 +1,12 @@
+title: New High Score
+tempo: 120
+# desc: Ascending run with a bouncing trill.
+# use: A new high score; arcade flavour.
+# tags: jingles, new, high, score, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: pulse duty=0.25 volume=0.4 attack=0.002 release=0.02 echo=0.2
+
+v1: C5:0.16 E5:0.16 G5:0.16 C6:0.16 G5:0.12 C6:0.12 G5:0.12 C6:0.12 E6:1.2 R:1

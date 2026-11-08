@@ -1,0 +1,14 @@
+title: Teleport
+tempo: 120
+# desc: Phasing sweep with a pop at the end.
+# use: Teleporting a long distance (see 14-spells/shadow-step for short blinks).
+# tags: magic, teleport, neutral
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.5 volume=0.35 attack=0.002 release=0.02 slide=-24 slide_time=0.25 pwm=0.3 pwm_rate=30 decay=0.2 sustain=0.4
+instrument v2: sine volume=0.35 attack=0.002 release=0.03 decay=0.05 sustain=0
+
+v1: C6:0.76 R:0.16
+v2: R:0.76 G6:0.16

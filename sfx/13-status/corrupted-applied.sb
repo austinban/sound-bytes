@@ -1,0 +1,14 @@
+title: Corrupted Applied
+tempo: 120
+# desc: Corruption takes the player: a sagging inharmonic tone under a pulsing breath.
+# use: The Corrupted status is applied to the player or a character.
+# tags: status, corrupted, applied, debuff
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.4 ratio=2.76 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.3 slide=7 slide_time=0.3
+instrument v2: noise volume=0.2 attack=0.2 release=0.25 tremolo=0.8 tremolo_rate=12
+
+v1: F3:1.3 R:1
+v2: D3:1.2 R:1.1

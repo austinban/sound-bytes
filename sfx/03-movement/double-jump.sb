@@ -1,0 +1,12 @@
+title: Double Jump
+tempo: 120
+# desc: Second jump in the air, higher and snappier.
+# use: A second jump in mid-air.
+# tags: movement, double, jump, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.25 volume=0.4 attack=0.002 release=0.04 slide=-12 slide_time=0.09 decay=0.1 sustain=0.3
+
+v1: G5:0.36

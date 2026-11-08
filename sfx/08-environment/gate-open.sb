@@ -1,0 +1,14 @@
+title: Gate Open
+tempo: 120
+# desc: Heavy gate grinding open.
+# use: A heavy gate or portcullis opens.
+# tags: environment, gate, open, neutral
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.5 attack=0.2 release=0.3 tremolo=0.4 tremolo_rate=9 sustain=0.8
+instrument v2: saw volume=0.2 attack=0.1 release=0.2 slide=-5 slide_time=0.5 vibrato=30 vibrato_rate=10
+
+v1: D2:2.2
+v2: A3:1.8 R:0.4

@@ -1,0 +1,12 @@
+title: Rock Fall
+tempo: 120
+# desc: Tumbling rocks.
+# use: Rocks tumble or a cave-in begins.
+# tags: explosions, rock, fall, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.45 attack=0.001 release=0.01 decay=0.06 sustain=0
+
+v1: D3:0.2 R:0.06 C3:0.24 R:0.04 E3:0.16 R:0.08 C3:0.44

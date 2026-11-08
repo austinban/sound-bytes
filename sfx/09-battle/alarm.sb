@@ -1,0 +1,12 @@
+title: Alarm
+tempo: 120
+# desc: Two-tone alarm, three times.
+# use: An alarm sounds; modern/arcade flavour.
+# tags: battle, alarm, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: pulse duty=0.5 volume=0.4 attack=0.002 release=0.02 echo=0.2
+
+v1: A5:0.36 E5:0.36 A5:0.36 E5:0.36 A5:0.36 E5:0.36 R:1

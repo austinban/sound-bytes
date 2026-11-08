@@ -1,0 +1,12 @@
+title: Toggle Off
+tempo: 120
+# desc: Switch flipped off.
+# use: Disabling a setting or switch in a menu.
+# tags: ui, toggle, off, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.25 volume=0.4 attack=0.002 release=0.02
+
+v1: G5:0.08 C5:0.16

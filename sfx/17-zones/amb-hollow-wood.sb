@@ -1,0 +1,21 @@
+title: Amb Hollow Wood
+tempo: 120
+# desc: Dead-forest ambience: dry wind rushing through bone trees, slow creaks, distant detuned wind-chime ticks and whispers. 12-second seamless loop.
+# use: Background loop for the Hollow Wood zone.
+# tags: zones, amb, hollow, wood, corrupted, ambience, loop, forest, wind, creak, eerie
+# palette: corrupted
+# zone: hollow-wood
+# fit: core
+# loop: 0.5
+
+instrument v1: noise volume=0.2 attack=0.5 release=0.5 tremolo=0.5 tremolo_rate=0.6 slide=-3 slide_time=5
+instrument v2: sine volume=0.35 attack=0.5 release=0.5 sustain=1 decay=0
+instrument v3: saw volume=0.2 attack=0.1 release=0.2 vibrato=45 vibrato_rate=11 slide=-4 slide_time=0.3
+instrument v4: fm volume=0.18 ratio=5 index=3 index_decay=0.1 attack=0.001 decay=0.1 sustain=0 release=0.05 echo=0.4
+instrument v5: noise volume=0.12 attack=0.2 release=0.25 tremolo=0.6 tremolo_rate=7 echo=0.3
+
+v1: E5:24
+v2: F1:24
+v3: R:6.8 A2:1.4 R:9 G2:1.2 R:5.6
+v4: R:2.4 E6:0.16 R:7.64 Bb6:0.16 R:0.64 E6:0.16 R:8.84 A6:0.16 R:3.84
+v5: R:3.6 A5:2 R:7.8 E5:2.4 R:8.2

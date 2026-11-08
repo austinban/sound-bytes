@@ -1,0 +1,14 @@
+title: Possession End
+tempo: 120
+# desc: The hold snaps: a noise crack and a falling detuned tone, then silence.
+# use: A possession, charm or mind-control effect ends or is broken.
+# tags: spirit, possession, end, corrupted, break, release, snap
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.45 attack=0.001 release=0.01 decay=0.07 sustain=0
+instrument v2: fm volume=0.35 ratio=2.76 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.3 slide=12 slide_time=0.2
+
+v1: D4:0.24 R:1.66
+v2: A4:0.9 R:1

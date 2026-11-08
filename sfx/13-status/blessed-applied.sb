@@ -1,0 +1,14 @@
+title: Blessed Applied
+tempo: 120
+# desc: A blessing settles: clean bells in a major triad with a soft shimmer.
+# use: A Blessed or Warded buff is applied.
+# tags: status, blessed, applied, pure, blessing, buff
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.3 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.5 sustain=0 release=0.05 echo=0.35
+instrument v2: organ volume=0.2 attack=0.1 release=0.4
+
+v1: F5:0.2 A5:0.2 C6:1 R:1
+v2: F3:1.4 R:1

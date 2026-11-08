@@ -1,0 +1,18 @@
+title: Critical Hit
+tempo: 120
+# desc: Critical strike: zap, heavy hit and a bell ring.
+# use: A critical hit lands.
+# tags: combat, critical, hit, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.125 volume=0.4 attack=0.002 release=0.02 slide=24 slide_time=0.05 decay=0.05 sustain=0.1
+instrument v2: sine volume=0.85 attack=0.002 release=0.03 slide=24 slide_time=0.05 decay=0.15 sustain=0
+instrument v3: noise volume=0.5 attack=0.001 release=0.01 decay=0.07 sustain=0
+instrument v4: fm volume=0.3 ratio=4 index=3 index_decay=0.3 attack=0.001 decay=0.3 sustain=0 release=0.05 echo=0.25
+
+v1: C6:0.28 R:1.74
+v2: F1:0.6 R:1.42
+v3: C4:0.24 R:1.78
+v4: R:0.12 G6:0.9 R:1

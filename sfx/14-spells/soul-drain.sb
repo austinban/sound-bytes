@@ -1,0 +1,14 @@
+title: Soul Drain
+tempo: 120
+# desc: A tendril pulling life: a falling inharmonic tone and a rising inhale of noise.
+# use: The player or an enemy casts soul-drain or life-steal.
+# tags: spells, soul, drain, corrupted, spell, life steal, cast
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.35 ratio=2.76 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.4 slide=-12 slide_time=0.4
+instrument v2: noise volume=0.2 attack=0.1 release=0.25 tremolo=0.6 tremolo_rate=7 slide=-12 slide_time=0.4
+
+v1: F3:1.3 R:1
+v2: C5:1.2 R:1.1

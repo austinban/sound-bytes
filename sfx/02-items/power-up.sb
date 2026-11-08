@@ -1,0 +1,12 @@
+title: Power Up
+tempo: 120
+# desc: Rising F minor run with vibrato on the last note.
+# use: Gaining a temporary buff or upgrade (see 18-corrupted/corrupted-power-up).
+# tags: items, power, up, pure
+# palette: pure
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.25 volume=0.4 attack=0.002 release=0.02 vibrato=20 vibrato_delay=0.15 echo=0.2
+
+v1: F4:0.1 Ab4:0.1 C5:0.1 F5:0.1 Ab5:0.1 C6:0.1 F6:0.9 R:1

@@ -127,6 +127,118 @@ class VoiceTests(unittest.TestCase):
         self.assertEqual([s.instruments[k].wave for k in "abc"], ["saw", "fm", "organ"])
 
 
+class SfxTests(unittest.TestCase):
+    def test_pitched_noise_parses_and_renders(self):
+        import numpy as np
+
+        from sound_bytes.render import render_score
+
+        s = parse_score("tempo: 120\ninstrument n: noise volume=0.5 slide=12\nn: C5:1 K:1 R:0.5\n")
+        self.assertEqual([n.kind for n in s.channels["n"]], ["pitch", "drum", "rest"])
+        out = render_score(s, sr=8000)["n"]
+        self.assertGreater(float(np.max(np.abs(out[:4000]))), 0.05)
+
+    def test_every_sound_effect_renders_cleanly(self):
+        import numpy as np
+
+        from sound_bytes.sfx import find_sfx, list_sfx, render_sfx
+
+        sounds = list_sfx()
+        self.assertGreaterEqual(len(sounds), 100)
+        self.assertGreaterEqual(len({s["category"] for s in sounds}), 8)
+        self.assertEqual(len({s["id"] for s in sounds}), len(sounds))
+        for s in sounds:
+            self.assertTrue(s["description"], s["id"])
+            out = render_sfx(find_sfx(s["category"], s["name"]), sr=22050)
+            self.assertTrue(np.all(np.isfinite(out)), s["id"])
+            self.assertGreater(float(np.max(np.abs(out))), 0.02, s["id"])
+            self.assertLessEqual(float(np.max(np.abs(out))), 1.0, s["id"])
+
+    def test_find_sfx_rejects_path_tricks(self):
+        from sound_bytes.sfx import find_sfx
+
+        self.assertIsNone(find_sfx("..", "x"))
+        self.assertIsNone(find_sfx("01-ui", "../../README"))
+        self.assertIsNotNone(find_sfx("01-ui", "confirm"))
+
+
+class SfxMetadataTests(unittest.TestCase):
+    def test_every_sound_has_valid_metadata(self):
+        from sound_bytes.sfx import list_sfx, load_taxonomy
+
+        tx = load_taxonomy()
+        sounds = list_sfx()
+        for s in sounds:
+            self.assertTrue(s["description"] and s["use_when"] and s["tags"], s["id"])
+            self.assertIn(s["palette"], tx["palettes"], s["id"])
+            self.assertIn(s["fit"], tx["theme_fit"], s["id"])
+            self.assertIn(s["category"], tx["categories"], s["id"])
+            self.assertTrue(s["zone"] == "any" or s["zone"] in tx["zones"], s["id"])
+        # every zone has an ambience loop and an entry sting
+        for zone in tx["zones"]:
+            in_zone = [s for s in sounds if s["zone"] == zone]
+            self.assertTrue(any(s["loop"] for s in in_zone), f"{zone}: no ambience loop")
+            self.assertTrue(any(s["name"] == f"enter-{zone}" for s in in_zone), f"{zone}: no entry sting")
+
+    def test_loops_wrap_without_a_click(self):
+        import numpy as np
+
+        from sound_bytes.sfx import find_sfx, list_sfx, render_sfx
+
+        loops = [s for s in list_sfx() if s["loop"]]
+        self.assertGreaterEqual(len(loops), 6)
+        for s in loops:
+            a = render_sfx(find_sfx(s["category"], s["name"]), sr=22050)
+            seam = abs(float(a[0]) - float(a[-1]))
+            self.assertLess(seam, 10 * float(np.mean(np.abs(np.diff(a)))) + 1e-3, s["id"])  # no jump bigger than normal sample-to-sample change
+            self.assertGreater(float(np.sqrt((a[: len(a) // 2] ** 2).mean())), 0.02, s["id"])
+
+    def test_catalog_matches_the_sound_files(self):
+        import json
+
+        from sound_bytes.sfx import SFX_DIR, list_sfx
+
+        cat = json.loads((SFX_DIR / "catalog.json").read_text())
+        on_disk = {s["id"]: s for s in list_sfx()}
+        self.assertEqual({s["id"] for s in cat["sounds"]}, set(on_disk), "catalog is stale: run python3 -m sound_bytes.sfx --catalog")
+        for s in cat["sounds"]:
+            d = on_disk[s["id"]]
+            self.assertEqual((s["description"], s["use_when"], s["palette"], s["zone"], s["theme_fit"], s["tags"]),
+                             (d["description"], d["use_when"], d["palette"], d["zone"], d["fit"], d["tags"]), s["id"])
+            self.assertTrue(s["profile"]["summary"])
+
+    def test_every_sound_id_in_the_guide_exists(self):
+        import json
+        import re
+        from pathlib import Path
+
+        from sound_bytes.sfx import SFX_DIR
+
+        guide = (Path(SFX_DIR).parent / "SOUND_EFFECTS_GUIDE.md").read_text()
+        ids = {s["id"] for s in json.loads((SFX_DIR / "catalog.json").read_text())["sounds"]}
+        mentioned = set(re.findall(r"`(\d\d-[a-z]+(?:-[a-z]+)*/[a-z0-9]+(?:-[a-z0-9]+)*)`", guide))
+        self.assertGreater(len(mentioned), 40)
+        self.assertEqual(sorted(m for m in mentioned if m not in ids), [])
+        self.assertIn(f"{len(ids)} ", guide)  # the sound count quoted in the guide is current
+
+    def test_bitcrush_and_hold_change_the_sound(self):
+        import numpy as np
+
+        from sound_bytes.parser import Instrument, Note
+        from sound_bytes.synth import render_note
+
+        def render(**params):
+            inst = Instrument("a", "sine", {"volume": 0.5, **params})
+            return render_note(inst, Note("pitch", 1.0, midi=57), 4000, 8000, np.random.default_rng(0))
+
+        plain = render()
+        crushed = render(bits=3)
+        self.assertLessEqual(len(np.unique(np.round(crushed, 6))), 8)   # 3 bits -> at most 8 amplitude levels
+        self.assertFalse(np.allclose(plain, crushed))
+        held = render(hold=4)
+        self.assertTrue(np.array_equal(held[0:4], np.repeat(held[0], 4)))
+
+
 class Mp3Tests(unittest.TestCase):
     def test_mp3_export_writes_valid_file(self):
         try:

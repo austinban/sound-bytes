@@ -1,0 +1,14 @@
+title: Metal Crash
+tempo: 120
+# desc: Metallic crash.
+# use: Metal collapses or a heavy object crashes.
+# tags: explosions, metal, crash, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: fm volume=0.4 ratio=7 index=6 index_decay=0.3 attack=0.001 decay=0.5 sustain=0 release=0.05
+instrument v2: noise volume=0.4 attack=0.001 release=0.01 decay=0.3 sustain=0
+
+v1: C5:1.4
+v2: E6:0.8 R:0.6

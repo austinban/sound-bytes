@@ -1,0 +1,12 @@
+title: Heart Pickup
+tempo: 120
+# desc: Warm rising arpeggio for a health pickup.
+# use: Picking up a health restore (see 18-corrupted/blighted-heart).
+# tags: items, heart, pickup, pure
+# palette: pure
+# zone: any
+# fit: usable
+
+instrument v1: triangle volume=0.55 attack=0.002 release=0.02 vibrato=15 vibrato_delay=0.05 sub=0.2
+
+v1: F4:0.16 A4:0.16 C5:0.16 F5:0.8

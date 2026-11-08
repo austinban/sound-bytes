@@ -1,0 +1,14 @@
+title: Parry Clang
+tempo: 120
+# desc: Metal-on-metal parry.
+# use: The player parries or a block is perfectly timed.
+# tags: combat, parry, clang, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: fm volume=0.4 ratio=6.5 index=5 index_decay=0.12 attack=0.001 decay=0.3 sustain=0 release=0.05
+instrument v2: noise volume=0.3 attack=0.001 release=0.01 decay=0.01 sustain=0
+
+v1: E6:0.8
+v2: C6:0.04 R:0.76

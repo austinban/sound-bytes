@@ -1,0 +1,14 @@
+title: Door Creak
+tempo: 120
+# desc: Slow creaking door.
+# use: Opening an old door slowly.
+# tags: environment, door, creak, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: saw volume=0.28 attack=0.05 release=0.1 vibrato=60 vibrato_rate=12 slide=-3 slide_time=0.3 tremolo=0.3 tremolo_rate=14
+instrument v2: noise volume=0.1 attack=0.05 release=0.1
+
+v1: A2:1.1
+v2: D3:1 R:0.1

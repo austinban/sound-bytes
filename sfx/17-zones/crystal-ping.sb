@@ -1,0 +1,12 @@
+title: Crystal Ping
+tempo: 120
+# desc: A single high crystal ping with a shimmering tail.
+# use: Ambient one-shot in the Crystal Depths, or feedback when a crystal puzzle is solved.
+# tags: zones, crystal, ping, pure, ambience, puzzle
+# palette: pure
+# zone: crystal-depths
+# fit: core
+
+instrument v1: fm volume=0.28 ratio=3.5 index=2 index_decay=0.3 attack=0.001 decay=0.9 sustain=0 release=0.05 echo=0.5
+
+v1: C7:2 R:1

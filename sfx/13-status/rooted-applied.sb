@@ -1,0 +1,14 @@
+title: Rooted Applied
+tempo: 120
+# desc: Roots grip the legs: a creaking wooden groan with a slow pulse.
+# use: A Rooted or Immobilized status is applied.
+# tags: status, rooted, applied, neutral, root, immobilize
+# palette: neutral
+# zone: hollow-wood
+# fit: core
+
+instrument v1: saw volume=0.3 attack=0.03 release=0.1 slide=-4 slide_time=0.2 vibrato=40 vibrato_rate=10 vibrato_delay=0 tremolo=0.4 tremolo_rate=12
+instrument v2: noise volume=0.2 attack=0.001 release=0.01 decay=0.08 sustain=0
+
+v1: A2:1
+v2: D3:0.2 R:0.8

@@ -1,0 +1,21 @@
+title: Amb Weeping Marsh
+tempo: 120
+# desc: Flooded wetland ambience: heavy low drone, slow dripping with long echoes, gloopy bubbles and a sour wobbling undertone. 12-second seamless loop.
+# use: Background loop for the Weeping Marsh zone.
+# tags: zones, amb, weeping, marsh, corrupted, ambience, loop, swamp, water, drip, bubbles
+# palette: corrupted
+# zone: weeping-marsh
+# fit: core
+# loop: 0.5
+
+instrument v1: organ volume=0.24 attack=0.5 release=0.5 sustain=1 decay=0 tremolo=0.3 tremolo_rate=0.4
+instrument v2: fm volume=0.22 ratio=1.414 index=2 index_decay=3 attack=0.5 decay=0 sustain=1 release=0.5 detune=20 vibrato=25 vibrato_rate=3 vibrato_delay=0 sub=0.3
+instrument v3: sine volume=0.3 attack=0.002 release=0.03 slide=7 slide_time=0.03 decay=0.08 sustain=0 echo=0.4
+instrument v4: sine volume=0.3 attack=0.002 release=0.03 slide=-5 slide_time=0.03 vibrato=30 vibrato_rate=12 vibrato_delay=0
+instrument v5: noise volume=0.12 attack=0.2 release=0.25 tremolo=0.9 tremolo_rate=8 slide=-3 slide_time=0.5
+
+v1: F2:24
+v2: Gb2:24
+v3: R:3 E6:0.24 R:6.16 D6:0.24 R:6.56 E6:0.24 R:3.96 C6:0.24 R:3.36
+v4: R:6.4 C4:0.14 R:0.06 E4:0.14 R:5.26 D4:0.14 R:0.06 G4:0.18 R:6.22 C4:0.16 R:5.24
+v5: R:4.4 D3:2.4 R:7.6 E3:2.6 R:7

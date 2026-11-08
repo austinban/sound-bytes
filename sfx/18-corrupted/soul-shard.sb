@@ -1,0 +1,12 @@
+title: Soul Shard
+tempo: 120
+# desc: Currency pickup, corrupted: a detuned, inharmonic two-note ring with a crushed edge.
+# use: Collecting soul shards (the realm's currency). Replaces coin in this setting.
+# tags: corrupted, soul, shard, currency, pickup, soul shard, coin replacement
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.35 ratio=2.76 index=2.5 index_decay=0.5 attack=0.001 decay=0.3 sustain=0 release=0.05 detune=18 echo=0.3 bits=6
+
+v1: B5:0.12 E6:1 R:1

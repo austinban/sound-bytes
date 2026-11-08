@@ -1,0 +1,14 @@
+title: Level Complete
+tempo: 120
+# desc: Rising F arpeggio with a bright major landing.
+# use: Completing a level or area.
+# tags: jingles, level, complete, pure
+# palette: pure
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.5 volume=0.4 attack=0.002 release=0.02 echo=0.3
+instrument v2: triangle volume=0.55 attack=0.002 release=0.02 sub=0.5
+
+v1: F4:0.2 A4:0.2 C5:0.2 F5:0.2 A5:0.2 C6:0.2 F6:1.6 R:1.2
+v2: F2:3 R:1

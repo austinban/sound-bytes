@@ -1,0 +1,12 @@
+title: Blighted Heart
+tempo: 120
+# desc: Health pickup, corrupted: a wobbling low rising figure with a sour detuned tail.
+# use: Picking up a health restore that carries a hint of corruption.
+# tags: corrupted, blighted, heart, health, pickup, restore
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: triangle volume=0.5 attack=0.002 release=0.02 vibrato=40 vibrato_rate=8 vibrato_delay=0 detune=20 sub=0.3 echo=0.25
+
+v1: F3:0.18 Ab3:0.18 C4:0.18 F4:1 R:1

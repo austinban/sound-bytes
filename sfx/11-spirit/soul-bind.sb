@@ -1,0 +1,16 @@
+title: Soul Bind
+tempo: 120
+# desc: Spectral chains lock: metallic FM clinks close into a held organ chord.
+# use: A soul is bound to an object, a pact is sealed, or an enemy is shackled.
+# tags: spirit, soul, bind, neutral, chain, pact, lock, seal
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.35 ratio=6.5 index=4 index_decay=0.1 attack=0.001 decay=0.2 sustain=0 release=0.05
+instrument v2: organ volume=0.3 attack=0.02 release=0.4
+instrument v3: organ volume=0.24 attack=0.02 release=0.4
+
+v1: E5:0.1 R:0.08 E5:0.1 R:0.08 A5:0.4 R:1.24
+v2: R:0.4 F3:1.6
+v3: R:0.4 C4:1.6

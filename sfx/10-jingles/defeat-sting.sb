@@ -1,0 +1,14 @@
+title: Defeat Sting
+tempo: 120
+# desc: Falling minor sting.
+# use: Losing a battle or failing a task.
+# tags: jingles, defeat, sting, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.25 volume=0.4 attack=0.002 release=0.02 vibrato=25 vibrato_delay=0.2 echo=0.3
+instrument v2: saw volume=0.3 attack=0.05 release=0.4 detune=12 sub=0.5
+
+v1: C5:0.6 Ab4:0.6 F4:0.6 E4:2 R:1
+v2: F2:3.8 R:1

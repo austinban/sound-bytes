@@ -1,0 +1,14 @@
+title: Glass Shatter
+tempo: 120
+# desc: Breaking glass.
+# use: Glass or crystal shatters.
+# tags: explosions, glass, shatter, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.35 attack=0.001 release=0.01 decay=0.1 sustain=0
+instrument v2: fm volume=0.3 ratio=3.5 index=2.5 index_decay=0.3 attack=0.001 decay=0.3 sustain=0 release=0.05 echo=0.2
+
+v1: C7:0.32 R:1.32
+v2: C7:0.08 A6:0.08 F6:0.08 E7:0.08 G6:0.32 R:1

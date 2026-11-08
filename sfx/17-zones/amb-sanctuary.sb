@@ -1,0 +1,19 @@
+title: Amb Sanctuary
+tempo: 120
+# desc: Calm, safe ambience: a warm organ fifth with slow shimmer, faint breath of air and sparse clean bell tones. 12-second seamless loop.
+# use: Background loop for the Veil Haven hub and other safe spirit-light areas.
+# tags: zones, amb, sanctuary, pure, ambience, loop, safe, calm, hub
+# palette: pure
+# zone: sanctuary
+# fit: core
+# loop: 0.5
+
+instrument v1: organ volume=0.22 attack=0.5 release=0.5 sustain=1 decay=0 tremolo=0.2 tremolo_rate=0.5
+instrument v2: organ volume=0.16 attack=0.5 release=0.5 sustain=1 decay=0 tremolo=0.2 tremolo_rate=0.7 vibrato=10 vibrato_rate=0.4 vibrato_delay=0
+instrument v3: noise volume=0.05 attack=0.5 release=0.5 tremolo=0.5 tremolo_rate=0.4
+instrument v4: fm volume=0.2 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.5 sustain=0 release=0.05 echo=0.45
+
+v1: F3:24
+v2: C4:24
+v3: C4:24
+v4: R:5.2 C6:2 R:5.2 A5:2 R:3.6 F6:2 R:4

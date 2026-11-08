@@ -1,0 +1,14 @@
+title: Dialogue Open
+tempo: 120
+# desc: A breath before speech: a low airy swell.
+# use: A conversation or dialogue box opens.
+# tags: rpg-ui, dialogue, open, neutral, conversation
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.18 attack=0.1 release=0.15
+instrument v2: organ volume=0.15 attack=0.08 release=0.15
+
+v1: C4:0.6
+v2: F3:0.6

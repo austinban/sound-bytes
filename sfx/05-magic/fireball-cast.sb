@@ -1,0 +1,14 @@
+title: Fireball Cast
+tempo: 120
+# desc: Fire gathering and launching.
+# use: Casting a fire spell.
+# tags: magic, fireball, cast, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.4 attack=0.1 release=0.08 slide=-14 slide_time=0.25 decay=0.15 sustain=0.5
+instrument v2: saw volume=0.4 attack=0.05 release=0.03 slide=-5 slide_time=0.2 sub=0.4
+
+v1: C4:0.8
+v2: F2:0.8

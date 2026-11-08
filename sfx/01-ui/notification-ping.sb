@@ -1,0 +1,12 @@
+title: Notification Ping
+tempo: 120
+# desc: Soft FM bell for a notification.
+# use: A non-urgent notification, hint or journal update.
+# tags: ui, notification, ping, pure
+# palette: pure
+# zone: any
+# fit: usable
+
+instrument v1: fm volume=0.4 ratio=3.5 index=3 index_decay=0.3 attack=0.001 decay=0.3 sustain=0 release=0.05 echo=0.3
+
+v1: E6:0.9 R:1

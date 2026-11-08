@@ -1,0 +1,16 @@
+title: Player Death
+tempo: 120
+# desc: Long falling cry with a thud.
+# use: The player dies.
+# tags: damage, player, death, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.25 volume=0.45 attack=0.002 release=0.3 slide=36 slide_time=0.6 vibrato=25 vibrato_rate=8 vibrato_delay=0.1 decay=0.3 sustain=0.5
+instrument v2: sine volume=0.6 attack=0.05 release=0.3 slide=12 slide_time=0.3
+instrument v3: noise volume=0.4 attack=0.3 release=0.01 decay=0.2 sustain=0
+
+v1: C4:2.2
+v2: C2:2 R:0.2
+v3: R:1 C3:0.9 R:0.3

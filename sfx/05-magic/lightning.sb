@@ -1,0 +1,14 @@
+title: Lightning
+tempo: 120
+# desc: Crackling burst with a falling zigzag.
+# use: Casting a lightning spell or a lightning strike.
+# tags: magic, lightning, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.5 attack=0.001 release=0.05 tremolo=0.8 tremolo_rate=40 decay=0.15 sustain=0.1
+instrument v2: pulse duty=0.125 volume=0.35 attack=0.002 release=0.02 decay=0.02 sustain=0.3
+
+v1: C5:0.56
+v2: C7:0.06 G5:0.06 D7:0.06 A5:0.06 E7:0.06 B5:0.12 R:0.14

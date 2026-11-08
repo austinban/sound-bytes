@@ -1,0 +1,12 @@
+title: Wind Gust
+tempo: 120
+# desc: A gust of wind that swells and fades.
+# use: A wind spell or a strong gust.
+# tags: magic, wind, gust, neutral
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.35 attack=0.35 release=0.4 slide=-5 slide_time=0.5 sustain=0.7 tremolo=0.5 tremolo_rate=5
+
+v1: E5:2

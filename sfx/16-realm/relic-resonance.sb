@@ -1,0 +1,12 @@
+title: Relic Resonance
+tempo: 120
+# desc: A relic hums near its place: a pulsing FM tone that slowly swells.
+# use: A relic or key item resonates when the player is near its altar or target.
+# tags: realm, relic, resonance, neutral, hum, proximity, hint
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.35 ratio=2 index=2.5 index_decay=1.5 attack=0.3 decay=0.3 sustain=0.8 release=0.4 tremolo=0.5 tremolo_rate=5 vibrato=15 vibrato_rate=4 vibrato_delay=0.2 echo=0.3
+
+v1: C4:3 R:1

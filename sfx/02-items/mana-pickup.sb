@@ -1,0 +1,12 @@
+title: Mana Pickup
+tempo: 120
+# desc: Swirling pulse-width sweep for a mana pickup.
+# use: Picking up a mana or energy restore (see 18-corrupted/void-essence).
+# tags: items, mana, pickup, pure
+# palette: pure
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.125 volume=0.35 attack=0.002 release=0.02 slide=-7 slide_time=0.12 pwm=0.25 pwm_rate=8 echo=0.25 decay=0.2 sustain=0.3
+
+v1: G5:0.7 R:1

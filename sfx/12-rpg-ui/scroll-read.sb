@@ -1,0 +1,14 @@
+title: Scroll Read
+tempo: 120
+# desc: Unrolling a scroll: a papery swish followed by a single dark chime.
+# use: Reading a scroll, letter or lore item.
+# tags: rpg-ui, scroll, read, neutral, lore, letter
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.2 attack=0.02 release=0.05 slide=6 slide_time=0.1
+instrument v2: fm volume=0.25 ratio=2.76 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.3
+
+v1: A5:0.4 R:1.76
+v2: R:0.36 Ab5:0.8 R:1

@@ -1,0 +1,14 @@
+title: Gun Shot
+tempo: 120
+# desc: Retro gunshot: crack with a falling zap.
+# use: A gunshot; does not suit a spirit realm.
+# tags: explosions, gun, shot, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: noise volume=0.6 attack=0.001 release=0.01 decay=0.07 sustain=0
+instrument v2: pulse duty=0.25 volume=0.35 attack=0.002 release=0.02 slide=24 slide_time=0.03 decay=0.05 sustain=0
+
+v1: D5:0.24
+v2: C4:0.16 R:0.08

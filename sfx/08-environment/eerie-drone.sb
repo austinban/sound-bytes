@@ -1,0 +1,14 @@
+title: Eerie Drone
+tempo: 120
+# desc: Cold, unsettling drone.
+# use: Unsettling short drone for a creepy moment.
+# tags: environment, eerie, drone, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.4 ratio=1.5 index=2 index_decay=2 attack=0.5 decay=0.3 sustain=0.8 release=0.5 vibrato=20 vibrato_rate=4 vibrato_delay=0.3 sub=0.3
+instrument v2: organ volume=0.18 attack=0.5 release=0.5 tremolo=0.3
+
+v1: G#2:3.2
+v2: D#4:3.2

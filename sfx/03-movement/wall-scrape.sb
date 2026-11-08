@@ -1,0 +1,12 @@
+title: Wall Scrape
+tempo: 120
+# desc: Scrape while sliding down a wall.
+# use: Sliding down a wall.
+# tags: movement, wall, scrape, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.2 attack=0.02 release=0.05 tremolo=0.7 tremolo_rate=40
+
+v1: C6:0.5

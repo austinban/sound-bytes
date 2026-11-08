@@ -1,0 +1,12 @@
+title: Bone Rattle
+tempo: 120
+# desc: A dry clatter: a quick cluster of high crushed noise ticks.
+# use: Skeletons move, bone constructs assemble, or a bone trap triggers.
+# tags: enemies, bone, rattle, corrupted, enemy, skeleton, clatter
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.3 attack=0.001 release=0.004 decay=0.012 sustain=0 hold=2
+
+v1: C7:0.03 R:0.04 D7:0.03 R:0.06 C7:0.03 R:0.03 E7:0.03 R:0.08 D7:0.03 R:0.04 C7:0.03

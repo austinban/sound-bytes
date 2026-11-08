@@ -1,0 +1,12 @@
+title: Low Health Beep
+tempo: 120
+# desc: Repeating warning beep for low health.
+# use: Repeating warning when health is low.
+# tags: damage, low, health, beep, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.5 volume=0.35 attack=0.002 release=0.02
+
+v1: A5:0.14 R:0.26 A5:0.14 R:0.26 A5:0.14 R:0.26

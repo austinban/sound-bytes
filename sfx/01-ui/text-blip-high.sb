@@ -1,0 +1,12 @@
+title: Text Blip High
+tempo: 120
+# desc: Dialogue typewriter blip, high voice.
+# use: Per-character blip for a high-voiced speaker's dialogue text.
+# tags: ui, text, blip, high, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.5 volume=0.25 attack=0.001 release=0.01
+
+v1: E5:0.07

@@ -1,0 +1,14 @@
+title: Bog Bubble
+tempo: 120
+# desc: A heavy bog bubble rising and popping.
+# use: Ambient one-shot in the Weeping Marsh, or a trigger when walking through bog.
+# tags: zones, bog, bubble, corrupted, marsh, ambience
+# palette: corrupted
+# zone: weeping-marsh
+# fit: core
+
+instrument v1: sine volume=0.4 attack=0.002 release=0.03 slide=-7 slide_time=0.05 decay=0.1 sustain=0.2 vibrato=20 vibrato_rate=10 vibrato_delay=0
+instrument v2: noise volume=0.2 attack=0.001 release=0.01 decay=0.03 sustain=0
+
+v1: D3:0.28 R:0.06
+v2: R:0.24 C4:0.1

@@ -1,0 +1,14 @@
+title: Ammo Pickup
+tempo: 120
+# desc: Mechanical clack for ammo or a clip.
+# use: Picking up ammunition; arcade/sci-fi flavour, rarely needed in a spirit realm.
+# tags: items, ammo, pickup, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: noise volume=0.3 attack=0.001 release=0.005
+instrument v2: pulse duty=0.5 volume=0.3 attack=0.001 release=0.02
+
+v1: C5:0.04 R:0.06 R:0.1
+v2: R:0.04 C6:0.06 G5:0.1

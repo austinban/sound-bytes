@@ -1,0 +1,12 @@
+title: Bomb Fuse
+tempo: 120
+# desc: Hissing, sputtering fuse.
+# use: A fuse burns; arcade flavour.
+# tags: explosions, bomb, fuse, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: noise volume=0.2 attack=0.02 release=0.05 tremolo=0.8 tremolo_rate=50 sustain=0.6
+
+v1: D6:1.2

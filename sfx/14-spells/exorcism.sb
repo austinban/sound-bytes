@@ -1,0 +1,18 @@
+title: Exorcism
+tempo: 120
+# desc: A purging burst: layered bells over an organ swell, a sub drop and a rush of noise.
+# use: A powerful holy or exorcism spell that cleanses corruption in an area.
+# tags: spells, exorcism, pure, spell, holy, purge, area
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.32 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.5 sustain=0 release=0.05 echo=0.35
+instrument v2: organ volume=0.3 attack=0.15 release=0.4
+instrument v3: sine volume=0.8 attack=0.002 release=0.03 slide=24 slide_time=0.1 decay=0.4 sustain=0
+instrument v4: noise volume=0.35 attack=0.001 release=0.05 decay=0.3 sustain=0
+
+v1: F5:0.2 C6:0.2 F6:0.2 A6:1.4 R:1
+v2: F3:2 R:1
+v3: F1:1.2 R:1.8
+v4: C5:0.8 R:2.2

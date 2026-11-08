@@ -1,0 +1,12 @@
+title: Key Pickup
+tempo: 120
+# desc: Bright metallic ring: you got a key.
+# use: Obtaining a key (see 18-corrupted/rusted-key).
+# tags: items, key, pickup, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: fm volume=0.35 ratio=5 index=4 index_decay=0.15 attack=0.001 decay=0.3 sustain=0 release=0.05
+
+v1: A5:0.12 E6:0.8

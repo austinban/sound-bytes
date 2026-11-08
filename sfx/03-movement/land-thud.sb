@@ -1,0 +1,14 @@
+title: Land Thud
+tempo: 120
+# desc: Landing: a soft thud with a click.
+# use: Landing after a jump or fall (see 18-corrupted/corrupted-land).
+# tags: movement, land, thud, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: sine volume=0.65 attack=0.002 release=0.03 slide=12 slide_time=0.04 decay=0.08 sustain=0
+instrument v2: noise volume=0.25 attack=0.001 release=0.01 decay=0.015 sustain=0
+
+v1: C2:0.28
+v2: C4:0.06 R:0.22

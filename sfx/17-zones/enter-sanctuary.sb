@@ -1,0 +1,16 @@
+title: Enter Sanctuary
+tempo: 120
+# desc: A warm welcome: clean bells rising over a soft organ chord.
+# use: The player enters the Veil Haven.
+# tags: zones, enter, sanctuary, pure, zone entry, sting
+# palette: pure
+# zone: sanctuary
+# fit: core
+
+instrument v1: fm volume=0.28 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.5 sustain=0 release=0.05 echo=0.35
+instrument v2: organ volume=0.26 attack=0.2 release=0.6
+instrument v3: organ volume=0.2 attack=0.2 release=0.6
+
+v1: F5:0.3 A5:0.3 C6:0.3 F6:1.8 R:1.5
+v2: F3:3.2 R:1
+v3: A3:3.2 R:1

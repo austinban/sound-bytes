@@ -1,0 +1,12 @@
+title: Scroll Tick
+tempo: 120
+# desc: Very short tick for scrolling a list.
+# use: Each step while scrolling a long list.
+# tags: ui, scroll, tick, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.28 attack=0.0005 release=0.004
+
+v1: C7:0.03

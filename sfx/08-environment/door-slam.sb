@@ -1,0 +1,14 @@
+title: Door Slam
+tempo: 120
+# desc: Door slamming shut.
+# use: A door slams shut.
+# tags: environment, door, slam, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.6 attack=0.001 release=0.01 decay=0.08 sustain=0
+instrument v2: sine volume=0.65 attack=0.002 release=0.03 slide=12 slide_time=0.04 decay=0.12 sustain=0
+
+v1: D3:0.3 R:0.1
+v2: A1:0.4

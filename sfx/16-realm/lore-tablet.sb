@@ -1,0 +1,16 @@
+title: Lore Tablet
+tempo: 120
+# desc: Ancient stone stirring: a grinding scrape, a low bell and a half-heard whisper.
+# use: The player activates or reads a lore tablet or rune stone.
+# tags: realm, lore, tablet, neutral, rune, read
+# palette: neutral
+# zone: ashen-citadel
+# fit: core
+
+instrument v1: noise volume=0.3 attack=0.03 release=0.1 tremolo=0.5 tremolo_rate=14
+instrument v2: fm volume=0.3 ratio=2.76 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.4
+instrument v3: noise volume=0.12 attack=0.2 release=0.3 tremolo=0.6 tremolo_rate=7
+
+v1: D3:0.9 R:2.7
+v2: R:0.8 F4:1.8 R:1
+v3: R:1 A5:1.4 R:1.2

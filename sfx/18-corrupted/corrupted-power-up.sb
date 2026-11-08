@@ -1,0 +1,12 @@
+title: Corrupted Power Up
+tempo: 120
+# desc: A buff gained at a cost: a rising run with vibrato that bends sour at the top.
+# use: Gaining a power-up from a corrupt source (dark shrine, cursed item).
+# tags: corrupted, power, up, buff, power-up, dark
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.25 volume=0.38 attack=0.002 release=0.02 vibrato=40 vibrato_delay=0.1 detune=25 bits=7 echo=0.2 slide=0
+
+v1: F4:0.1 Ab4:0.1 C5:0.1 F5:0.1 Ab5:0.1 B5:0.1 F6:1 R:1

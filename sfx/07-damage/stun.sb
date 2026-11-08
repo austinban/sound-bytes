@@ -1,0 +1,12 @@
+title: Stun
+tempo: 120
+# desc: Dizzy wobble.
+# use: The player or an enemy is stunned.
+# tags: damage, stun, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.5 volume=0.35 attack=0.002 release=0.02 pwm=0.4 pwm_rate=12 slide=5 slide_time=0.2 vibrato=40 vibrato_rate=8 decay=0.2 sustain=0.5
+
+v1: G4:1.1

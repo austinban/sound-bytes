@@ -1,0 +1,14 @@
+title: Cannon Fire
+tempo: 120
+# desc: Cannon: boom with a long low tail.
+# use: A cannon fires; does not suit a spirit realm.
+# tags: explosions, cannon, fire, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: noise volume=0.7 attack=0.001 release=0.05 decay=0.3 sustain=0
+instrument v2: sine volume=0.9 attack=0.002 release=0.03 slide=24 slide_time=0.04 decay=0.35 sustain=0
+
+v1: D3:0.84 R:0.26
+v2: D1:1.1

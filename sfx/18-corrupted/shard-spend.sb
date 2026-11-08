@@ -1,0 +1,12 @@
+title: Shard Spend
+tempo: 120
+# desc: Paying shards: two falling dull clinks.
+# use: Spending soul shards at a vendor.
+# tags: corrupted, shard, spend, currency, vendor
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.3 ratio=5 index=3 index_decay=0.5 attack=0.001 decay=0.25 sustain=0 release=0.05 detune=18 echo=0.2
+
+v1: E5:0.12 B4:0.5 R:1

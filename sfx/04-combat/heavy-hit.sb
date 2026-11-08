@@ -1,0 +1,14 @@
+title: Heavy Hit
+tempo: 120
+# desc: Heavy blow with a deep sub-bass boom.
+# use: A powerful blow lands (heavy weapon, boss attack).
+# tags: combat, heavy, hit, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: sine volume=0.85 attack=0.002 release=0.05 slide=24 slide_time=0.05 decay=0.15 sustain=0
+instrument v2: noise volume=0.6 attack=0.001 release=0.02 decay=0.08 sustain=0
+
+v1: F1:0.6
+v2: C4:0.3 R:0.3

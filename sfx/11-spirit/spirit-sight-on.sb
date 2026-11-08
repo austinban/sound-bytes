@@ -1,0 +1,14 @@
+title: Spirit Sight On
+tempo: 120
+# desc: The veil thins: a high shimmering FM pad with a rising glassy sweep.
+# use: The player activates spirit sight to reveal hidden spirits, paths or lore.
+# tags: spirit, sight, on, pure, spirit sight, vision, reveal, toggle
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.28 ratio=3.5 index=2 index_decay=1 attack=0.2 decay=0.5 sustain=0.3 release=0.05 echo=0.4 vibrato=15 vibrato_delay=0.1
+instrument v2: pulse duty=0.125 volume=0.2 attack=0.002 release=0.02 slide=-12 slide_time=0.4 pwm=0.3 pwm_rate=10
+
+v1: C6:1.6 R:1
+v2: C6:1 R:1.6

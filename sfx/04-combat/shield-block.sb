@@ -1,0 +1,14 @@
+title: Shield Block
+tempo: 120
+# desc: Blow absorbed by a shield.
+# use: A blow is absorbed by a shield.
+# tags: combat, shield, block, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: sine volume=0.65 attack=0.002 release=0.03 slide=12 slide_time=0.05 decay=0.1 sustain=0
+instrument v2: noise volume=0.4 attack=0.001 release=0.01 decay=0.05 sustain=0
+
+v1: A1:0.3
+v2: D3:0.14 R:0.16

@@ -1,0 +1,113 @@
+{
+  "palettes": {
+    "pure": "Spirit-light sounds: clean bells, organ and sine tones in open fifths and major thirds. For healing, cleansing, the player's own spirit powers, and the sanctuary. They stand out against the corruption.",
+    "corrupted": "Sounds of things gone wrong: detuned and inharmonic tones (FM ratio of about 1.41), tritones and minor seconds, tremolo wobble, bitcrush, and long echoes. For enemies, corruption, curses and the darker zones.",
+    "neutral": "General game sounds with no palette; usable anywhere, but tuned dark."
+  },
+  "zones": {
+    "sanctuary": {
+      "name": "The Veil Haven",
+      "description": "Safe hub. Calm and warm; uses the pure palette (organ fifths, clean bells)."
+    },
+    "hollow-wood": {
+      "name": "The Hollow Wood",
+      "description": "Dead spirit forest of bone-white trees: dry wind, creaking, whispers, hollow wood."
+    },
+    "weeping-marsh": {
+      "name": "The Weeping Marsh",
+      "description": "Flooded, corrupted wetland: slow drips, gloopy bubbles, heavy sodden low drones."
+    },
+    "ashen-citadel": {
+      "name": "The Ashen Citadel",
+      "description": "Ruined stone city of ash: cavernous echo, distant tolling bells, grinding stone, cold wind."
+    },
+    "crystal-depths": {
+      "name": "The Crystal Depths",
+      "description": "Caverns of resonant spirit crystal: glassy pings, shimmering hum, long echoes; mostly pure palette."
+    },
+    "rotted-heart": {
+      "name": "The Rotted Heart",
+      "description": "The source of the corruption: heartbeat, huge dissonant drone, bitcrushed glitches, dread."
+    }
+  },
+  "theme_fit": {
+    "core": "Designed for or well suited to an eerie, corrupted spirit realm.",
+    "usable": "Generic; fine to use, optionally re-pitched or paired with a corrupted variant.",
+    "off-theme": "Arcade, sci-fi or modern flavour (guns, lasers, countdowns...). Avoid in this setting unless it is a deliberate contrast."
+  },
+  "loops": "Sounds with a `loop` value are ambience loops. They are rendered to wrap seamlessly (the faded tail is overlapped onto the head), so play them with looping enabled and no extra crossfade. `duration_seconds` is the loop length.",
+  "categories": {
+    "01-ui": {
+      "label": "UI & menus",
+      "description": "Menu and interface feedback."
+    },
+    "02-items": {
+      "label": "Items & pickups",
+      "description": "Collecting and using items. Many have corrupted counterparts in 18-corrupted."
+    },
+    "03-movement": {
+      "label": "Movement",
+      "description": "Jumping, landing, footsteps and other movement."
+    },
+    "04-combat": {
+      "label": "Melee combat",
+      "description": "Melee hits, blocks and enemy reactions."
+    },
+    "05-magic": {
+      "label": "Magic & ranged",
+      "description": "General spell and ranged-attack sounds. See 14-spells for realm-specific spells."
+    },
+    "06-explosions": {
+      "label": "Explosions & impacts",
+      "description": "Blasts, crashes and big impacts."
+    },
+    "07-damage": {
+      "label": "Damage & death",
+      "description": "Player damage, death and defeat sounds."
+    },
+    "08-environment": {
+      "label": "Environment",
+      "description": "Short environmental one-shots. For long ambience see 17-zones."
+    },
+    "09-battle": {
+      "label": "Battle events",
+      "description": "Battle start, boss and warning sounds."
+    },
+    "10-jingles": {
+      "label": "Jingles & stingers",
+      "description": "Short musical rewards and stings, in F minor."
+    },
+    "11-spirit": {
+      "label": "Spirit & soul",
+      "description": "Soul, spirit-form, possession, purification and corruption mechanics."
+    },
+    "12-rpg-ui": {
+      "label": "RPG interface",
+      "description": "Inventory, equipment, quests, maps, skills and dialogue."
+    },
+    "13-status": {
+      "label": "Status effects",
+      "description": "Applying, ticking and expiring buffs and debuffs."
+    },
+    "14-spells": {
+      "label": "Spells & abilities",
+      "description": "Spells and abilities for the spirit-realm setting."
+    },
+    "15-enemies": {
+      "label": "Enemies & creatures",
+      "description": "Enemy vocalisations, movement, spawn/death and boss moments."
+    },
+    "16-realm": {
+      "label": "Realm & objects",
+      "description": "Rifts, shrines, gates, relics, crystals and other world objects."
+    },
+    "17-zones": {
+      "label": "Zones & ambience",
+      "description": "Per-zone ambience loops, entry stings and one-shots for the six zones."
+    },
+    "18-corrupted": {
+      "label": "Corrupted variants",
+      "description": "Corrupted versions of classic pickup, movement and UI sounds, for use inside the realm."
+    }
+  }
+}

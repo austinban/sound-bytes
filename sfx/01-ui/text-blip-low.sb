@@ -1,0 +1,12 @@
+title: Text Blip Low
+tempo: 120
+# desc: Dialogue typewriter blip, low voice.
+# use: Per-character blip for a deep-voiced speaker's dialogue text.
+# tags: ui, text, blip, low, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.5 volume=0.25 attack=0.001 release=0.01
+
+v1: A3:0.07

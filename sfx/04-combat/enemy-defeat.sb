@@ -1,0 +1,14 @@
+title: Enemy Defeat
+tempo: 120
+# desc: Enemy defeated: a descending pop.
+# use: A basic enemy is defeated (see 15-enemies/vanish-into-smoke for spirit enemies).
+# tags: combat, enemy, defeat, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.5 volume=0.4 attack=0.002 release=0.02 slide=12 slide_time=0.2 decay=0.15 sustain=0.2
+instrument v2: noise volume=0.45 attack=0.001 release=0.01 decay=0.08 sustain=0
+
+v1: A5:0.56
+v2: C5:0.24 R:0.32

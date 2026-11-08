@@ -1,0 +1,14 @@
+title: Ghostfire
+tempo: 120
+# desc: Cold spectral flame: crackling noise with a shivering high detuned shimmer.
+# use: Casting ghostfire or cold spirit-flame, or standing in it.
+# tags: spells, ghostfire, corrupted, spell, fire, flame, cold
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.25 attack=0.05 release=0.2 tremolo=0.8 tremolo_rate=40
+instrument v2: fm volume=0.2 ratio=3.5 index=2 index_decay=0.6 attack=0.1 decay=0.3 sustain=0.5 release=0.2 detune=25 vibrato=30 vibrato_rate=8 echo=0.3
+
+v1: D6:1.4 R:1
+v2: A5:1.4 R:1

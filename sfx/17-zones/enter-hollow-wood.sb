@@ -1,0 +1,18 @@
+title: Enter Hollow Wood
+tempo: 120
+# desc: A cold gust and a creak: swelling wind noise, a hollow knock and a distant whisper.
+# use: The player enters the Hollow Wood.
+# tags: zones, enter, hollow, wood, corrupted, zone entry, sting, hollow-wood
+# palette: corrupted
+# zone: hollow-wood
+# fit: core
+
+instrument v1: noise volume=0.28 attack=0.4 release=0.5 decay=0.6 sustain=0.2 tremolo=0.5 tremolo_rate=5
+instrument v2: saw volume=0.22 attack=0.05 release=0.15 vibrato=45 vibrato_rate=11 slide=-4 slide_time=0.3
+instrument v3: triangle volume=0.5 attack=0.002 release=0.02 slide=-12 slide_time=0.05 decay=0.1 sustain=0
+instrument v4: noise volume=0.12 attack=0.2 release=0.25 tremolo=0.6 tremolo_rate=7 echo=0.3
+
+v1: E5:2.8 R:1.2
+v2: R:0.8 A2:1.2 R:2
+v3: R:0.4 D2:0.3 R:3.3
+v4: R:1.2 A5:1.8 R:1

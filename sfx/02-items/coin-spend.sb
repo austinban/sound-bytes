@@ -1,0 +1,12 @@
+title: Coin Spend
+tempo: 120
+# desc: Spending coins at a shop: a falling two-note pip.
+# use: Paying currency at a shop (see 18-corrupted/shard-spend for the corrupted realm).
+# tags: items, coin, spend, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.5 volume=0.38 attack=0.002 release=0.02
+
+v1: E6:0.1 B5:0.2

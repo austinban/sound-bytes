@@ -1,0 +1,12 @@
+title: Swarm Skitter
+tempo: 120
+# desc: Dozens of tiny feet: rapid high ticks that rise and fall in speed.
+# use: A swarm of insects or small spirits moves nearby.
+# tags: enemies, swarm, skitter, corrupted, enemy, insects
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.22 attack=0.001 release=0.003 decay=0.01 sustain=0 hold=2
+
+v1: D7:0.024 R:0.06 E7:0.024 R:0.04 C7:0.024 R:0.08 E7:0.024 R:0.06 D7:0.024 R:0.04 F7:0.024 R:0.08 D7:0.024 R:0.06 E7:0.024 R:0.04 C7:0.024 R:0.08 D7:0.024 R:0.06

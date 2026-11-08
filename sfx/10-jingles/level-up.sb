@@ -1,0 +1,14 @@
+title: Level Up
+tempo: 120
+# desc: Rising scale with a sparkling top note.
+# use: The player levels up (see 18-corrupted/corrupted-level-up).
+# tags: jingles, level, up, pure
+# palette: pure
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.25 volume=0.4 attack=0.002 release=0.02 echo=0.25
+instrument v2: fm volume=0.3 ratio=3.5 index=3 index_decay=0.3 attack=0.001 decay=0.3 sustain=0 release=0.05 echo=0.3
+
+v1: F4:0.14 G4:0.14 Ab4:0.14 Bb4:0.14 C5:0.14 Db5:0.14 Eb5:0.14 F5:1.2 R:1.02
+v2: R:1 C7:1.2 R:1

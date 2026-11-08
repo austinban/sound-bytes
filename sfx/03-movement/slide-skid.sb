@@ -1,0 +1,12 @@
+title: Slide Skid
+tempo: 120
+# desc: Skidding along the ground.
+# use: Sliding or skidding along the ground.
+# tags: movement, slide, skid, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.22 attack=0.02 release=0.08 tremolo=0.5 tremolo_rate=25
+
+v1: E5:0.6

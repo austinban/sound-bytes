@@ -1,0 +1,14 @@
+title: Switch Click
+tempo: 120
+# desc: Click of a small switch.
+# use: Flipping a switch or pressing a button.
+# tags: environment, switch, click, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.5 volume=0.35 attack=0.0005 release=0.005
+instrument v2: noise volume=0.2 attack=0.001 release=0.005 decay=0.01 sustain=0
+
+v1: C6:0.03 R:0.08 G5:0.04
+v2: C7:0.02 R:0.13

@@ -1,0 +1,16 @@
+title: Sword Hit
+tempo: 120
+# desc: Blade connecting: crack, ring and thump.
+# use: A melee weapon connects with an enemy.
+# tags: combat, sword, hit, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.55 attack=0.001 release=0.01 decay=0.04 sustain=0
+instrument v2: pulse duty=0.125 volume=0.35 attack=0.002 release=0.02 slide=5 slide_time=0.03 decay=0.05 sustain=0
+instrument v3: sine volume=0.6 attack=0.002 release=0.03 decay=0.06 sustain=0
+
+v1: D5:0.16 R:0.08
+v2: G5:0.2 R:0.04
+v3: A1:0.24

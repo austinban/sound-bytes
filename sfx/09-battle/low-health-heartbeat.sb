@@ -1,0 +1,12 @@
+title: Low Health Heartbeat
+tempo: 120
+# desc: Fast, urgent heartbeat for critical health.
+# use: Urgent heartbeat when health is critical.
+# tags: battle, low, health, heartbeat, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: sine volume=0.8 attack=0.002 release=0.02 slide=12 slide_time=0.04 decay=0.05 sustain=0
+
+v1: A1:0.14 R:0.16 A1:0.14 R:0.36 A1:0.14 R:0.16 A1:0.14 R:0.36 A1:0.14 R:0.16 A1:0.14 R:0.36 A1:0.14 R:0.16 A1:0.14 R:0.36

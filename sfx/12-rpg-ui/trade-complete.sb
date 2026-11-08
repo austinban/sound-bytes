@@ -1,0 +1,12 @@
+title: Trade Complete
+tempo: 120
+# desc: Two metallic clinks, the second lower, like soul-coins changing hands.
+# use: A trade or purchase completes at a vendor.
+# tags: rpg-ui, trade, complete, neutral, buy, sell, vendor, currency
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.33 ratio=6.5 index=4 index_decay=0.1 attack=0.001 decay=0.2 sustain=0 release=0.05
+
+v1: E6:0.12 B5:0.44

@@ -1,0 +1,16 @@
+title: Lantern Light
+tempo: 120
+# desc: A spirit lantern ignites: a soft flame whoosh, warm organ and two gentle bells.
+# use: The player lights a spirit lantern or rests at a save point.
+# tags: realm, lantern, light, pure, save point, rest, checkpoint
+# palette: pure
+# zone: sanctuary
+# fit: core
+
+instrument v1: noise volume=0.2 attack=0.05 release=0.1 decay=0.2 sustain=0.1 slide=-5 slide_time=0.2
+instrument v2: organ volume=0.25 attack=0.2 release=0.5
+instrument v3: fm volume=0.25 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.5 sustain=0 release=0.05 echo=0.35
+
+v1: C5:0.7 R:2.6
+v2: F3:2.2 R:1.1
+v3: R:0.6 C6:0.3 F6:1.4 R:1

@@ -1,0 +1,16 @@
+title: Quest Accept
+tempo: 120
+# desc: A solemn pact: a low organ stab with a dark bell tolling over it.
+# use: The player accepts a quest.
+# tags: rpg-ui, quest, accept, neutral, start, journal
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: organ volume=0.3 attack=0.02 release=0.4
+instrument v2: organ volume=0.24 attack=0.02 release=0.4
+instrument v3: fm volume=0.28 ratio=2.76 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.4
+
+v1: F3:1.4 R:1
+v2: C4:1.4 R:1
+v3: R:0.2 F5:0.2 C6:1 R:1

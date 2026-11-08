@@ -1,0 +1,12 @@
+title: Page Flip
+tempo: 120
+# desc: Quick paper-ish swish for turning pages.
+# use: Turning a page in a book, journal or lore text.
+# tags: ui, page, flip, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.25 attack=0.01 release=0.04 slide=6 slide_time=0.05
+
+v1: A5:0.24

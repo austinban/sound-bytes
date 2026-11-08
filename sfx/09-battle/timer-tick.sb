@@ -1,0 +1,12 @@
+title: Timer Tick
+tempo: 120
+# desc: Clock tick (four ticks, speeding up).
+# use: A ticking timer; arcade flavour.
+# tags: battle, timer, tick, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: pulse duty=0.5 volume=0.3 attack=0.0005 release=0.01
+
+v1: C6:0.04 R:0.56 C6:0.04 R:0.44 C6:0.04 R:0.32 C6:0.04 R:0.2

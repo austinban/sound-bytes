@@ -1,0 +1,14 @@
+title: Glitch Burst
+tempo: 120
+# desc: A burst of bitcrushed digital-sounding static and a stuttering pitch fall.
+# use: Reality tears in the Rotted Heart, or a corruption 'glitch' event.
+# tags: zones, glitch, burst, corrupted, heart, bitcrush, static
+# palette: corrupted
+# zone: rotted-heart
+# fit: core
+
+instrument v1: noise volume=0.3 attack=0.001 release=0.01 decay=0.04 sustain=0 hold=5 bits=3
+instrument v2: pulse duty=0.125 volume=0.25 attack=0.002 release=0.02 slide=24 slide_time=0.1 bits=4 hold=3 decay=0.1 sustain=0
+
+v1: C5:0.1 R:0.04 C5:0.1 R:0.06 G5:0.08 R:0.04 D5:0.16 R:0.02
+v2: R:0.2 C6:0.4

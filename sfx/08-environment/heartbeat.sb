@@ -1,0 +1,12 @@
+title: Heartbeat
+tempo: 120
+# desc: Slow, tense heartbeat (two beats).
+# use: Tension: two slow heartbeats.
+# tags: environment, heartbeat, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: sine volume=0.75 attack=0.002 release=0.02 slide=12 slide_time=0.04 decay=0.06 sustain=0
+
+v1: A1:0.18 R:0.22 A1:0.18 R:1.2 A1:0.18 R:0.22 A1:0.18 R:1.2

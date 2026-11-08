@@ -1,0 +1,14 @@
+title: Spectral Blade
+tempo: 120
+# desc: A ghostly slash: a noise whoosh and a ringing inharmonic bell tail.
+# use: A spirit weapon or spectral blade attack.
+# tags: spells, spectral, blade, corrupted, spell, slash, melee, ghost
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.35 attack=0.01 release=0.03 slide=14 slide_time=0.1 decay=0.12 sustain=0.2
+instrument v2: fm volume=0.3 ratio=4.1 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.4
+
+v1: C6:0.36 R:1.74
+v2: R:0.1 E6:1 R:1

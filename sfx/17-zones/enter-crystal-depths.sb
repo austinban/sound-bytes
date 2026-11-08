@@ -1,0 +1,14 @@
+title: Enter Crystal Depths
+tempo: 120
+# desc: Glass and light: a falling sparkle of bells over a resonant hum.
+# use: The player enters the Crystal Depths.
+# tags: zones, enter, crystal, depths, pure, zone entry, sting, crystal-depths
+# palette: pure
+# zone: crystal-depths
+# fit: core
+
+instrument v1: fm volume=0.3 ratio=3.5 index=2 index_decay=0.4 attack=0.001 decay=0.5 sustain=0 release=0.05 echo=0.45
+instrument v2: fm volume=0.25 ratio=3.5 index=2 index_decay=2 attack=0.3 decay=0.3 sustain=0.7 release=0.5 tremolo=0.4 tremolo_rate=2
+
+v1: C7:0.16 Ab6:0.16 F6:0.16 C6:0.16 Ab5:1.8 R:1.56
+v2: C4:3 R:1

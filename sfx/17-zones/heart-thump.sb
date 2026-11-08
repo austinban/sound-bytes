@@ -1,0 +1,14 @@
+title: Heart Thump
+tempo: 120
+# desc: One enormous, slow heartbeat: a deep double thump shaking the floor.
+# use: A pulse of corruption in the Rotted Heart; sync to screen shake.
+# tags: zones, heart, thump, corrupted, pulse, corruption, shake
+# palette: corrupted
+# zone: rotted-heart
+# fit: core
+
+instrument v1: sine volume=0.9 attack=0.002 release=0.05 slide=12 slide_time=0.05 decay=0.15 sustain=0
+instrument v2: noise volume=0.3 attack=0.001 release=0.01 decay=0.08 sustain=0 bits=5
+
+v1: F1:0.4 R:0.16 F1:0.5
+v2: C3:0.2 R:0.86

@@ -1,0 +1,12 @@
+title: Countdown
+tempo: 120
+# desc: Three short beeps, then a long one.
+# use: A three-beep countdown; arcade flavour.
+# tags: battle, countdown, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: pulse duty=0.5 volume=0.4 attack=0.002 release=0.02
+
+v1: A5:0.24 R:0.76 A5:0.24 R:0.76 A5:0.24 R:0.76 A6:1.2

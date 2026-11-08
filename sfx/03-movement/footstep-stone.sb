@@ -1,0 +1,14 @@
+title: Footstep Stone
+tempo: 120
+# desc: One footstep on stone.
+# use: A step on stone floor, such as in the Ashen Citadel; vary with random pitch or timing.
+# tags: movement, footstep, stone, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.3 attack=0.001 release=0.01 decay=0.025 sustain=0
+instrument v2: sine volume=0.4 attack=0.002 release=0.03 decay=0.04 sustain=0
+
+v1: D4:0.08 R:0.04
+v2: A1:0.12

@@ -1,0 +1,18 @@
+title: Title Sting
+tempo: 120
+# desc: Dark organ chord for a title screen.
+# use: The title screen appears.
+# tags: jingles, title, sting, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: organ volume=0.4 attack=0.2 release=0.6 tremolo=0.2 tremolo_rate=5
+instrument v2: organ volume=0.28 attack=0.2 release=0.6 tremolo=0.2 tremolo_rate=5
+instrument v3: organ volume=0.28 attack=0.2 release=0.6 tremolo=0.2 tremolo_rate=5
+instrument v4: fm volume=0.3 ratio=3.5 index=3 index_decay=0.3 attack=0.001 decay=0.3 sustain=0 release=0.05 echo=0.4
+
+v1: F2:3.4 R:1.6
+v2: Ab3:3.4 R:1.6
+v3: C4:3.4 R:1.6
+v4: R:1 C6:1 Ab5:2 R:1

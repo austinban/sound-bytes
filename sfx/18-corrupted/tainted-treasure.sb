@@ -1,0 +1,14 @@
+title: Tainted Treasure
+tempo: 120
+# desc: A chest opens onto corrupted loot: a groan, then a sour, falling run of bells.
+# use: Opening a regular chest in a corrupted zone.
+# tags: corrupted, tainted, treasure, chest, loot
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: saw volume=0.26 attack=0.03 release=0.1 vibrato=40 vibrato_rate=12 slide=-5 slide_time=0.2
+instrument v2: fm volume=0.3 ratio=2.76 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.4
+
+v1: A2:0.8 R:2.3
+v2: R:0.7 G6:0.2 Eb6:0.2 C6:1 R:1

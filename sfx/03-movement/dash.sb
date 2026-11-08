@@ -1,0 +1,14 @@
+title: Dash
+tempo: 120
+# desc: Quick whoosh with a falling hiss.
+# use: Dashing or dodging.
+# tags: movement, dash, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.35 attack=0.02 release=0.05 slide=12 slide_time=0.12 decay=0.15 sustain=0.2
+instrument v2: triangle volume=0.3 attack=0.002 release=0.02 slide=-12 slide_time=0.1
+
+v1: C5:0.5
+v2: C3:0.4 R:0.1

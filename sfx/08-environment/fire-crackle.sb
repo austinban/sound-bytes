@@ -1,0 +1,14 @@
+title: Fire Crackle
+tempo: 120
+# desc: Crackling fire over a low rumble.
+# use: A campfire or torch crackles.
+# tags: environment, fire, crackle, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.3 attack=0.001 release=0.004 decay=0.01 sustain=0
+instrument v2: noise volume=0.12 attack=0.05 release=0.1 tremolo=0.5 tremolo_rate=9
+
+v1: C6:0.02 R:0.14 D6:0.03 R:0.06 C6:0.02 R:0.24 E6:0.024 R:0.1 C6:0.03 R:0.18 R:0.256
+v2: C3:1.1

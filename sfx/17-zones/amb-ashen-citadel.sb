@@ -1,0 +1,23 @@
+title: Amb Ashen Citadel
+tempo: 120
+# desc: Ruined stone city ambience: cavernous organ drone, a distant dark bell tolling, groaning metal and cold wind. 12-second seamless loop.
+# use: Background loop for the Ashen Citadel zone.
+# tags: zones, amb, ashen, citadel, corrupted, ambience, loop, ruins, stone, bell, echo
+# palette: corrupted
+# zone: ashen-citadel
+# fit: core
+# loop: 0.5
+
+instrument v1: organ volume=0.24 attack=0.5 release=0.5 sustain=1 decay=0 tremolo=0.2 tremolo_rate=0.5
+instrument v2: organ volume=0.14 attack=0.5 release=0.5 sustain=1 decay=0
+instrument v3: fm volume=0.28 ratio=2.76 index=3 index_decay=2 attack=0.001 decay=2 sustain=0 release=0.05 detune=18 echo=0.5
+instrument v4: saw volume=0.14 attack=0.4 release=0.5 slide=-5 slide_time=0.8 vibrato=25 vibrato_rate=6
+instrument v5: noise volume=0.1 attack=0.5 release=0.5 tremolo=0.5 tremolo_rate=0.5
+instrument v6: noise volume=0.12 attack=0.001 release=0.01 decay=0.02 sustain=0
+
+v1: F2:24
+v2: C3:24
+v3: R:4 F4:5 R:7 F4:5 R:3
+v4: R:10 A3:3.6 R:10.4
+v5: D5:24
+v6: R:8.4 C5:0.06 R:10.74 D5:0.06 R:4.74

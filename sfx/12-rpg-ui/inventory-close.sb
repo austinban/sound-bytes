@@ -1,0 +1,14 @@
+title: Inventory Close
+tempo: 120
+# desc: Satchel closing: the open sound reversed, a quick downward swish.
+# use: Closing the inventory or bag.
+# tags: rpg-ui, inventory, close, neutral, bag, menu
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: organ volume=0.2 attack=0.01 release=0.08 slide=5 slide_time=0.08
+instrument v2: noise volume=0.16 attack=0.01 release=0.04 slide=-6 slide_time=0.05
+
+v1: F3:0.32
+v2: A5:0.2 R:0.12

@@ -1,0 +1,14 @@
+title: Impact Slam
+tempo: 120
+# desc: Heavy slam: a deep thump and a tick.
+# use: A heavy slam, ground pound or boss stomp.
+# tags: explosions, impact, slam, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: sine volume=0.9 attack=0.002 release=0.03 slide=24 slide_time=0.05 decay=0.25 sustain=0
+instrument v2: noise volume=0.4 attack=0.001 release=0.01 decay=0.04 sustain=0
+
+v1: C1:0.76
+v2: C4:0.12 R:0.64

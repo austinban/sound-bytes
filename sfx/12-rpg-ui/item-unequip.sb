@@ -1,0 +1,14 @@
+title: Item Unequip
+tempo: 120
+# desc: Gear coming off: a lighter, lower clink and a small rustle.
+# use: Unequipping an item.
+# tags: rpg-ui, item, unequip, neutral, gear, remove
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.3 ratio=5 index=3 index_decay=0.08 attack=0.001 decay=0.1 sustain=0 release=0.05
+instrument v2: noise volume=0.15 attack=0.01 release=0.03
+
+v1: G5:0.2
+v2: A5:0.16 R:0.04

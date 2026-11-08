@@ -1,0 +1,14 @@
+title: Round Start
+tempo: 120
+# desc: 'Fight!': a punchy brass-like fanfare.
+# use: A fight round starts; arcade/fighting-game flavour.
+# tags: battle, round, start, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: saw volume=0.4 attack=0.002 release=0.1 detune=12 decay=0.1 sustain=0.6
+instrument v2: triangle volume=0.55 attack=0.002 release=0.02 sub=0.5
+
+v1: F4:0.24 F4:0.24 Ab4:0.24 C5:1.1
+v2: F2:0.8 C3:1 R:0.02

@@ -1,0 +1,14 @@
+title: Arrow Shot
+tempo: 120
+# desc: Bowstring twang and release.
+# use: An arrow or bolt is fired.
+# tags: magic, arrow, shot, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.125 volume=0.4 attack=0.002 release=0.02 slide=-12 slide_time=0.05 decay=0.08 sustain=0.1
+instrument v2: noise volume=0.25 attack=0.001 release=0.01 decay=0.03 sustain=0
+
+v1: A4:0.28
+v2: C6:0.1 R:0.18

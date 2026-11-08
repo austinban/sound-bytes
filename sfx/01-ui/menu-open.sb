@@ -1,0 +1,12 @@
+title: Menu Open
+tempo: 120
+# desc: Menu sliding open: a rising sweep.
+# use: Opening a menu or panel.
+# tags: ui, menu, open, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.5 volume=0.4 attack=0.002 release=0.05 slide=-12 slide_time=0.1 decay=0.12 sustain=0.2
+
+v1: C5:0.4

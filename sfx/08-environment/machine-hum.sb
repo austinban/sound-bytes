@@ -1,0 +1,12 @@
+title: Machine Hum
+tempo: 120
+# desc: Low industrial hum.
+# use: An industrial machine hums; sci-fi flavour.
+# tags: environment, machine, hum, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: saw volume=0.45 attack=0.1 release=0.2 detune=8 tremolo=0.25 tremolo_rate=12 sub=0.6
+
+v1: F1:2.6

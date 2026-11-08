@@ -1,0 +1,12 @@
+title: Denied Buzz
+tempo: 120
+# desc: Action not allowed: a low double buzz.
+# use: An action is not allowed (cannot equip, not enough resources).
+# tags: ui, denied, buzz, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: saw volume=0.4 attack=0.002 release=0.03 detune=14 sub=0.4
+
+v1: D3:0.2 R:0.08 D3:0.36

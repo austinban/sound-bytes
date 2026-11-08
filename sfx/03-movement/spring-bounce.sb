@@ -1,0 +1,12 @@
+title: Spring Bounce
+tempo: 120
+# desc: Boing off a spring pad.
+# use: Bouncing on a spring pad; arcade flavour.
+# tags: movement, spring, bounce, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: pulse duty=0.5 volume=0.4 attack=0.002 release=0.05 vibrato=60 vibrato_rate=18 vibrato_delay=0 slide=-12 slide_time=0.06 decay=0.2 sustain=0.2
+
+v1: C4:0.6

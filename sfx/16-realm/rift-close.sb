@@ -1,0 +1,16 @@
+title: Rift Close
+tempo: 120
+# desc: The veil mends: a falling swell that collapses into a hollow thump.
+# use: A rift or portal closes.
+# tags: realm, rift, close, corrupted, portal, veil
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.4 ratio=1.414 index=3 index_decay=0.5 attack=0.01 decay=0.3 sustain=0.6 release=0.1 slide=12 slide_time=0.4 sub=0.4
+instrument v2: noise volume=0.3 attack=0.01 release=0.1 slide=14 slide_time=0.3
+instrument v3: sine volume=0.7 attack=0.002 release=0.03 slide=12 slide_time=0.05 decay=0.15 sustain=0
+
+v1: F2:1.2 R:0.3
+v2: C4:0.8 R:0.7
+v3: R:1.1 C2:0.4

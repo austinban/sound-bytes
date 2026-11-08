@@ -1,0 +1,14 @@
+title: Inventory Open
+tempo: 120
+# desc: Satchel opening: a soft low organ swell with a short paper-and-cloth swish.
+# use: Opening the inventory or bag.
+# tags: rpg-ui, inventory, open, neutral, bag, menu
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: organ volume=0.2 attack=0.03 release=0.1 slide=-5 slide_time=0.08
+instrument v2: noise volume=0.18 attack=0.01 release=0.05 slide=6 slide_time=0.05
+
+v1: F3:0.4
+v2: A5:0.24 R:0.16

@@ -1,0 +1,14 @@
+title: Rusted Key
+tempo: 120
+# desc: Key pickup, corrupted: a flat, grinding metallic clank and a dull ring.
+# use: Obtaining a key.
+# tags: corrupted, rusted, key, pickup
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.35 ratio=6.5 index=4 index_decay=0.12 attack=0.001 decay=0.2 sustain=0 release=0.05 detune=25 echo=0.25
+instrument v2: noise volume=0.2 attack=0.001 release=0.01 decay=0.02 sustain=0
+
+v1: F5:0.12 B5:0.8 R:1
+v2: C5:0.06 R:1.86

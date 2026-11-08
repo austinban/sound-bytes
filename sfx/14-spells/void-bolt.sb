@@ -1,0 +1,14 @@
+title: Void Bolt
+tempo: 120
+# desc: A dark projectile: a falling inharmonic FM tone over a tremoloing noise rush.
+# use: Casting or impacting a void or shadow bolt.
+# tags: spells, void, bolt, corrupted, spell, projectile, shadow, cast
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.4 ratio=1.414 index=3 index_decay=0.3 attack=0.001 decay=0.2 sustain=0.3 release=0.05 slide=12 slide_time=0.15 sub=0.4
+instrument v2: noise volume=0.2 attack=0.02 release=0.1 tremolo=0.8 tremolo_rate=30
+
+v1: F3:0.8
+v2: C4:0.7 R:0.1

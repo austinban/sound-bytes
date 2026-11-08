@@ -1,0 +1,14 @@
+title: Player Hurt
+tempo: 120
+# desc: You take a hit: a falling cry with a click.
+# use: The player takes damage.
+# tags: damage, player, hurt, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.5 volume=0.5 attack=0.002 release=0.02 slide=12 slide_time=0.12 vibrato=40 vibrato_rate=20 vibrato_delay=0 decay=0.1 sustain=0.4
+instrument v2: noise volume=0.3 attack=0.001 release=0.01 decay=0.03 sustain=0
+
+v1: E4:0.48
+v2: C5:0.08 R:0.4

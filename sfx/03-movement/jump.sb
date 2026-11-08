@@ -1,0 +1,12 @@
+title: Jump
+tempo: 120
+# desc: Standard jump: a quick upward chirp.
+# use: Standard jump (see 18-corrupted/corrupted-jump for corrupted ground).
+# tags: movement, jump, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.25 volume=0.4 attack=0.002 release=0.04 slide=-7 slide_time=0.08 decay=0.1 sustain=0.3
+
+v1: C5:0.36

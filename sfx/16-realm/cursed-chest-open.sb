@@ -1,0 +1,16 @@
+title: Cursed Chest Open
+tempo: 120
+# desc: A chest opens with malice: a groaning creak, a dark bell and a whisper of breath.
+# use: Opening a cursed or trapped chest; also good for unsettling loot.
+# tags: realm, cursed, chest, open, corrupted, loot, trap
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: saw volume=0.28 attack=0.03 release=0.1 vibrato=45 vibrato_rate=13 slide=-5 slide_time=0.2
+instrument v2: fm volume=0.3 ratio=2.76 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.4
+instrument v3: noise volume=0.14 attack=0.2 release=0.25 tremolo=0.6 tremolo_rate=7
+
+v1: A2:0.9 R:2.3
+v2: R:0.8 Ab5:0.2 D6:1.2 R:1
+v3: R:0.6 C5:1.4 R:1.2

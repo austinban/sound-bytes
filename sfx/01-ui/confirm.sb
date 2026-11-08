@@ -1,0 +1,12 @@
+title: Confirm
+tempo: 120
+# desc: Menu selection accepted: a quick two-note rise.
+# use: Accepting a menu choice or confirming a prompt.
+# tags: ui, confirm, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.25 volume=0.4 attack=0.002 release=0.02 decay=0.06 sustain=0.5 echo=0.2
+
+v1: E5:0.12 A5:0.28 R:1

@@ -1,0 +1,14 @@
+title: Rumble
+tempo: 120
+# desc: Low rumbling, like a collapsing tunnel.
+# use: A collapsing tunnel, earthquake or tension rumble.
+# tags: explosions, rumble, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.55 attack=0.3 release=0.5 tremolo=0.3 tremolo_rate=7 sustain=0.8
+instrument v2: sine volume=0.5 attack=0.3 release=0.4
+
+v1: D2:3
+v2: F1:3

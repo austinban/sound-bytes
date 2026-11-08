@@ -1,0 +1,14 @@
+title: Wraith Wail
+tempo: 120
+# desc: A haunting wail: a high wavering inharmonic FM voice with a heavy echo.
+# use: A wraith or ghost shrieks, spots the player or attacks.
+# tags: enemies, wraith, wail, corrupted, enemy, ghost, scream
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.35 ratio=1.414 index=3 index_decay=0.9 attack=0.15 decay=0.3 sustain=0.6 release=0.4 vibrato=80 vibrato_rate=6 vibrato_delay=0.1 slide=7 slide_time=0.3 echo=0.4
+instrument v2: noise volume=0.14 attack=0.2 release=0.3 tremolo=0.6 tremolo_rate=7
+
+v1: A5:2.4 R:1
+v2: E5:2.4 R:1

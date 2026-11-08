@@ -1,0 +1,16 @@
+title: Enter Rotted Heart
+tempo: 120
+# desc: Dread: a heartbeat, a dissonant swell, a bitcrushed glitch burst and a sub drop.
+# use: The player enters the Rotted Heart.
+# tags: zones, enter, rotted, heart, corrupted, zone entry, sting, rotted-heart
+# palette: corrupted
+# zone: rotted-heart
+# fit: core
+
+instrument v1: sine volume=0.75 attack=0.002 release=0.03 slide=12 slide_time=0.04 decay=0.06 sustain=0
+instrument v2: fm volume=0.4 ratio=1.414 index=4 index_decay=1.5 attack=0.5 decay=0.3 sustain=0.8 release=0.4 detune=25 sub=0.5
+instrument v3: noise volume=0.25 attack=0.001 release=0.01 decay=0.06 sustain=0 hold=4 bits=4
+
+v1: A1:0.18 R:0.26 A1:0.18 R:1 A1:0.18 R:0.26 A1:0.18 R:1.36
+v2: F1:3.6
+v3: R:1.6 C5:0.16 G5:0.12 C4:0.2 R:1.52

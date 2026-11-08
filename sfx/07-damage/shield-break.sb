@@ -1,0 +1,16 @@
+title: Shield Break
+tempo: 120
+# desc: Shield shattering with a low crack.
+# use: A shield or ward is destroyed.
+# tags: damage, shield, break, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: fm volume=0.35 ratio=5 index=3 index_decay=0.15 attack=0.001 decay=0.3 sustain=0 release=0.05 echo=0.2
+instrument v2: noise volume=0.45 attack=0.001 release=0.01 decay=0.07 sustain=0
+instrument v3: sine volume=0.6 attack=0.002 release=0.03 slide=12 slide_time=0.05 decay=0.12 sustain=0
+
+v1: E6:0.1 C6:0.1 A5:0.1 F5:0.4 R:1
+v2: F4:0.2 R:1.5
+v3: F1:0.4 R:1.3

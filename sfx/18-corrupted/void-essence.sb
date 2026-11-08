@@ -1,0 +1,12 @@
+title: Void Essence
+tempo: 120
+# desc: Mana pickup, corrupted: a swirling, falling pulse sweep with a bitcrushed shimmer.
+# use: Collecting void essence (mana/energy).
+# tags: corrupted, void, essence, mana, pickup, energy
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.125 volume=0.3 attack=0.002 release=0.02 slide=-7 slide_time=0.12 pwm=0.3 pwm_rate=11 bits=6 echo=0.3 decay=0.2 sustain=0.3
+
+v1: D5:0.8 R:1

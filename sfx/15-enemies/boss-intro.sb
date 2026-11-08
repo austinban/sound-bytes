@@ -1,0 +1,18 @@
+title: Boss Intro
+tempo: 120
+# desc: A boss appears: a deep boom, a toll of a dark bell and a dissonant organ stab.
+# use: A boss encounter begins; use over the title card or entrance.
+# tags: enemies, boss, intro, corrupted, entrance, sting
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: sine volume=0.85 attack=0.002 release=0.03 slide=24 slide_time=0.1 decay=0.8 sustain=0
+instrument v2: fm volume=0.35 ratio=1.414 index=4 index_decay=1.5 attack=0.001 decay=1.5 sustain=0 release=0.05 detune=18 echo=0.45
+instrument v3: saw volume=0.26 attack=0.002 release=0.4 detune=20 decay=0.8 sustain=0.3
+instrument v4: saw volume=0.24 attack=0.002 release=0.4 detune=20 decay=0.8 sustain=0.3
+
+v1: F1:2 R:2.9
+v2: R:0.3 F3:3.6 R:1
+v3: R:0.8 F3:2.8 R:1.3
+v4: R:0.8 B3:2.8 R:1.3

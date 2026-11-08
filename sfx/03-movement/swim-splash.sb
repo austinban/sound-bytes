@@ -1,0 +1,14 @@
+title: Swim Splash
+tempo: 120
+# desc: Splash with a few rising bubbles.
+# use: Entering or moving through water, such as the Weeping Marsh.
+# tags: movement, swim, splash, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.3 attack=0.005 release=0.05 decay=0.15 sustain=0.1
+instrument v2: sine volume=0.25 attack=0.002 release=0.03 slide=-5 slide_time=0.03
+
+v1: G4:0.4 R:0.12
+v2: R:0.24 C6:0.08 E6:0.08 G6:0.12

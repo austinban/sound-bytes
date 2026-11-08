@@ -11,6 +11,30 @@ track, mute/solo, play with Space, save with Cmd/Ctrl+S. "Render WAVs" saves, th
 the Python renderer. Instruments are the JSON files in `instruments/` — drop in your own; in a script you can use
 them as `instrument lead: @pulse-lead volume=0.4`. The server only listens on localhost.
 
+## For bots and other tools reading this repo
+
+**Start with [SOUND_EFFECTS_GUIDE.md](SOUND_EFFECTS_GUIDE.md)**: where the sounds are, how to choose one, a game-event-to-sound
+mapping, and how to get audio files. The library is also indexed for machine reading:
+- [sfx/catalog.json](sfx/catalog.json): every sound with its description (what it is and what it sounds like), `use_when`
+  (when a game should trigger it), tags, palette, zone, theme fit, loop info, duration and a measured sonic profile.
+- [sfx/CATALOG.md](sfx/CATALOG.md): the same data as readable text, grouped by category.
+- [sfx/README.md](sfx/README.md): the file format, the palettes, the six zones and how to add sounds.
+
+Regenerate the catalog after changing any `.sb` in `sfx/` with `python3 -m sound_bytes.sfx --catalog`.
+
+## Sound-effects library
+
+    python3 -m sound_bytes.server        # then open http://127.0.0.1:8765/sfx.html (or click "SFX library" in the editor)
+
+About 230 game sounds in 18 categories, built for an eerie, corrupted spirit-realm RPG: the classic game sounds, plus spirit and
+soul mechanics, RPG interface, status effects, spells, enemies, realm objects, six zones (ambience loops, entry stings and
+one-shots) and corrupted variants of the classic sounds. Each is a tiny `.sb` score in `sfx/<category>/<name>.sb` made with the
+same voices as the songs. Click any sound to
+play it, search or filter by category, download a WAV, or "Render all" to `out/sfx/`. From the command line:
+`python3 -m sound_bytes.sfx --out out/sfx --format both`. To add a sound, drop a new `.sb` in a category folder; a
+`# desc: ...` comment line becomes its description. Noise channels can also play pitches (pitched noise) for whooshes,
+explosions and wind; `bits` (bitcrush) and `hold` (sample-and-hold) give the corrupted lo-fi edge.
+
 ## Command-line rendering
 
     pip install -r requirements.txt

@@ -1,0 +1,14 @@
+title: Thunder
+tempo: 120
+# desc: A sharp crack followed by a long rolling rumble.
+# use: A thunderclap or storm.
+# tags: explosions, thunder, neutral
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.7 attack=0.001 release=0.01 decay=0.05 sustain=0
+instrument v2: noise volume=0.55 attack=0.05 release=0.2 decay=1.2 sustain=0 vibrato=30 vibrato_rate=6 vibrato_delay=0.1
+
+v1: C5:0.2 R:3.36
+v2: R:0.16 C2:3.4

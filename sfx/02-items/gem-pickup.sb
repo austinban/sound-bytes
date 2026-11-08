@@ -1,0 +1,12 @@
+title: Gem Pickup
+tempo: 120
+# desc: Sparkling crystal arpeggio on FM bells.
+# use: Collecting a gem or crystal.
+# tags: items, gem, pickup, pure
+# palette: pure
+# zone: any
+# fit: usable
+
+instrument v1: fm volume=0.35 ratio=3.5 index=2.5 index_decay=0.3 attack=0.001 decay=0.3 sustain=0 release=0.05 echo=0.3
+
+v1: C6:0.14 Eb6:0.14 G6:0.14 C7:0.7 R:1

@@ -1,0 +1,14 @@
+title: Beast Snarl
+tempo: 120
+# desc: A short snarl: a rough saw bark with a noise burst.
+# use: A corrupted beast bites or lunges.
+# tags: enemies, beast, snarl, corrupted, enemy, bite, attack
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: saw volume=0.4 attack=0.002 release=0.05 detune=25 vibrato=70 vibrato_rate=18 vibrato_delay=0 decay=0.1 sustain=0.4 sub=0.4
+instrument v2: noise volume=0.35 attack=0.001 release=0.01 decay=0.1 sustain=0
+
+v1: F2:0.6
+v2: C4:0.3 R:0.3

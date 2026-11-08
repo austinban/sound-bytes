@@ -1,0 +1,12 @@
+title: Poison Bubble
+tempo: 120
+# desc: Gloopy bubbling.
+# use: A poison or acid effect bubbles.
+# tags: magic, poison, bubble, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: sine volume=0.4 attack=0.002 release=0.03 slide=-5 slide_time=0.03 vibrato=30 vibrato_rate=12 vibrato_delay=0
+
+v1: C4:0.12 E4:0.12 D4:0.12 R:0.06 G4:0.12 C4:0.16

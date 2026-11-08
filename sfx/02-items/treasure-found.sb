@@ -1,0 +1,14 @@
+title: Treasure Found
+tempo: 120
+# desc: Short triumphant jingle for finding treasure.
+# use: Discovering a significant treasure.
+# tags: items, treasure, found, pure
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.25 volume=0.4 attack=0.002 release=0.02 echo=0.25
+instrument v2: triangle volume=0.5 attack=0.002 release=0.02 sub=0.4
+
+v1: C5:0.2 E5:0.2 G5:0.2 C6:0.2 G5:0.12 C6:1 R:1
+v2: C3:0.9 G2:1 R:1.02

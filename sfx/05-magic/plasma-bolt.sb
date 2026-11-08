@@ -1,0 +1,12 @@
+title: Plasma Bolt
+tempo: 120
+# desc: Chunky saw bolt with a throbbing tail.
+# use: A plasma shot fires; sci-fi flavour, does not suit this setting.
+# tags: magic, plasma, bolt, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: saw volume=0.4 attack=0.002 release=0.03 detune=20 slide=12 slide_time=0.1 sub=0.3 tremolo=0.4 tremolo_rate=30 echo=0.2 decay=0.2 sustain=0.3
+
+v1: F3:0.64 R:1

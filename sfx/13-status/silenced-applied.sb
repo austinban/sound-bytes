@@ -1,0 +1,14 @@
+title: Silenced Applied
+tempo: 120
+# desc: A voice stolen: a bell cut short and a muffled noise thud.
+# use: The Silenced status (can't cast spells) is applied.
+# tags: status, silenced, applied, neutral, silence, mute, debuff
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.3 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.1 sustain=0 release=0.05 echo=0
+instrument v2: noise volume=0.3 attack=0.001 release=0.01 decay=0.15 sustain=0
+
+v1: C6:0.12 R:0.4
+v2: R:0.12 C3:0.4

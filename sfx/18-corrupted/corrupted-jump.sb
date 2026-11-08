@@ -1,0 +1,12 @@
+title: Corrupted Jump
+tempo: 120
+# desc: A sluggish, bent jump: a rising chirp that wobbles and sags.
+# use: Jumping while corrupted or on corrupted ground.
+# tags: corrupted, jump
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.25 volume=0.38 attack=0.002 release=0.02 slide=-5 slide_time=0.12 vibrato=30 vibrato_rate=14 vibrato_delay=0 detune=18 decay=0.12 sustain=0.3
+
+v1: A4:0.44

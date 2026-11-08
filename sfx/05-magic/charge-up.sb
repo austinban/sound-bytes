@@ -1,0 +1,14 @@
+title: Charge Up
+tempo: 120
+# desc: Power building: a long rising sweep.
+# use: Charging a powerful attack or spell.
+# tags: magic, charge, up, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.5 volume=0.35 attack=0.05 release=0.05 slide=-24 slide_time=0.9 pwm=0.2 pwm_rate=10
+instrument v2: noise volume=0.2 attack=0.1 release=0.01 slide=-24 slide_time=0.9
+
+v1: C4:2
+v2: C3:2

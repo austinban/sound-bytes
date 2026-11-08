@@ -1,0 +1,14 @@
+title: Map Open
+tempo: 120
+# desc: Unfolding a map: a low swish with a soft organ breath.
+# use: Opening the world map.
+# tags: rpg-ui, map, open, neutral, navigation
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.2 attack=0.03 release=0.08 slide=5 slide_time=0.15
+instrument v2: organ volume=0.18 attack=0.05 release=0.15
+
+v1: G4:0.6
+v2: F3:0.6

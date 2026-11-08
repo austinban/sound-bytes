@@ -1,0 +1,12 @@
+title: Wind Howl
+tempo: 120
+# desc: Eerie wind with a slow wobble.
+# use: A cold wind sweeps through; ambience for exposed areas.
+# tags: environment, wind, howl, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.3 attack=0.4 release=0.5 tremolo=0.5 tremolo_rate=3 slide=-4 slide_time=0.8
+
+v1: G5:3

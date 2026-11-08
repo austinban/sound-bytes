@@ -1,0 +1,14 @@
+title: Boss Roar
+tempo: 120
+# desc: Huge growl: a low saw glide over rumbling noise.
+# use: A boss roars or announces itself.
+# tags: battle, boss, roar, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: saw volume=0.55 attack=0.05 release=0.3 detune=25 slide=12 slide_time=0.5 vibrato=80 vibrato_rate=14 vibrato_delay=0 sub=0.5
+instrument v2: noise volume=0.4 attack=0.1 release=0.3 tremolo=0.5 tremolo_rate=18 sustain=0.5
+
+v1: F1:2.2
+v2: A3:2 R:0.2

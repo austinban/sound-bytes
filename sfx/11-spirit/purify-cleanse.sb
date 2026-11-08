@@ -1,0 +1,18 @@
+title: Purify Cleanse
+tempo: 120
+# desc: Corruption washed away: bright bells climb over a swelling organ and resolve to a clean major third.
+# use: The player purifies a corrupted object, area or character; corruption meter drops.
+# tags: spirit, purify, cleanse, pure, heal corruption, restore
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.32 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.5 sustain=0 release=0.05 echo=0.35
+instrument v2: organ volume=0.3 attack=0.3 release=0.5
+instrument v3: organ volume=0.22 attack=0.3 release=0.5
+instrument v4: noise volume=0.1 attack=0.2 release=0.3 tremolo=0 tremolo_rate=7 slide=-12 slide_time=0.5
+
+v1: F5:0.2 A5:0.2 C6:0.2 F6:0.2 A6:1.4 R:1
+v2: F3:2.2 R:1
+v3: A3:2.2 R:1
+v4: C6:2 R:1.2

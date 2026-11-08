@@ -1,0 +1,14 @@
+title: Undead Groan
+tempo: 120
+# desc: A low, rattling groan: a drooping saw with a pulsing breath.
+# use: A zombie, husk or other undead notices the player or takes a hit.
+# tags: enemies, undead, groan, corrupted, enemy, zombie, husk
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: saw volume=0.4 attack=0.1 release=0.3 detune=14 slide=5 slide_time=0.5 vibrato=35 vibrato_rate=7 sustain=0.7 sub=0.4
+instrument v2: noise volume=0.15 attack=0.2 release=0.25 tremolo=0.8 tremolo_rate=5
+
+v1: F2:1.8
+v2: D3:1.6 R:0.2

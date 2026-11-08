@@ -1,0 +1,14 @@
+title: Item Equip
+tempo: 120
+# desc: Gear going on: a small metallic FM clink over a soft thud.
+# use: Equipping a weapon, armour or trinket.
+# tags: rpg-ui, item, equip, neutral, gear, armor, weapon
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.35 ratio=5 index=3 index_decay=0.08 attack=0.001 decay=0.1 sustain=0 release=0.05
+instrument v2: sine volume=0.45 attack=0.002 release=0.03 decay=0.05 sustain=0
+
+v1: C6:0.24
+v2: A1:0.2 R:0.04

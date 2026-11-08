@@ -1,0 +1,16 @@
+title: Charge Release
+tempo: 120
+# desc: The blast: a boom, a noise burst and a zap.
+# use: Releasing a charged attack.
+# tags: magic, charge, release, neutral
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.6 attack=0.001 release=0.05 decay=0.25 sustain=0
+instrument v2: sine volume=0.85 attack=0.002 release=0.03 slide=24 slide_time=0.08 decay=0.3 sustain=0
+instrument v3: pulse duty=0.25 volume=0.35 attack=0.002 release=0.02 slide=18 slide_time=0.1 decay=0.1 sustain=0
+
+v1: C4:0.7 R:0.3
+v2: C2:1
+v3: C6:0.4 R:0.6

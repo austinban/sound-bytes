@@ -1,0 +1,14 @@
+title: Game Over
+tempo: 120
+# desc: Descending minor game-over jingle.
+# use: The game-over screen.
+# tags: damage, game, over, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.25 volume=0.4 attack=0.002 release=0.02 vibrato=25 vibrato_delay=0.1 echo=0.3
+instrument v2: triangle volume=0.5 attack=0.002 release=0.02 sub=0.5
+
+v1: C5:0.5 Bb4:0.5 Ab4:0.5 F4:1.9 R:1
+v2: F2:3.4 R:1

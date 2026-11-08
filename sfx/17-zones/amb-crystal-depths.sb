@@ -1,0 +1,19 @@
+title: Amb Crystal Depths
+tempo: 120
+# desc: Cavern of resonant crystal: a shimmering FM hum, a deep sub, and sparse high pings with long echoes. 12-second seamless loop.
+# use: Background loop for the Crystal Depths zone.
+# tags: zones, amb, crystal, depths, pure, ambience, loop, cave, shimmer, resonance
+# palette: pure
+# zone: crystal-depths
+# fit: core
+# loop: 0.5
+
+instrument v1: fm volume=0.22 ratio=3.5 index=2 index_decay=4 attack=0.5 decay=0 sustain=1 release=0.5 tremolo=0.4 tremolo_rate=1.2 vibrato=10 vibrato_rate=1 vibrato_delay=0 echo=0.3
+instrument v2: sine volume=0.3 attack=0.5 release=0.5 sustain=1 decay=0
+instrument v3: fm volume=0.2 ratio=3.5 index=2 index_decay=0.3 attack=0.001 decay=0.9 sustain=0 release=0.05 echo=0.5
+instrument v4: noise volume=0.05 attack=0.5 release=0.5 tremolo=0.6 tremolo_rate=2
+
+v1: C4:24
+v2: F1:24
+v3: R:2.8 F6:2 R:2.4 C7:2 R:2.6 Ab6:2 R:2.2 F6:2 R:2 C7:2 R:2
+v4: C7:24

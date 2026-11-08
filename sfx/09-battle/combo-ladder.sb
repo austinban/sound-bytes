@@ -1,0 +1,12 @@
+title: Combo Ladder
+tempo: 120
+# desc: Rising combo hits.
+# use: Chained hits build a combo; arcade flavour.
+# tags: battle, combo, ladder, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: pulse duty=0.25 volume=0.4 attack=0.002 release=0.02 echo=0.15
+
+v1: C5:0.1 R:0.1 E5:0.1 R:0.1 G5:0.1 R:0.1 C6:0.5 R:1

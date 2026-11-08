@@ -1,0 +1,16 @@
+title: Rift Open
+tempo: 120
+# desc: The veil tears: ripping noise, a rising inharmonic swell and a deep boom.
+# use: A rift, portal or tear in the veil opens.
+# tags: realm, rift, open, corrupted, portal, veil, tear
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.4 attack=0.05 release=0.1 slide=-14 slide_time=0.4 decay=0.3 sustain=0.3 tremolo=0.5 tremolo_rate=20
+instrument v2: fm volume=0.4 ratio=1.414 index=3 index_decay=0.7 attack=0.3 decay=0.3 sustain=0.8 release=0.1 sub=0.4
+instrument v3: sine volume=0.8 attack=0.002 release=0.03 slide=24 slide_time=0.08 decay=0.3 sustain=0
+
+v1: C4:1.4 R:0.8
+v2: F2:1.6 R:0.6
+v3: R:1.5 F1:0.7

@@ -1,0 +1,12 @@
+title: Sword Swing
+tempo: 120
+# desc: Blade whooshing through the air.
+# use: A melee weapon swings and misses.
+# tags: combat, sword, swing, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.4 attack=0.01 release=0.03 slide=14 slide_time=0.1 decay=0.1 sustain=0.2
+
+v1: C6:0.32

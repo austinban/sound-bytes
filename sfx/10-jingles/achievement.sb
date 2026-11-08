@@ -1,0 +1,12 @@
+title: Achievement
+tempo: 120
+# desc: Bell triad climbing to a high ring.
+# use: An achievement unlocks.
+# tags: jingles, achievement, pure
+# palette: pure
+# zone: any
+# fit: usable
+
+instrument v1: fm volume=0.35 ratio=3.5 index=3 index_decay=0.3 attack=0.001 decay=0.3 sustain=0 release=0.05 echo=0.35
+
+v1: F5:0.2 Ab5:0.2 C6:0.2 Eb6:0.2 F6:1.6 R:1

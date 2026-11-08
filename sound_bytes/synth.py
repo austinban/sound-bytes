@@ -117,13 +117,16 @@ def render_note(inst: Instrument, note: Note, n: int, sr: int, rng: np.random.Ge
         duty = np.clip(duty + pwm * np.sin(2 * np.pi * p.get("pwm_rate", 2.0) * t), 0.05, 0.95)
 
     detune = p.get("detune", 0.0)  # cents; two voices detuned either side of the pitch for a thicker, chorused tone
-    if detune > 0:
+    if inst.wave == "noise":  # pitched noise: a new random value each time the (curved) phase advances one cycle
+        counts = (np.cumsum(freq_t) / sr).astype(int)
+        wave = rng.choice([-1.0, 1.0], size=int(counts[-1]) + 2)[counts]
+    elif detune > 0:
         spread = 2.0 ** (detune / 1200.0)
         wave = 0.5 * (_voice(inst, freq_t * spread, sr, duty, t) + _voice(inst, freq_t / spread, sr, duty, t))
     else:
         wave = _voice(inst, freq_t, sr, duty, t)
     sub = p.get("sub", 0.0)  # level of a sine one octave below, for low-end weight
-    if sub > 0:
+    if sub > 0 and inst.wave != "noise":
         wave = (wave + sub * np.sin(2 * np.pi * _phase(freq_t / 2.0, sr))) / (1.0 + 0.5 * sub)
     env = _adsr(
         n, sr,
@@ -135,7 +138,15 @@ def render_note(inst: Instrument, note: Note, n: int, sr: int, rng: np.random.Ge
     trem = p.get("tremolo", 0.0)  # volume wobble depth 0..1
     if trem > 0:
         env = env * (1.0 - trem * 0.5 * (1.0 - np.cos(2 * np.pi * p.get("tremolo_rate", 6.0) * t)))
-    return wave * env * volume
+    out = wave * env * volume
+    hold = int(round(p.get("hold", 1)))  # sample-and-hold: repeat every Nth sample (lo-fi, aliasing)
+    if hold > 1:
+        out = np.repeat(out[::hold], hold)[:n]
+    bits = p.get("bits", 0)  # bitcrush: quantize the amplitude to this many bits (0 = off)
+    if bits > 0:
+        q = 2.0 ** (bits - 1)
+        out = np.round(out * q) / q
+    return out
 
 
 def render_channel(inst: Instrument, notes: List[Note], tempo: float, sr: int, seed: int = 0) -> np.ndarray:

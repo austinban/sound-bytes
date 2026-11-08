@@ -1,0 +1,14 @@
+title: Husk Shamble
+tempo: 120
+# desc: A heavy, wet step and a dragging scrape.
+# use: A husk or undead walks (loop or trigger per step).
+# tags: enemies, husk, shamble, corrupted, enemy, undead, footstep
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.3 attack=0.001 release=0.01 decay=0.04 sustain=0
+instrument v2: sine volume=0.45 attack=0.002 release=0.03 decay=0.06 sustain=0 bits=7
+
+v1: D3:0.12 R:0.2 A3:0.3
+v2: A1:0.18 R:0.44

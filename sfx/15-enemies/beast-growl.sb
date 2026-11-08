@@ -1,0 +1,14 @@
+title: Beast Growl
+tempo: 120
+# desc: A deep, vibrating growl: detuned low saw with a fast wobble and a rough noise bed.
+# use: A corrupted beast growls, idles or begins an attack.
+# tags: enemies, beast, growl, corrupted, enemy, creature
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: saw volume=0.42 attack=0.1 release=0.3 detune=30 vibrato=60 vibrato_rate=14 vibrato_delay=0 tremolo=0.4 tremolo_rate=20 sustain=0.8 sub=0.5
+instrument v2: noise volume=0.25 attack=0.1 release=0.2 tremolo=0.6 tremolo_rate=18
+
+v1: D2:1.8
+v2: A3:1.6 R:0.2

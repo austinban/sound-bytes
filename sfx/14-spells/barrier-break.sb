@@ -1,0 +1,16 @@
+title: Barrier Break
+tempo: 120
+# desc: A ward shattering: a crack of noise and a falling run of inharmonic bell fragments.
+# use: A barrier, ward or shield is destroyed.
+# tags: spells, barrier, break, corrupted, spell, shatter
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.4 attack=0.001 release=0.01 decay=0.1 sustain=0
+instrument v2: fm volume=0.3 ratio=2.76 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.25
+instrument v3: sine volume=0.5 attack=0.002 release=0.03 slide=12 slide_time=0.05 decay=0.12 sustain=0
+
+v1: C6:0.28 R:1.52
+v2: C7:0.1 G6:0.1 E6:0.1 C6:0.5 R:1
+v3: F1:0.4 R:1.4

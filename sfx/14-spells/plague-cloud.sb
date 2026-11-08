@@ -1,0 +1,14 @@
+title: Plague Cloud
+tempo: 120
+# desc: A creeping toxic cloud: low gurgling noise over a detuned, wobbling drone.
+# use: A poison, plague or miasma cloud spell.
+# tags: spells, plague, cloud, corrupted, spell, poison, miasma
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.25 attack=0.1 release=0.3 tremolo=0.9 tremolo_rate=11 slide=-4 slide_time=0.5
+instrument v2: fm volume=0.3 ratio=1.414 index=2 index_decay=0.8 attack=0.2 decay=0.3 sustain=0.7 release=0.3 detune=22 vibrato=30 vibrato_rate=5
+
+v1: E3:2
+v2: Gb2:2

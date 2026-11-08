@@ -1,0 +1,12 @@
+title: Poison Tick
+tempo: 120
+# desc: One tick of poison damage.
+# use: One damage tick of poison.
+# tags: damage, poison, tick, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: triangle volume=0.5 attack=0.002 release=0.02 slide=-5 slide_time=0.04 decay=0.07 sustain=0
+
+v1: C4:0.2

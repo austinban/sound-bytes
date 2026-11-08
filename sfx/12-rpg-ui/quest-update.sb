@@ -1,0 +1,12 @@
+title: Quest Update
+tempo: 120
+# desc: A single dark bell ping.
+# use: A quest objective updates or a journal entry is added.
+# tags: rpg-ui, quest, update, neutral, objective, journal
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.28 ratio=2.76 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.35
+
+v1: Ab5:1 R:1

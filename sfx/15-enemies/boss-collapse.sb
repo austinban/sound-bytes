@@ -1,0 +1,16 @@
+title: Boss Collapse
+tempo: 120
+# desc: A boss falls apart: staggered blasts, a long falling tone and a rolling rumble.
+# use: A boss is defeated.
+# tags: enemies, boss, collapse, corrupted, defeat, death
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.55 attack=0.001 release=0.03 decay=0.2 sustain=0 echo=0.25
+instrument v2: sine volume=0.8 attack=0.002 release=0.03 slide=24 slide_time=0.08 decay=0.4 sustain=0
+instrument v3: fm volume=0.3 ratio=2.76 index=3 index_decay=0.5 attack=0.1 decay=0.6 sustain=0.5 release=0.5 detune=18 echo=0.4 slide=36 slide_time=1.2
+
+v1: C3:0.5 R:0.3 D3:0.5 R:0.4 C3:0.6 R:0.4 A2:2.2 R:1.5
+v2: F1:0.6 R:0.2 G1:0.6 R:0.3 F1:0.7 R:0.4 D1:2.4 R:1.2
+v3: R:1.8 C4:3.6 R:1

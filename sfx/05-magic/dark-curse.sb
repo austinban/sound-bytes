@@ -1,0 +1,14 @@
+title: Dark Curse
+tempo: 120
+# desc: Wobbling low drone with a tritone growl.
+# use: Casting a curse or dark spell.
+# tags: magic, dark, curse, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.5 ratio=1.5 index=4 index_decay=0.6 attack=0.1 decay=0.2 sustain=0.7 release=0.2 vibrato=50 vibrato_rate=7 vibrato_delay=0.05
+instrument v2: saw volume=0.22 attack=0.1 release=0.2 tremolo=0.5 tremolo_rate=9
+
+v1: F2:1.7
+v2: B2:1.7

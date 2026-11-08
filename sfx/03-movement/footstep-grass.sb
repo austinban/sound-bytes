@@ -1,0 +1,12 @@
+title: Footstep Grass
+tempo: 120
+# desc: One soft footstep on grass.
+# use: A step on soft ground or grass.
+# tags: movement, footstep, grass, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.16 attack=0.01 release=0.02 decay=0.03 sustain=0
+
+v1: A5:0.12

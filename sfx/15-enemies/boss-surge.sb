@@ -1,0 +1,16 @@
+title: Boss Surge
+tempo: 120
+# desc: A boss powers up: a rising bitcrushed growl, a rumbling sub and a hard hit.
+# use: A boss changes phase, enrages or the corruption surges.
+# tags: enemies, boss, surge, corrupted, phase, enrage
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: saw volume=0.4 attack=0.1 release=0.1 detune=25 slide=-12 slide_time=0.8 vibrato=60 vibrato_rate=12 vibrato_delay=0 bits=6 sustain=0.8 sub=0.5
+instrument v2: noise volume=0.3 attack=0.2 release=0.1 slide=-12 slide_time=0.8 tremolo=0.5 tremolo_rate=16
+instrument v3: sine volume=0.85 attack=0.002 release=0.03 slide=24 slide_time=0.08 decay=0.3 sustain=0
+
+v1: F2:2 R:0.8
+v2: D3:1.8 R:1
+v3: R:2 F1:0.8

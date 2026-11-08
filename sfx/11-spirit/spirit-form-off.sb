@@ -1,0 +1,14 @@
+title: Spirit Form Off
+tempo: 120
+# desc: Leaving spirit form: the shimmer falls away and thuds back into a solid body.
+# use: The player returns from spirit form to physical form.
+# tags: spirit, form, off, pure, spirit form, toggle, return, solid
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.5 volume=0.28 attack=0.002 release=0.1 pwm=0.3 pwm_rate=14 slide=12 slide_time=0.2 decay=0.2 sustain=0.4 echo=0.2
+instrument v2: sine volume=0.5 attack=0.002 release=0.03 slide=12 slide_time=0.04 decay=0.07 sustain=0
+
+v1: C5:0.8 R:1.14
+v2: R:0.7 A1:0.24 R:1

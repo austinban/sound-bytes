@@ -1,0 +1,14 @@
+title: Block Break
+tempo: 120
+# desc: Breakable block shattering.
+# use: A breakable wall or block is destroyed.
+# tags: combat, block, break, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: fm volume=0.35 ratio=3.5 index=2 index_decay=0.3 attack=0.001 decay=0.3 sustain=0 release=0.05 echo=0.2
+instrument v2: noise volume=0.4 attack=0.001 release=0.01 decay=0.1 sustain=0
+
+v1: C7:0.1 G6:0.1 E6:0.1 C6:0.4 R:1
+v2: C6:0.24 R:1.46

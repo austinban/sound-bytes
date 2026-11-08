@@ -39,7 +39,8 @@ def write_wav(path: Path, samples: np.ndarray, sr: int, bit_depth: int = 16) -> 
         width = 2
     else:
         raise ValueError("bit_depth must be 8 or 16")
-    with wave.open(str(path), "wb") as f:
+    target = path if hasattr(path, "write") else str(path)  # a file path or an open binary file (e.g. BytesIO)
+    with wave.open(target, "wb") as f:
         f.setnchannels(1)
         f.setsampwidth(width)
         f.setframerate(sr)

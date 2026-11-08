@@ -1,0 +1,14 @@
+title: Stone Grind
+tempo: 120
+# desc: Stone dragging on stone: a low pulsing noise rumble.
+# use: A moving wall, sliding block or falling masonry in the Ashen Citadel.
+# tags: zones, stone, grind, corrupted, citadel, puzzle
+# palette: corrupted
+# zone: ashen-citadel
+# fit: core
+
+instrument v1: noise volume=0.4 attack=0.1 release=0.2 sustain=0.8 tremolo=0.5 tremolo_rate=9
+instrument v2: sine volume=0.4 attack=0.1 release=0.2
+
+v1: D2:1.8
+v2: F1:1.8

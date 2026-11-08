@@ -1,0 +1,14 @@
+title: Soul Release
+tempo: 120
+# desc: A soul let go: clean bells descend while a soft exhale of noise rises away.
+# use: A soul is freed, a spirit is laid to rest, or the player lets go of a held soul.
+# tags: spirit, soul, release, pure, free, rest
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.3 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.5 sustain=0 release=0.05 echo=0.35
+instrument v2: noise volume=0.12 attack=0.05 release=0.3 tremolo=0 tremolo_rate=7 slide=12 slide_time=0.3
+
+v1: F6:0.24 C6:0.24 A5:0.24 F5:1.2 R:1
+v2: C5:1.2 R:1.72

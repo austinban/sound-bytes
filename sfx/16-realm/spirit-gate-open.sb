@@ -1,0 +1,16 @@
+title: Spirit Gate Open
+tempo: 120
+# desc: A great gate opening: a grinding rumble that resolves into rising pure bells.
+# use: A spirit gate or sealed door opens after a puzzle or boss.
+# tags: realm, spirit, gate, open, neutral, door, puzzle, boss door
+# palette: neutral
+# zone: any
+# fit: core
+
+instrument v1: noise volume=0.45 attack=0.2 release=0.3 tremolo=0.4 tremolo_rate=8 sustain=0.8
+instrument v2: saw volume=0.2 attack=0.1 release=0.2 slide=-5 slide_time=0.5 vibrato=30 vibrato_rate=10
+instrument v3: fm volume=0.3 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.5 sustain=0 release=0.05 echo=0.35
+
+v1: D2:2 R:2.4
+v2: A3:1.8 R:2.6
+v3: R:2 F5:0.2 A5:0.2 C6:1 R:1

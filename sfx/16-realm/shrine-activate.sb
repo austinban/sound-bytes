@@ -1,0 +1,18 @@
+title: Shrine Activate
+tempo: 120
+# desc: A shrine awakens: a clean bell chord over a swelling organ and a soft sine bloom.
+# use: The player activates a shrine, altar or spirit fountain.
+# tags: realm, shrine, activate, pure, altar, blessing
+# palette: pure
+# zone: sanctuary
+# fit: core
+
+instrument v1: fm volume=0.3 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.5 sustain=0 release=0.05 echo=0.35
+instrument v2: organ volume=0.28 attack=0.25 release=0.5
+instrument v3: organ volume=0.22 attack=0.25 release=0.5
+instrument v4: sine volume=0.4 attack=0.3 release=0.4
+
+v1: F5:0.24 A5:0.24 C6:0.24 F6:1.6 R:1.08
+v2: F3:2.4 R:1
+v3: C4:2.4 R:1
+v4: F4:2.2 R:1.2

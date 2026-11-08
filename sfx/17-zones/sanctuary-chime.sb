@@ -1,0 +1,12 @@
+title: Sanctuary Chime
+tempo: 120
+# desc: A soft pure bell with a gentle echo.
+# use: A calm ambient one-shot in the Veil Haven, or a gentle reward tone.
+# tags: zones, sanctuary, chime, pure, calm, ambience
+# palette: pure
+# zone: sanctuary
+# fit: core
+
+instrument v1: fm volume=0.25 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.8 sustain=0 release=0.05 echo=0.45
+
+v1: A5:2 R:1

@@ -1,0 +1,14 @@
+title: Corrupted Level Up
+tempo: 120
+# desc: Level up, but wrong: a rising scale in a minor mode, wavering and detuned, ending on a hollow bell.
+# use: The player levels up while corrupted, or in the Rotted Heart.
+# tags: corrupted, level, up, level up, progression, dark
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.25 volume=0.35 attack=0.002 release=0.02 detune=22 vibrato=25 vibrato_delay=0.2 echo=0.25
+instrument v2: fm volume=0.3 ratio=2.76 index=3 index_decay=0.5 attack=0.001 decay=0.6 sustain=0 release=0.05 detune=18 echo=0.4
+
+v1: F4:0.14 G4:0.14 Ab4:0.14 Bb4:0.14 C5:0.14 Db5:0.14 Eb5:0.14 F5:1.2 R:1.02
+v2: R:1 Db6:1.2 R:1

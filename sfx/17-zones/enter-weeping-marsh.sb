@@ -1,0 +1,16 @@
+title: Enter Weeping Marsh
+tempo: 120
+# desc: Sinking in: gloopy bubbles, a sagging low drone and a single echoing drip.
+# use: The player enters the Weeping Marsh.
+# tags: zones, enter, weeping, marsh, corrupted, zone entry, sting, weeping-marsh
+# palette: corrupted
+# zone: weeping-marsh
+# fit: core
+
+instrument v1: sine volume=0.35 attack=0.002 release=0.03 slide=-5 slide_time=0.03 vibrato=30 vibrato_rate=12 vibrato_delay=0
+instrument v2: fm volume=0.4 ratio=1.414 index=3 index_decay=1 attack=0.2 decay=0.3 sustain=0.7 release=0.4 slide=7 slide_time=0.8 sub=0.4
+instrument v3: sine volume=0.3 attack=0.002 release=0.03 slide=7 slide_time=0.03 decay=0.08 sustain=0 echo=0.4
+
+v1: C4:0.14 E4:0.14 D4:0.14 G4:0.18 R:3.2
+v2: F2:2.8 R:1
+v3: R:2 E6:0.24 R:1.56

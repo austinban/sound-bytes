@@ -1,0 +1,14 @@
+title: Spirit Form On
+tempo: 120
+# desc: Entering spirit form: a shimmering pulse-width sweep rises into a soft glassy bell.
+# use: The player switches into spirit form (to cross the veil, pass through barriers or see hidden things).
+# tags: spirit, form, on, pure, spirit form, toggle, transform, ethereal
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.5 volume=0.28 attack=0.002 release=0.1 pwm=0.3 pwm_rate=14 slide=-12 slide_time=0.3 decay=0.2 sustain=0.4 echo=0.3
+instrument v2: fm volume=0.22 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.5 sustain=0 release=0.05 echo=0.35
+
+v1: C5:1 R:1.4
+v2: R:0.6 G6:0.8 R:1

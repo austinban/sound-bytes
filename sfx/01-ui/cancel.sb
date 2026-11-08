@@ -1,0 +1,12 @@
+title: Cancel
+tempo: 120
+# desc: Back / cancel: the confirm gesture reversed.
+# use: Backing out of a menu or dismissing a prompt.
+# tags: ui, cancel, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.5 volume=0.4 attack=0.002 release=0.02
+
+v1: A5:0.12 E5:0.28

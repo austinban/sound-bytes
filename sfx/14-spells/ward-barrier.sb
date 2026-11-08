@@ -1,0 +1,14 @@
+title: Ward Barrier
+tempo: 120
+# desc: A protective dome forming: an organ swell and a shimmering bell arpeggio.
+# use: Casting a ward, barrier or shield spell.
+# tags: spells, ward, barrier, pure, spell, shield, defense
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: organ volume=0.3 attack=0.25 release=0.3 tremolo=0.2 tremolo_rate=6
+instrument v2: fm volume=0.25 ratio=2 index=2 index_decay=0.4 attack=0.001 decay=0.5 sustain=0 release=0.05 echo=0.35
+
+v1: F3:1.6 R:1
+v2: C5:0.2 F5:0.2 A5:0.2 C6:1 R:1

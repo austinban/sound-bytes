@@ -1,0 +1,14 @@
+title: Freeze
+tempo: 120
+# desc: Frozen solid: a glassy ring and hiss.
+# use: The player or an enemy is frozen.
+# tags: damage, freeze, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.35 ratio=5 index=3 index_decay=0.2 attack=0.001 decay=0.3 sustain=0 release=0.05 echo=0.3
+instrument v2: noise volume=0.2 attack=0.02 release=0.01 decay=0.2 sustain=0
+
+v1: C7:0.4 G6:0.6 R:1
+v2: C7:0.5 R:1.5

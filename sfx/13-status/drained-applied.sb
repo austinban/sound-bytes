@@ -1,0 +1,14 @@
+title: Drained Applied
+tempo: 120
+# desc: Life leaks away: a long falling tone with a soft exhale.
+# use: The Drained or Weakened status is applied.
+# tags: status, drained, applied, corrupted, drain, weaken, debuff
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: sine volume=0.5 attack=0.002 release=0.2 slide=24 slide_time=0.6 decay=0.4 sustain=0.2
+instrument v2: noise volume=0.15 attack=0.05 release=0.4 tremolo=0 tremolo_rate=7 slide=-12 slide_time=0.5
+
+v1: C3:1.6
+v2: C5:1.4 R:0.2

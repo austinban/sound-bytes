@@ -1,0 +1,16 @@
+title: Shadow Step
+tempo: 120
+# desc: A short blink through shadow: a falling sweep, a puff of noise and a low pop.
+# use: A short-range teleport or evasive blink.
+# tags: spells, shadow, step, corrupted, spell, blink, teleport, dodge
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.5 volume=0.3 attack=0.002 release=0.02 slide=24 slide_time=0.08 decay=0.1 sustain=0.2
+instrument v2: noise volume=0.25 attack=0.01 release=0.01 decay=0.1 sustain=0
+instrument v3: sine volume=0.5 attack=0.002 release=0.03 decay=0.06 sustain=0
+
+v1: C5:0.4 R:0.16
+v2: C5:0.3 R:0.26
+v3: R:0.36 A1:0.2

@@ -1,0 +1,16 @@
+title: Banish
+tempo: 120
+# desc: A spirit is cast out: a falling sweep scatters into noise, ending on a low thud.
+# use: The player banishes or exorcises a lesser spirit, or an enemy spirit is dispelled.
+# tags: spirit, banish, pure, dispel, cast out, exorcise
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.25 volume=0.35 attack=0.002 release=0.1 slide=24 slide_time=0.3 decay=0.2 sustain=0.2
+instrument v2: noise volume=0.3 attack=0.02 release=0.01 slide=12 slide_time=0.3 decay=0.3 sustain=0
+instrument v3: sine volume=0.6 attack=0.002 release=0.03 slide=12 slide_time=0.05 decay=0.12 sustain=0
+
+v1: C5:1 R:0.4
+v2: C5:1 R:0.4
+v3: R:1 F1:0.4

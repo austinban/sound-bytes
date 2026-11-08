@@ -1,0 +1,14 @@
+title: Lever Pull
+tempo: 120
+# desc: Ratcheting lever with a heavy clunk.
+# use: Pulling a lever.
+# tags: environment, lever, pull, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: noise volume=0.3 attack=0.001 release=0.005 decay=0.02 sustain=0
+instrument v2: sine volume=0.6 attack=0.002 release=0.03 decay=0.08 sustain=0
+
+v1: C5:0.04 R:0.08 C5:0.04 R:0.08 C5:0.04 R:0.08 C5:0.04 R:0.08 R:0.26
+v2: R:0.5 A1:0.24

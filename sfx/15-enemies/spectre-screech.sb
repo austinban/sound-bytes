@@ -1,0 +1,12 @@
+title: Spectre Screech
+tempo: 120
+# desc: A harsh bitcrushed scream that glides downward.
+# use: A spectre or banshee screeches; also a sharp alert or stun-cry.
+# tags: enemies, spectre, screech, corrupted, enemy, banshee, scream
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: saw volume=0.35 attack=0.002 release=0.15 slide=12 slide_time=0.3 vibrato=100 vibrato_rate=14 vibrato_delay=0 bits=5 decay=0.2 sustain=0.5
+
+v1: E6:1.2

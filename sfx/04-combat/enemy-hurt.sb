@@ -1,0 +1,12 @@
+title: Enemy Hurt
+tempo: 120
+# desc: Enemy takes damage: a falling yelp.
+# use: An enemy is damaged but not defeated.
+# tags: combat, enemy, hurt, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.5 volume=0.45 attack=0.002 release=0.02 slide=12 slide_time=0.1 vibrato=30 vibrato_rate=16 vibrato_delay=0 decay=0.1 sustain=0.4
+
+v1: E4:0.44

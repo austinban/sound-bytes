@@ -1,0 +1,12 @@
+title: Coin
+tempo: 120
+# desc: Classic coin pickup: two quick notes, the second rings out.
+# use: Picking up currency in a bright or pure context (see 18-corrupted/soul-shard for the corrupted realm).
+# tags: items, coin, pure
+# palette: pure
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.5 volume=0.4 attack=0.001 release=0.05 decay=0.25 sustain=0.1
+
+v1: B5:0.12 E6:0.8

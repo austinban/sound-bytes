@@ -1,0 +1,14 @@
+title: Heal Spell
+tempo: 120
+# desc: Rising bells over a warm organ swell.
+# use: Casting a healing spell (pure palette).
+# tags: magic, heal, spell, pure
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.35 ratio=3.5 index=3 index_decay=0.3 attack=0.001 decay=0.3 sustain=0 release=0.05 echo=0.35
+instrument v2: organ volume=0.25 attack=0.15 release=0.2
+
+v1: F5:0.2 A5:0.2 C6:0.2 F6:0.2 A6:1 R:1
+v2: F3:1.8 R:1

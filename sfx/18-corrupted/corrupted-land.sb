@@ -1,0 +1,14 @@
+title: Corrupted Land
+tempo: 120
+# desc: A squelching landing: a heavy crushed thud with a wet slap.
+# use: Landing on corrupted ground.
+# tags: corrupted, land
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: sine volume=0.65 attack=0.002 release=0.03 slide=12 slide_time=0.04 decay=0.09 sustain=0 bits=6
+instrument v2: noise volume=0.3 attack=0.001 release=0.01 decay=0.04 sustain=0 hold=3
+
+v1: C2:0.32
+v2: A3:0.12 R:0.2

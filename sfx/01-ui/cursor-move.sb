@@ -1,0 +1,12 @@
+title: Cursor Move
+tempo: 120
+# desc: Tiny blip when the cursor moves between menu items.
+# use: Moving the cursor or selection between menu items.
+# tags: ui, cursor, move, neutral
+# palette: neutral
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.5 volume=0.3 attack=0.001 release=0.015
+
+v1: E5:0.08

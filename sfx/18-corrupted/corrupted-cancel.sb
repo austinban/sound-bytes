@@ -1,0 +1,12 @@
+title: Corrupted Cancel
+tempo: 120
+# desc: Menu cancel, corrupted: a falling two-note sour ring.
+# use: Cancelling in a corrupted/dark menu context.
+# tags: corrupted, cancel, ui
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.3 ratio=2.76 index=2 index_decay=0.5 attack=0.001 decay=0.15 sustain=0 release=0.05 detune=18 echo=0.2 bits=7
+
+v1: A5:0.12 E5:0.4 R:1

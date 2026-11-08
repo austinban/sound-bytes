@@ -1,0 +1,14 @@
+title: Veil Pass
+tempo: 120
+# desc: Passing through the veil: a soft shimmering pulse sweep with a breath of noise.
+# use: The player walks through a veil barrier or a spirit-only passage.
+# tags: realm, veil, pass, pure, barrier, spirit form
+# palette: pure
+# zone: any
+# fit: core
+
+instrument v1: pulse duty=0.5 volume=0.25 attack=0.002 release=0.2 pwm=0.3 pwm_rate=18 slide=-12 slide_time=0.3 decay=0.2 sustain=0.4 echo=0.3
+instrument v2: noise volume=0.12 attack=0.1 release=0.3 tremolo=0.5 tremolo_rate=7
+
+v1: G5:1.2 R:1
+v2: C6:1 R:1.2

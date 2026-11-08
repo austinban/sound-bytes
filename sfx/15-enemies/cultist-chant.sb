@@ -1,0 +1,16 @@
+title: Cultist Chant
+tempo: 120
+# desc: A dissonant choir: three low organ voices a semitone and a tritone apart, swaying slowly.
+# use: A group of cultists chant (ritual scenes, boss rooms, shrines).
+# tags: enemies, cultist, chant, corrupted, enemy, choir, ritual
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: organ volume=0.28 attack=0.3 release=0.4 vibrato=25 vibrato_rate=4 vibrato_delay=0.1 tremolo=0.3 tremolo_rate=3
+instrument v2: organ volume=0.24 attack=0.3 release=0.4 vibrato=25 vibrato_rate=4.5 vibrato_delay=0.1 tremolo=0.3 tremolo_rate=3.5
+instrument v3: organ volume=0.24 attack=0.3 release=0.4 vibrato=25 vibrato_rate=3.5 vibrato_delay=0.1 tremolo=0.3 tremolo_rate=2.5
+
+v1: F3:3.2
+v2: Gb3:3.2
+v3: B3:3.2

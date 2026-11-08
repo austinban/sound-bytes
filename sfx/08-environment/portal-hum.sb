@@ -1,0 +1,14 @@
+title: Portal Hum
+tempo: 120
+# desc: Swirling portal energy.
+# use: A portal or magical device idles nearby (short; see 17-zones for long loops).
+# tags: environment, portal, hum, corrupted
+# palette: corrupted
+# zone: any
+# fit: core
+
+instrument v1: fm volume=0.45 ratio=2 index=3 index_decay=1.5 attack=0.2 decay=0.3 sustain=0.8 release=0.3 vibrato=15 vibrato_rate=5 vibrato_delay=0 tremolo=0.3 tremolo_rate=7 sub=0.4
+instrument v2: saw volume=0.18 attack=0.2 release=0.3 detune=14 tremolo=0.4 tremolo_rate=5
+
+v1: F2:2.6
+v2: C3:2.6

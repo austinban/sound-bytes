@@ -1,0 +1,14 @@
+title: Victory Fanfare
+tempo: 120
+# desc: Triumphant fanfare: rising fourths into a held high note.
+# use: Winning a battle or finishing a major task.
+# tags: jingles, victory, fanfare, pure
+# palette: pure
+# zone: any
+# fit: usable
+
+instrument v1: pulse duty=0.25 volume=0.4 attack=0.002 release=0.02 vibrato=20 vibrato_delay=0.2 echo=0.25
+instrument v2: triangle volume=0.55 attack=0.002 release=0.02 sub=0.5
+
+v1: F4:0.3 C5:0.3 F5:0.6 Ab5:0.3 G5:0.3 C6:1 F6:2 R:1.2
+v2: F2:1.2 Db3:0.6 C3:1 F2:2.2 R:1

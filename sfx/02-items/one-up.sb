@@ -1,0 +1,12 @@
+title: One Up
+tempo: 120
+# desc: Extra life: a bouncy rising figure.
+# use: Gaining an extra life; an arcade convention that does not suit this setting.
+# tags: items, one, up, neutral
+# palette: neutral
+# zone: any
+# fit: off-theme
+
+instrument v1: pulse duty=0.5 volume=0.4 attack=0.002 release=0.02 echo=0.2
+
+v1: E5:0.14 G5:0.14 E6:0.14 C6:0.14 D6:0.14 G6:0.8 R:1

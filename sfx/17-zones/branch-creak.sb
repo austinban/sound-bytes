@@ -1,0 +1,14 @@
+title: Branch Creak
+tempo: 120
+# desc: A dry wooden creak: a short wobbling groan.
+# use: A bone-tree branch bends or breaks nearby; ambient one-shot for the Hollow Wood.
+# tags: zones, branch, creak, corrupted, forest, ambience
+# palette: corrupted
+# zone: hollow-wood
+# fit: core
+
+instrument v1: saw volume=0.25 attack=0.03 release=0.08 vibrato=50 vibrato_rate=12 slide=-5 slide_time=0.15
+instrument v2: noise volume=0.1 attack=0.001 release=0.01 decay=0.05 sustain=0
+
+v1: A2:0.9
+v2: D5:0.16 R:0.74

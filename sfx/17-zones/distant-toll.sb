@@ -1,0 +1,12 @@
+title: Distant Toll
+tempo: 120
+# desc: A far-off dark bell with a long, shadowy echo.
+# use: Ambient one-shot in the Ashen Citadel, or a clock/alarm that something is coming.
+# tags: zones, distant, toll, corrupted, citadel, bell, ambience
+# palette: corrupted
+# zone: ashen-citadel
+# fit: core
+
+instrument v1: fm volume=0.3 ratio=2.76 index=3 index_decay=2.5 attack=0.001 decay=2.5 sustain=0 release=0.05 detune=18 echo=0.55
+
+v1: F4:6 R:1

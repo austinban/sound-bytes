@@ -5,6 +5,7 @@ Serves web/ and a tiny JSON API for songs/*.sb and instruments/*.json. Binds to 
 from __future__ import annotations
 
 import argparse
+import io
 import json
 import mimetypes
 import re
@@ -15,7 +16,8 @@ from pathlib import Path
 from urllib.parse import parse_qs, unquote, urlparse
 
 from .parser import DEFAULT_INSTRUMENT_DIR, ScoreError, parse_score
-from .render import render_to_dir
+from .render import render_to_dir, write_wav
+from .sfx import SAMPLE_RATE, find_sfx, list_sfx, load_taxonomy, render_all, render_sfx
 from .songio import json_to_text, score_to_json
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -93,6 +95,16 @@ class Handler(BaseHTTPRequestHandler):
                 return self._json(200, score_to_json(parse_score(sp.read_text())))
             except ScoreError as e:
                 return self._json(422, {"error": str(e)})
+        if path == "/api/sfx":
+            return self._json(200, {"taxonomy": load_taxonomy(), "sounds": list_sfx()})
+        m = re.match(r"^/api/sfx/([^/]+)/([^/]+)\.wav$", path)
+        if m:
+            sp = find_sfx(m.group(1), m.group(2))
+            if not sp:
+                return self._json(404, {"error": "no such sound"})
+            buf = io.BytesIO()
+            write_wav(buf, render_sfx(sp), SAMPLE_RATE)
+            return self._send(200, buf.getvalue(), "audio/wav")
         if path.startswith("/out/"):
             return self._static(OUT, path[len("/out/"):])
         self._static(WEB, "index.html" if path == "/" else path.lstrip("/"))
@@ -119,6 +131,13 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         if not self._guard():
             return
+        if urlparse(self.path).path == "/api/sfx/render":
+            want_mp3 = parse_qs(urlparse(self.path).query).get("mp3") == ["1"]
+            try:
+                n = render_all(OUT / "sfx", formats=("wav", "mp3") if want_mp3 else ("wav",))
+            except RuntimeError as e:
+                return self._json(500, {"error": str(e)})
+            return self._json(200, {"count": n, "folder": "out/sfx"})
         m = re.match(r"^/api/render/([^/]+)$", unquote(urlparse(self.path).path))
         sp = self._song_path(m.group(1)) if m else None
         if not sp or not sp.is_file():
