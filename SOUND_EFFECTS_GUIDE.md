@@ -169,4 +169,4 @@ Edit or add a `.sb` in `sfx/<category>/`. Keep the header (`# desc`, `# use`, `#
 
 - **Synthesised chiptune-style audio only** (pulse, triangle, saw, sine, FM, organ and noise voices). No recordings, no voices or words.
 - **Mono, short:** most one-shots are under 1.5 seconds and none is longer than 3.5 seconds; the six ambience loops are 11.5 seconds each.
-- **No licence has been chosen for this repo yet.** If you plan to redistribute or ship the sounds, ask the repo owner first.
+- **Origin:** every sound and song here was generated from the scripts in this repo. The audio is synthesised; it contains no samples or recordings from any other source. No formal licence file has been added to the repo.
