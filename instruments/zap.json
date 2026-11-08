@@ -1,0 +1,5 @@
+{
+  "name": "Zap (pitch drop)",
+  "wave": "pulse",
+  "params": {"duty": 0.25, "volume": 0.5, "attack": 0.001, "decay": 0.12, "sustain": 0.0, "release": 0.01, "slide": 24, "slide_time": 0.09, "echo": 0.25}
+}

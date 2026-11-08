@@ -1,0 +1,5 @@
+{
+  "name": "Shimmer Pad",
+  "wave": "pulse",
+  "params": {"duty": 0.5, "volume": 0.28, "attack": 0.1, "sustain": 0.8, "release": 0.2, "detune": 12, "tremolo": 0.35, "tremolo_rate": 5, "pwm": 0.15, "pwm_rate": 0.8, "echo": 0.35}
+}

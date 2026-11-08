@@ -1,0 +1,5 @@
+{
+  "name": "PWM Synth (swept pulse)",
+  "wave": "pulse",
+  "params": {"duty": 0.5, "volume": 0.45, "attack": 0.02, "sustain": 0.85, "release": 0.1, "sub": 0.3, "detune": 6, "pwm": 0.3, "pwm_rate": 1.6, "echo": 0.3}
+}

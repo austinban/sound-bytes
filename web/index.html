@@ -26,6 +26,8 @@
   .track .row select { flex:1; min-width:0; }
   .track .row input[type=range] { flex:1; min-width:0; padding:0; }
   .track small { color:var(--dim); }
+  .track details { grid-column:2 / span 2; } .track summary { color:var(--dim); cursor:pointer; font-size:12px; margin-bottom:4px; }
+  .track details .row { margin-top:4px; }
   #addtrack { display:flex; gap:6px; margin-top:8px; } #addtrack select { flex:1; min-width:0; }
   #rollwrap { flex:1; overflow:auto; position:relative; }
   #roll { display:flex; width:max-content; }
@@ -110,17 +112,28 @@ function renderNote(wave, p, note, n, rng) {
   const freq = 440 * Math.pow(2, (note.midi - 69) / 12);
   const duty = p.duty ?? 0.5, a = p.attack ?? 0.005, dec = p.decay ?? 0, sus = p.sustain ?? 1, rel = p.release ?? 0.02;
   const sub = p.sub ?? 0, detune = p.detune ?? 0, spread = Math.pow(2, detune / 1200);
-  const voice = (f, i) => { const ph = (i * f / SR) % 1;
-    return wave === "pulse" ? (ph < duty ? 1 : -1) - (2 * duty - 1) : Math.round((4 * Math.abs(ph - 0.5)) * 7.5) / 7.5 - 1; };  // triangle: 16 steps
+  const vib = p.vibrato ?? 0, vrate = p.vibrato_rate ?? 5.5, vdelay = p.vibrato_delay ?? 0.15;
+  const slide = p.slide ?? 0, stime = Math.max(p.slide_time ?? 0.08, 1e-3);
+  const pwm = p.pwm ?? 0, pwmRate = p.pwm_rate ?? 2, trem = p.tremolo ?? 0, tremRate = p.tremolo_rate ?? 6;
+  let ph1 = 0, ph2 = 0, phs = 0;          // oscillator phases, advanced by a (possibly curved) frequency each sample
   for (let i = 0; i < n; i++) {
     const t = i / SR;
-    let w = detune > 0 ? 0.5 * (voice(freq * spread, i) + voice(freq / spread, i)) : voice(freq, i);
-    if (sub > 0) w = (w + sub * Math.sin(2 * Math.PI * (i * freq / 2 / SR))) / (1 + 0.5 * sub);
+    let cents = 0;                        // pitch curve: delayed vibrato + glide into the note
+    if (vib > 0) cents += vib * Math.min(Math.max((t - vdelay) / 0.1, 0), 1) * Math.sin(2 * Math.PI * vrate * t);
+    if (slide !== 0) cents += slide * 100 * Math.exp(-t / stime);
+    const f = cents !== 0 ? freq * Math.pow(2, cents / 1200) : freq;
+    const d = pwm > 0 ? Math.min(Math.max(duty + pwm * Math.sin(2 * Math.PI * pwmRate * t), 0.05), 0.95) : duty;
+    const voice = ph => wave === "pulse" ? (ph < d ? 1 : -1) - (2 * d - 1) : Math.round((4 * Math.abs(ph - 0.5)) * 7.5) / 7.5 - 1;
+    let w;
+    if (detune > 0) { w = 0.5 * (voice(ph1) + voice(ph2)); ph1 = (ph1 + f * spread / SR) % 1; ph2 = (ph2 + f / spread / SR) % 1; }
+    else { w = voice(ph1); ph1 = (ph1 + f / SR) % 1; }
+    if (sub > 0) { w = (w + sub * Math.sin(2 * Math.PI * phs)) / (1 + 0.5 * sub); phs = (phs + f / 2 / SR) % 1; }
     let e = 1;
     if (a > 0) e = Math.min(e, t / a);
     if (dec > 0) e *= 1 - Math.min(Math.max((t - a) / dec, 0), 1) * (1 - sus);
     else e *= t >= a ? sus : 1;
     if (rel > 0) e *= Math.min(1, (n / SR - t) / rel);
+    if (trem > 0) e *= 1 - trem * 0.5 * (1 - Math.cos(2 * Math.PI * tremRate * t));
     out[i] = w * e * vol;
   }
   return out;
@@ -272,7 +285,13 @@ function renderTracks() {
       <div class="row"><small>vol</small><input type="range" data-p="volume" min="0" max="1" step="0.05" value="${t.params.volume ?? 0.5}"></div>
       ${isDrum(t) ? "" : `<div class="row"><small>sub</small><input type="range" data-p="sub" min="0" max="1" step="0.05" value="${t.params.sub ?? 0}">
         <small>wide</small><input type="range" data-p="detune" min="0" max="30" step="1" value="${t.params.detune ?? 0}"></div>`}
-      <div class="row"><small>echo</small><input type="range" data-p="echo" min="0" max="1" step="0.05" value="${t.params.echo ?? 0}"></div>`;
+      <div class="row"><small>echo</small><input type="range" data-p="echo" min="0" max="1" step="0.05" value="${t.params.echo ?? 0}"></div>
+      ${isDrum(t) ? "" : `<details ${t._open ? "open" : ""}><summary>shaping (curves)</summary>
+        <div class="row"><small title="Vibrato depth in cents">vib</small><input type="range" data-p="vibrato" min="0" max="60" step="1" value="${t.params.vibrato ?? 0}">
+          <small title="Pulse-width sweep depth">pwm</small><input type="range" data-p="pwm" min="0" max="0.4" step="0.02" value="${t.params.pwm ?? 0}"></div>
+        <div class="row"><small title="Volume wobble depth">trem</small><input type="range" data-p="tremolo" min="0" max="1" step="0.05" value="${t.params.tremolo ?? 0}">
+          <small title="Pitch glide into each note, in semitones (negative = from below)">slide</small><input type="range" data-p="slide" min="-24" max="24" step="1" value="${t.params.slide ?? 0}"></div>
+      </details>`}`;
     const sel = el.querySelector("select");
     const norm = o => JSON.stringify(Object.keys(o).filter(k => k !== "volume").sort().map(k => [k, o[k]]));
     const match = S.presets.find(p => p.wave === t.wave && norm(p.params) === norm(t.params));
@@ -284,7 +303,8 @@ function renderTracks() {
       if (p.wave === "noise" || t.notes.some(n => n.drum)) t.notes = t.notes.filter(n => (p.wave === "noise") === !!n.drum);
       renderTracks(); touch();
     };
-    el.onclick = e => { if (e.target.closest("button,input,select")) return; S.sel = i; renderTracks(); draw(); };
+    const det = el.querySelector("details"); if (det) det.ontoggle = () => { t._open = det.open; };
+    el.onclick = e => { if (e.target.closest("button,input,select,details")) return; S.sel = i; renderTracks(); draw(); };
     el.querySelector("input[type=text]").onchange = e => {
       const v = e.target.value.trim();
       if (!/^[A-Za-z_][A-Za-z0-9_-]*$/.test(v) || S.tracks.some((o, j) => j !== i && o.name === v)) { e.target.value = t.name; return; }

@@ -1,0 +1,5 @@
+{
+  "name": "Slide Bass (punch from below)",
+  "wave": "triangle",
+  "params": {"volume": 0.6, "attack": 0.002, "sub": 0.7, "slide": -7, "slide_time": 0.05}
+}

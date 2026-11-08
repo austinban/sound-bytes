@@ -1,0 +1,5 @@
+{
+  "name": "Vibrato Lead",
+  "wave": "pulse",
+  "params": {"duty": 0.25, "volume": 0.5, "attack": 0.01, "decay": 0.1, "sustain": 0.75, "release": 0.08, "sub": 0.2, "detune": 4, "vibrato": 28, "vibrato_rate": 5.5, "vibrato_delay": 0.18, "echo": 0.3}
+}

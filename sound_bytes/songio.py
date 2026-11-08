@@ -9,7 +9,9 @@ from .parser import DRUMS, WAVE_TYPES, Score
 
 _NAMES = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
 _NAME_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_-]*$")
-_PARAM_KEYS = ("duty", "volume", "attack", "decay", "sustain", "release", "sub", "detune", "echo")
+_PARAM_KEYS = ("duty", "volume", "attack", "decay", "sustain", "release", "sub", "detune", "echo",
+               "vibrato", "vibrato_rate", "vibrato_delay", "slide", "slide_time",
+               "pwm", "pwm_rate", "tremolo", "tremolo_rate")
 
 
 def midi_to_name(midi: int) -> str:

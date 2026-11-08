@@ -35,13 +35,17 @@ def _adsr(n: int, sr: int, attack: float, decay: float, sustain: float, release:
     return env
 
 
-def _pulse(freq: float, n: int, sr: int, duty: float) -> np.ndarray:
-    phase = (np.arange(n) * freq / sr) % 1.0
+def _phase(freq_t: np.ndarray, sr: int) -> np.ndarray:
+    """Oscillator phase (0..1) for a per-sample frequency curve; starts at 0, so a constant freq is just i*f/sr."""
+    return ((np.cumsum(freq_t) - freq_t) / sr) % 1.0
+
+
+def _pulse(phase: np.ndarray, duty) -> np.ndarray:
+    """duty may be a number or a per-sample array (pulse-width modulation)."""
     return np.where(phase < duty, 1.0, -1.0) - (2.0 * duty - 1.0)  # remove DC offset so low end stays clean
 
 
-def _triangle(freq: float, n: int, sr: int) -> np.ndarray:
-    phase = (np.arange(n) * freq / sr) % 1.0
+def _triangle(phase: np.ndarray) -> np.ndarray:
     tri = 4.0 * np.abs(phase - 0.5) - 1.0
     # Quantize to 16 levels, like the 4-bit triangle channel on the NES.
     return np.round((tri + 1.0) * 7.5) / 7.5 - 1.0
@@ -53,11 +57,11 @@ def _noise(rate: float, n: int, sr: int, rng: np.random.Generator) -> np.ndarray
     return values[(np.arange(n) * rate / sr).astype(int)]
 
 
-def _voice(inst: Instrument, freq: float, n: int, sr: int) -> np.ndarray:
-    p = inst.params
+def _voice(inst: Instrument, freq_t: np.ndarray, sr: int, duty) -> np.ndarray:
+    phase = _phase(freq_t, sr)
     if inst.wave == "pulse":
-        return _pulse(freq, n, sr, p.get("duty", 0.5))
-    return _triangle(freq, n, sr)
+        return _pulse(phase, duty)
+    return _triangle(phase)
 
 
 def _drum(drum: str, n: int, sr: int, rng: np.random.Generator) -> np.ndarray:
@@ -82,16 +86,32 @@ def render_note(inst: Instrument, note: Note, n: int, sr: int, rng: np.random.Ge
     if note.kind == "drum":
         return _drum(note.drum, n, sr, rng) * volume
 
-    freq = midi_to_freq(note.midi)
+    t = np.arange(n) / sr
+    # --- pitch curve (in cents): vibrato LFO that fades in after a delay, plus a glide into the note
+    cents = np.zeros(n)
+    vib = p.get("vibrato", 0.0)  # peak depth in cents
+    if vib > 0:
+        ramp = np.clip((t - p.get("vibrato_delay", 0.15)) / 0.1, 0.0, 1.0)
+        cents += vib * ramp * np.sin(2 * np.pi * p.get("vibrato_rate", 5.5) * t)
+    slide = p.get("slide", 0.0)  # start this many semitones above (negative: below), gliding to the real pitch
+    if slide:
+        cents += slide * 100.0 * np.exp(-t / max(p.get("slide_time", 0.08), 1e-3))
+    freq_t = midi_to_freq(note.midi) * 2.0 ** (cents / 1200.0)
+
+    duty = p.get("duty", 0.5)
+    pwm = p.get("pwm", 0.0)  # pulse-width modulation depth: the duty cycle swings +/- pwm around `duty`
+    if pwm > 0:
+        duty = np.clip(duty + pwm * np.sin(2 * np.pi * p.get("pwm_rate", 2.0) * t), 0.05, 0.95)
+
     detune = p.get("detune", 0.0)  # cents; two voices detuned either side of the pitch for a thicker, chorused tone
     if detune > 0:
         spread = 2.0 ** (detune / 1200.0)
-        wave = 0.5 * (_voice(inst, freq * spread, n, sr) + _voice(inst, freq / spread, n, sr))
+        wave = 0.5 * (_voice(inst, freq_t * spread, sr, duty) + _voice(inst, freq_t / spread, sr, duty))
     else:
-        wave = _voice(inst, freq, n, sr)
+        wave = _voice(inst, freq_t, sr, duty)
     sub = p.get("sub", 0.0)  # level of a sine one octave below, for low-end weight
     if sub > 0:
-        wave = (wave + sub * np.sin(2 * np.pi * (np.arange(n) * freq / 2.0 / sr))) / (1.0 + 0.5 * sub)
+        wave = (wave + sub * np.sin(2 * np.pi * _phase(freq_t / 2.0, sr))) / (1.0 + 0.5 * sub)
     env = _adsr(
         n, sr,
         attack=p.get("attack", 0.005),
@@ -99,6 +119,9 @@ def render_note(inst: Instrument, note: Note, n: int, sr: int, rng: np.random.Ge
         sustain=p.get("sustain", 1.0),
         release=p.get("release", 0.02),
     )
+    trem = p.get("tremolo", 0.0)  # volume wobble depth 0..1
+    if trem > 0:
+        env = env * (1.0 - trem * 0.5 * (1.0 - np.cos(2 * np.pi * p.get("tremolo_rate", 6.0) * t)))
     return wave * env * volume
 
 

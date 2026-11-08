@@ -65,6 +65,40 @@ class RenderTests(unittest.TestCase):
         self.assertGreater(np.max(np.abs(stems["a"])), 0)
 
 
+class ShapingTests(unittest.TestCase):
+    def _note(self, params, n=8000, sr=8000):
+        import numpy as np
+
+        from sound_bytes.parser import Instrument, Note
+        from sound_bytes.synth import render_note
+
+        inst = Instrument("a", "pulse", {"volume": 0.5, **params})
+        return render_note(inst, Note("pitch", 1.0, midi=69), n, sr, np.random.default_rng(0))
+
+    def test_default_note_is_unchanged_by_new_params_being_absent(self):
+        import numpy as np
+
+        self.assertTrue(np.array_equal(self._note({}), self._note({"vibrato": 0, "slide": 0, "pwm": 0, "tremolo": 0})))
+
+    def test_each_shaping_param_changes_the_sound_and_stays_in_range(self):
+        import numpy as np
+
+        plain = self._note({})
+        for params in ({"vibrato": 40, "vibrato_delay": 0}, {"slide": 12}, {"pwm": 0.3}, {"tremolo": 0.8}):
+            shaped = self._note(params)
+            self.assertEqual(len(shaped), len(plain))
+            self.assertFalse(np.array_equal(shaped, plain), params)
+            # volume is 0.5; off-centre pulse duties peak up to 2x after DC removal, so 1.0 is the ceiling
+            self.assertLessEqual(float(np.max(np.abs(shaped))), 1.0, params)
+
+    def test_tremolo_dips_the_volume(self):
+        import numpy as np
+
+        loud = np.abs(self._note({})).max()
+        trough = np.abs(self._note({"tremolo": 1.0, "tremolo_rate": 4})[2900:3100]).max()
+        self.assertLess(trough, loud * 0.1)  # at 4Hz the volume bottoms out at t=0.375s (sample 3000 at 8kHz)
+
+
 class Mp3Tests(unittest.TestCase):
     def test_mp3_export_writes_valid_file(self):
         try:

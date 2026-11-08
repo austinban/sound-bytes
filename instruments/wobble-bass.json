@@ -1,0 +1,5 @@
+{
+  "name": "Wobble Bass (tremolo)",
+  "wave": "triangle",
+  "params": {"volume": 0.6, "sub": 0.8, "tremolo": 0.6, "tremolo_rate": 4}
+}
