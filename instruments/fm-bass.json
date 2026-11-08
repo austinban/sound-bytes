@@ -1,0 +1,5 @@
+{
+  "name": "FM Bass",
+  "wave": "fm",
+  "params": {"volume": 0.5, "ratio": 1, "index": 2.5, "index_decay": 0.12, "attack": 0.002, "decay": 0.2, "sustain": 0.6, "release": 0.05, "sub": 0.5}
+}

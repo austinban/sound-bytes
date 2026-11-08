@@ -1,0 +1,5 @@
+{
+  "name": "Super Saw Pad",
+  "wave": "saw",
+  "params": {"volume": 0.25, "attack": 0.15, "sustain": 0.85, "release": 0.3, "detune": 22, "echo": 0.35}
+}

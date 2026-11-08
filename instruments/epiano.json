@@ -1,0 +1,5 @@
+{
+  "name": "FM Electric Piano",
+  "wave": "fm",
+  "params": {"volume": 0.45, "ratio": 1, "index": 1.5, "index_decay": 0.5, "attack": 0.002, "decay": 0.5, "sustain": 0.2, "release": 0.1, "echo": 0.2}
+}

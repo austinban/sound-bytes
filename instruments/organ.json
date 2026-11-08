@@ -1,0 +1,5 @@
+{
+  "name": "Drawbar Organ",
+  "wave": "organ",
+  "params": {"volume": 0.4, "attack": 0.01, "sustain": 0.9, "release": 0.06, "tremolo": 0.2, "tremolo_rate": 6}
+}

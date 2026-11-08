@@ -57,10 +57,23 @@ def _noise(rate: float, n: int, sr: int, rng: np.random.Generator) -> np.ndarray
     return values[(np.arange(n) * rate / sr).astype(int)]
 
 
-def _voice(inst: Instrument, freq_t: np.ndarray, sr: int, duty) -> np.ndarray:
+def _voice(inst: Instrument, freq_t: np.ndarray, sr: int, duty, t: np.ndarray) -> np.ndarray:
+    p = inst.params
     phase = _phase(freq_t, sr)
-    if inst.wave == "pulse":
+    wave = inst.wave
+    if wave == "pulse":
         return _pulse(phase, duty)
+    if wave == "saw":
+        return 2.0 * phase - 1.0
+    if wave == "sine":
+        return np.sin(2 * np.pi * phase)
+    if wave == "organ":  # four drawbars: fundamental + 2nd, 3rd, 4th harmonics
+        tau = 2 * np.pi * phase
+        return (np.sin(tau) + 0.6 * np.sin(2 * tau) + 0.4 * np.sin(3 * tau) + 0.25 * np.sin(4 * tau)) / 2.25
+    if wave == "fm":  # two-operator FM; the modulation index decays, which gives bells / electric pianos their attack
+        index = p.get("index", 2.0) * np.exp(-t / max(p.get("index_decay", 0.3), 1e-3))
+        mod = _phase(freq_t * p.get("ratio", 2.0), sr)
+        return np.sin(2 * np.pi * phase + index * np.sin(2 * np.pi * mod))
     return _triangle(phase)
 
 
@@ -106,9 +119,9 @@ def render_note(inst: Instrument, note: Note, n: int, sr: int, rng: np.random.Ge
     detune = p.get("detune", 0.0)  # cents; two voices detuned either side of the pitch for a thicker, chorused tone
     if detune > 0:
         spread = 2.0 ** (detune / 1200.0)
-        wave = 0.5 * (_voice(inst, freq_t * spread, sr, duty) + _voice(inst, freq_t / spread, sr, duty))
+        wave = 0.5 * (_voice(inst, freq_t * spread, sr, duty, t) + _voice(inst, freq_t / spread, sr, duty, t))
     else:
-        wave = _voice(inst, freq_t, sr, duty)
+        wave = _voice(inst, freq_t, sr, duty, t)
     sub = p.get("sub", 0.0)  # level of a sine one octave below, for low-end weight
     if sub > 0:
         wave = (wave + sub * np.sin(2 * np.pi * _phase(freq_t / 2.0, sr))) / (1.0 + 0.5 * sub)

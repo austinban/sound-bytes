@@ -1,0 +1,5 @@
+{
+  "name": "Sine Sub",
+  "wave": "sine",
+  "params": {"volume": 0.65, "attack": 0.01, "release": 0.05}
+}

@@ -1,0 +1,5 @@
+{
+  "name": "Saw Bass",
+  "wave": "saw",
+  "params": {"volume": 0.45, "attack": 0.005, "decay": 0.15, "sustain": 0.6, "release": 0.05, "sub": 0.6}
+}

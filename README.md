@@ -33,7 +33,11 @@ Output: one `<instrument>.wav` (or `.mp3`) per channel (all the same length, so 
     drums: [K:1 H:0.5 H:0.5 S:1 H:0.5 K:0.5]x2
 
 - Notes are `NAME:BEATS` (`C#4:0.5`); `R` is a rest. Lines for the same channel are joined in order.
-- Voices: `pulse` (`duty` 0.125 / 0.25 / 0.5), `triangle`, `noise` (drums `K` kick, `S` snare, `H` hat).
+- Voices: `pulse` (`duty` 0.125 / 0.25 / 0.5), `triangle`, `saw`, `sine`, `fm` (`ratio`, `index`, `index_decay` for bells and
+  electric pianos), `organ` (drawbars), and `noise` (drums `K` kick, `S` snare, `H` hat). Pick a track's voice in the editor,
+  or start from a preset in `instruments/`.
+- Sound curves (any melodic voice): `vibrato` (cents) + `vibrato_rate`/`vibrato_delay`, `slide` (semitones, glides into each
+  note) + `slide_time`, `pwm` + `pwm_rate` (pulse-width sweep), `tremolo` + `tremolo_rate`; plus `sub`, `detune`, `echo`.
 - Optional params: `volume`, `attack`, `decay`, `sustain` (0-1), `release` (seconds).
 - `[ ... ]xN` repeats; `#` starts a comment.
 

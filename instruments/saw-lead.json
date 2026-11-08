@@ -1,0 +1,5 @@
+{
+  "name": "Saw Lead",
+  "wave": "saw",
+  "params": {"volume": 0.4, "attack": 0.01, "decay": 0.1, "sustain": 0.7, "release": 0.05, "detune": 10, "sub": 0.2, "echo": 0.3}
+}

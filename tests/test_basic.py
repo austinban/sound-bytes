@@ -99,6 +99,34 @@ class ShapingTests(unittest.TestCase):
         self.assertLess(trough, loud * 0.1)  # at 4Hz the volume bottoms out at t=0.375s (sample 3000 at 8kHz)
 
 
+class VoiceTests(unittest.TestCase):
+    def test_new_voices_render_in_range_and_differ(self):
+        import numpy as np
+
+        from sound_bytes.parser import Instrument, Note
+        from sound_bytes.synth import render_note
+
+        def render(wave, **params):
+            inst = Instrument("a", wave, {"volume": 1.0, **params})
+            return render_note(inst, Note("pitch", 1.0, midi=57), 8000, 8000, np.random.default_rng(0))
+
+        outs = {w: render(w, attack=0.0, release=0.0) for w in ("pulse", "triangle", "saw", "sine", "organ", "fm")}
+        for name, out in outs.items():
+            self.assertTrue(np.all(np.isfinite(out)), name)
+            self.assertGreater(float(np.max(np.abs(out))), 0.3, name)
+            self.assertLessEqual(float(np.max(np.abs(out))), 1.0001, name)
+        names = list(outs)
+        for i, x in enumerate(names):
+            for y in names[i + 1:]:
+                self.assertFalse(np.allclose(outs[x], outs[y]), (x, y))
+        # the FM index decays, so a longer fade must change the tone
+        self.assertFalse(np.allclose(render("fm", index_decay=0.05), render("fm", index_decay=0.9)))
+
+    def test_parser_accepts_new_voices(self):
+        s = parse_score("instrument a: saw\ninstrument b: @bell\ninstrument c: @organ\na: C2:1\nb: C4:1\nc: C3:1\n")
+        self.assertEqual([s.instruments[k].wave for k in "abc"], ["saw", "fm", "organ"])
+
+
 class Mp3Tests(unittest.TestCase):
     def test_mp3_export_writes_valid_file(self):
         try:

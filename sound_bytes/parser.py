@@ -33,7 +33,7 @@ from typing import Dict, List, Optional, Tuple
 DEFAULT_INSTRUMENT_DIR = Path(__file__).resolve().parent.parent / "instruments"
 _NAME_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_-]*$")
 
-WAVE_TYPES = ("pulse", "triangle", "noise")
+WAVE_TYPES = ("pulse", "triangle", "saw", "sine", "fm", "organ", "noise")
 DRUMS = ("K", "S", "H")
 
 _PITCH_RE = re.compile(r"^([A-Ga-g])([#b]?)(-?\d)$")

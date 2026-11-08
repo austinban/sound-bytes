@@ -76,7 +76,7 @@
 // ---------------------------------------------------------------- constants
 const SR = 44100;
 const CW = 18, RH = 16, KEYW = 56;     // cell width (one 16th), row height, keyboard width
-const LO = 36, HI = 96;                // pitch range shown: midi 36..95 (C2..B6)
+const LO = 24, HI = 96;                // pitch range shown: midi 24..95 (C1..B6)
 const DRUMROWS = ["H", "S", "K"];
 const NAMES = ["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"];
 const COLORS = ["#ff4040","#ffb020","#40d0ff","#60e060","#c070ff","#ff70c0"];
@@ -115,7 +115,18 @@ function renderNote(wave, p, note, n, rng) {
   const vib = p.vibrato ?? 0, vrate = p.vibrato_rate ?? 5.5, vdelay = p.vibrato_delay ?? 0.15;
   const slide = p.slide ?? 0, stime = Math.max(p.slide_time ?? 0.08, 1e-3);
   const pwm = p.pwm ?? 0, pwmRate = p.pwm_rate ?? 2, trem = p.tremolo ?? 0, tremRate = p.tremolo_rate ?? 6;
-  let ph1 = 0, ph2 = 0, phs = 0;          // oscillator phases, advanced by a (possibly curved) frequency each sample
+  const ratio = p.ratio ?? 2, fmIdx = p.index ?? 2, fmDec = Math.max(p.index_decay ?? 0.3, 1e-3), TAU = 2 * Math.PI;
+  const voice = (ph, mph, d, idx) => {
+    switch (wave) {
+      case "pulse": return (ph < d ? 1 : -1) - (2 * d - 1);
+      case "saw": return 2 * ph - 1;
+      case "sine": return Math.sin(TAU * ph);
+      case "organ": return (Math.sin(TAU * ph) + 0.6 * Math.sin(2 * TAU * ph) + 0.4 * Math.sin(3 * TAU * ph) + 0.25 * Math.sin(4 * TAU * ph)) / 2.25;
+      case "fm": return Math.sin(TAU * ph + idx * Math.sin(TAU * mph));
+      default: return Math.round((4 * Math.abs(ph - 0.5)) * 7.5) / 7.5 - 1;   // triangle: 16 steps
+    }
+  };
+  let ph1 = 0, ph2 = 0, mph1 = 0, mph2 = 0, phs = 0;   // oscillator phases, advanced by a (possibly curved) frequency each sample
   for (let i = 0; i < n; i++) {
     const t = i / SR;
     let cents = 0;                        // pitch curve: delayed vibrato + glide into the note
@@ -123,10 +134,13 @@ function renderNote(wave, p, note, n, rng) {
     if (slide !== 0) cents += slide * 100 * Math.exp(-t / stime);
     const f = cents !== 0 ? freq * Math.pow(2, cents / 1200) : freq;
     const d = pwm > 0 ? Math.min(Math.max(duty + pwm * Math.sin(2 * Math.PI * pwmRate * t), 0.05), 0.95) : duty;
-    const voice = ph => wave === "pulse" ? (ph < d ? 1 : -1) - (2 * d - 1) : Math.round((4 * Math.abs(ph - 0.5)) * 7.5) / 7.5 - 1;
+    const idx = fmIdx * Math.exp(-t / fmDec);
     let w;
-    if (detune > 0) { w = 0.5 * (voice(ph1) + voice(ph2)); ph1 = (ph1 + f * spread / SR) % 1; ph2 = (ph2 + f / spread / SR) % 1; }
-    else { w = voice(ph1); ph1 = (ph1 + f / SR) % 1; }
+    if (detune > 0) {
+      w = 0.5 * (voice(ph1, mph1, d, idx) + voice(ph2, mph2, d, idx));
+      ph1 = (ph1 + f * spread / SR) % 1; ph2 = (ph2 + f / spread / SR) % 1;
+      mph1 = (mph1 + f * spread * ratio / SR) % 1; mph2 = (mph2 + f / spread * ratio / SR) % 1;
+    } else { w = voice(ph1, mph1, d, idx); ph1 = (ph1 + f / SR) % 1; mph1 = (mph1 + f * ratio / SR) % 1; }
     if (sub > 0) { w = (w + sub * Math.sin(2 * Math.PI * phs)) / (1 + 0.5 * sub); phs = (phs + f / 2 / SR) % 1; }
     let e = 1;
     if (a > 0) e = Math.min(e, t / a);
@@ -281,7 +295,8 @@ function renderTracks() {
     el.innerHTML = `<div class="sw" style="background:${colorOf(i)}"></div>
       <input type="text" value="${t.name}" title="Track name">
       <span><button class="m ${t.muted ? "on" : ""}" title="Mute">M</button> <button class="s ${t.solo ? "on" : ""}" title="Solo">S</button> <button class="x" title="Delete track">✕</button></span>
-      <div class="row"><select title="Instrument"></select></div>
+      <div class="row"><select title="Instrument preset"></select></div>
+      <div class="row"><small>voice</small><select data-wave title="Waveform / voice type">${["pulse","triangle","saw","sine","fm","organ","noise"].map(w => `<option ${w === t.wave ? "selected" : ""}>${w}</option>`).join("")}</select></div>
       <div class="row"><small>vol</small><input type="range" data-p="volume" min="0" max="1" step="0.05" value="${t.params.volume ?? 0.5}"></div>
       ${isDrum(t) ? "" : `<div class="row"><small>sub</small><input type="range" data-p="sub" min="0" max="1" step="0.05" value="${t.params.sub ?? 0}">
         <small>wide</small><input type="range" data-p="detune" min="0" max="30" step="1" value="${t.params.detune ?? 0}"></div>`}
@@ -289,6 +304,10 @@ function renderTracks() {
       ${isDrum(t) ? "" : `<details ${t._open ? "open" : ""}><summary>shaping (curves)</summary>
         <div class="row"><small title="Vibrato depth in cents">vib</small><input type="range" data-p="vibrato" min="0" max="60" step="1" value="${t.params.vibrato ?? 0}">
           <small title="Pulse-width sweep depth">pwm</small><input type="range" data-p="pwm" min="0" max="0.4" step="0.02" value="${t.params.pwm ?? 0}"></div>
+        ${t.wave === "pulse" ? `<div class="row"><small title="Pulse width (0.5 = square)">duty</small><input type="range" data-p="duty" min="0.05" max="0.5" step="0.025" value="${t.params.duty ?? 0.5}"></div>` : ""}
+        ${t.wave === "fm" ? `<div class="row"><small title="Modulator/carrier frequency ratio">ratio</small><input type="range" data-p="ratio" min="0.5" max="8" step="0.5" value="${t.params.ratio ?? 2}">
+          <small title="Modulation depth">index</small><input type="range" data-p="index" min="0" max="8" step="0.25" value="${t.params.index ?? 2}"></div>
+        <div class="row"><small title="How fast the modulation fades (seconds)">fade</small><input type="range" data-p="index_decay" min="0.05" max="1" step="0.05" value="${t.params.index_decay ?? 0.3}"></div>` : ""}
         <div class="row"><small title="Volume wobble depth">trem</small><input type="range" data-p="tremolo" min="0" max="1" step="0.05" value="${t.params.tremolo ?? 0}">
           <small title="Pitch glide into each note, in semitones (negative = from below)">slide</small><input type="range" data-p="slide" min="-24" max="24" step="1" value="${t.params.slide ?? 0}"></div>
       </details>`}`;
@@ -304,6 +323,12 @@ function renderTracks() {
       renderTracks(); touch();
     };
     const det = el.querySelector("details"); if (det) det.ontoggle = () => { t._open = det.open; };
+    const wsel = el.querySelector("select[data-wave]");
+    wsel.onchange = () => {
+      t.wave = wsel.value;
+      t.notes = t.notes.filter(n => (t.wave === "noise") === !!n.drum);   // drums only live on noise tracks
+      renderTracks(); touch(); scrollToNotes();
+    };
     el.onclick = e => { if (e.target.closest("button,input,select,details")) return; S.sel = i; renderTracks(); draw(); };
     el.querySelector("input[type=text]").onchange = e => {
       const v = e.target.value.trim();
