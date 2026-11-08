@@ -41,7 +41,7 @@
   <button id="newsong">New</button>
   <label>Title <input id="title" type="text"></label>
   <label>Tempo <input id="tempo" type="number" min="40" max="300"></label>
-  <label>Bars <input id="bars" type="number" min="1" max="64"></label>
+  <label>Bars <input id="bars" type="number" min="1" max="128"></label>
   <label>Note length
     <select id="notelen">
       <option value="1">16th</option><option value="2" selected>8th</option><option value="4">quarter</option>
@@ -52,6 +52,7 @@
   <button id="stop">■ Stop</button>
   <button id="loop" class="on">Loop</button>
   <button id="save">Save</button>
+  <button id="exportmp3" title="Save, render, and download the full mix as an MP3 (per-instrument MP3s are written to out/&lt;song&gt;/)">Export MP3</button>
   <button id="render" title="Save, then render per-instrument WAV files with the Python renderer">Render WAVs</button>
   <span id="status">click to add a note · drag to set length · click a note to delete</span>
 </div>
@@ -389,6 +390,15 @@ $("render").onclick = async () => {
   try { const r = await api("/api/render/" + S.name, { method: "POST" }); flash("rendered"); window.open(r.url, "_blank"); }
   catch (e) { alert("Render failed: " + e.message); }
 };
+$("exportmp3").onclick = async () => {
+  if (!(await save())) return;
+  flash("encoding mp3…");
+  try {
+    const r = await api("/api/render/" + S.name + "?mp3=1", { method: "POST" });
+    const a = document.createElement("a"); a.href = r.mp3; a.download = S.name + ".mp3"; document.body.appendChild(a); a.click(); a.remove();
+    flash(`exported ${S.name}.mp3 (stems in out/${S.name}/)`);
+  } catch (e) { alert("MP3 export failed: " + e.message); }
+};
 $("songsel").onchange = async e => { if (S.dirty && !confirm("Discard unsaved changes?")) { e.target.value = S.name; return; } openSong(e.target.value); };
 $("newsong").onclick = async () => {
   if (S.dirty && !confirm("Discard unsaved changes?")) return;
@@ -404,7 +414,7 @@ $("newsong").onclick = async () => {
 $("title").oninput = e => { S.title = e.target.value; S.dirty = true; updateTitle(); };
 $("tempo").onchange = e => { S.tempo = Math.min(300, Math.max(40, parseFloat(e.target.value) || 120)); e.target.value = S.tempo; touch(); };
 $("bars").onchange = e => {
-  const v = Math.min(64, Math.max(1, parseInt(e.target.value) || 8));
+  const v = Math.min(128, Math.max(1, parseInt(e.target.value) || 8));
   const lastEnd = Math.max(0, ...S.tracks.flatMap(t => t.notes.map(n => n.start + n.len)));
   const min = Math.max(1, Math.ceil(lastEnd / 4));
   S.bars = Math.max(v, min); e.target.value = S.bars; touch();
@@ -421,6 +431,8 @@ window.addEventListener("beforeunload", e => { if (S.dirty) { e.preventDefault()
   S.presets = await api("/api/instruments");
   $("newpreset").innerHTML = S.presets.map(p => `<option value="${p.id}">${p.name}</option>`).join("");
   await refreshSongList();
+  const wanted = new URLSearchParams(location.search).get("song");   // e.g. /?song=iron-tide
+  if (wanted && [...$("songsel").options].some(o => o.value === wanted)) $("songsel").value = wanted;
   const first = $("songsel").value;
   if (first) openSong(first); else $("newsong").click();
 })();

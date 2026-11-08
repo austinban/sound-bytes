@@ -15,6 +15,8 @@ def main(argv=None) -> int:
     ap.add_argument("-o", "--out", type=Path, default=Path("out"), help="output directory (default: out)")
     ap.add_argument("--sample-rate", type=int, default=44100)
     ap.add_argument("--bit-depth", type=int, choices=(8, 16), default=16)
+    ap.add_argument("--format", choices=("wav", "mp3", "both"), default="wav", help="output file format (mp3 needs: pip install lameenc)")
+    ap.add_argument("--mp3-bitrate", type=int, default=192, help="MP3 bitrate in kbps (default 192)")
     args = ap.parse_args(argv)
 
     try:
@@ -23,10 +25,15 @@ def main(argv=None) -> int:
         print(f"error: {e}", file=sys.stderr)
         return 1
 
-    paths = render_to_dir(score, args.out, args.sample_rate, args.bit_depth)
+    formats = ("wav", "mp3") if args.format == "both" else (args.format,)
+    try:
+        paths = render_to_dir(score, args.out, args.sample_rate, args.bit_depth, formats, args.mp3_bitrate)
+    except RuntimeError as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 1
     print(f"{score.title} @ {score.tempo:g} bpm")
-    for name, path in paths.items():
-        print(f"  {name:>8} -> {path}")
+    for name, files in paths.items():
+        print(f"  {name:>8} -> {', '.join(str(f) for f in files)}")
     return 0
 
 

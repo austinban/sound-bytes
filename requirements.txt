@@ -1,1 +1,2 @@
 numpy>=1.21
+lameenc>=1.7   # MP3 export

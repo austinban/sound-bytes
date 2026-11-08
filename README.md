@@ -15,9 +15,10 @@ them as `instrument lead: @pulse-lead volume=0.4`. The server only listens on lo
 
     pip install -r requirements.txt
     python3 -m sound_bytes songs/demo.sb -o out/demo      # add --bit-depth 8 for true 8-bit WAVs
+    python3 -m sound_bytes songs/demo.sb -o out/demo --format mp3   # or --format both; --mp3-bitrate 256
     afplay out/demo/mix.wav                                # macOS; or open any file in out/demo/
 
-Output: one `<instrument>.wav` per channel (all the same length, so they line up in a DAW) and `mix.wav`.
+Output: one `<instrument>.wav` (or `.mp3`) per channel (all the same length, so they line up in a DAW) and `mix.wav`.
 
 ## Script format
 

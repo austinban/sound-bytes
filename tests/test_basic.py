@@ -65,5 +65,24 @@ class RenderTests(unittest.TestCase):
         self.assertGreater(np.max(np.abs(stems["a"])), 0)
 
 
+class Mp3Tests(unittest.TestCase):
+    def test_mp3_export_writes_valid_file(self):
+        try:
+            import lameenc  # noqa: F401
+        except ImportError:
+            self.skipTest("lameenc not installed")
+        import tempfile
+        from pathlib import Path
+
+        from sound_bytes.render import render_to_dir
+
+        s = parse_score("tempo: 120\ninstrument a: pulse\na: C4:2\n")
+        with tempfile.TemporaryDirectory() as d:
+            paths = render_to_dir(s, Path(d), sr=44100, formats=("mp3",))
+            data = paths["mix"][0].read_bytes()
+            self.assertGreater(len(data), 1000)
+            self.assertTrue(data[:3] == b"ID3" or data[0] == 0xFF)  # ID3 tag or MPEG frame sync
+
+
 if __name__ == "__main__":
     unittest.main()

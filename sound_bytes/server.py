@@ -12,7 +12,7 @@ import threading
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
-from urllib.parse import unquote, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 
 from .parser import DEFAULT_INSTRUMENT_DIR, ScoreError, parse_score
 from .render import render_to_dir
@@ -123,11 +123,17 @@ class Handler(BaseHTTPRequestHandler):
         sp = self._song_path(m.group(1)) if m else None
         if not sp or not sp.is_file():
             return self._json(404, {"error": "no such song (save it first)"})
+        want_mp3 = parse_qs(urlparse(self.path).query).get("mp3") == ["1"]
         try:
-            render_to_dir(parse_score(sp.read_text()), OUT / m.group(1))
+            render_to_dir(parse_score(sp.read_text()), OUT / m.group(1), formats=("wav", "mp3") if want_mp3 else ("wav",))
         except ScoreError as e:
             return self._json(422, {"error": str(e)})
-        self._json(200, {"url": f"/out/{m.group(1)}/index.html"})
+        except RuntimeError as e:  # e.g. lameenc not installed
+            return self._json(500, {"error": str(e)})
+        body = {"url": f"/out/{m.group(1)}/index.html"}
+        if want_mp3:
+            body["mp3"] = f"/out/{m.group(1)}/mix.mp3"
+        self._json(200, body)
 
 
 def main(argv=None) -> int:

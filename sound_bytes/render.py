@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import wave
 from pathlib import Path
-from typing import Dict
+from typing import Dict, List, Sequence
 
 import numpy as np
 
@@ -46,16 +46,40 @@ def write_wav(path: Path, samples: np.ndarray, sr: int, bit_depth: int = 16) -> 
         f.writeframes(data.tobytes())
 
 
-def render_to_dir(score: Score, out_dir: Path, sr: int = 44100, bit_depth: int = 16) -> Dict[str, Path]:
+def write_mp3(path: Path, samples: np.ndarray, sr: int, bitrate: int = 192) -> None:
+    """Encode mono samples to MP3 using the bundled LAME encoder (pip install lameenc)."""
+    try:
+        import lameenc
+    except ImportError:
+        raise RuntimeError("MP3 export needs the lameenc package: pip install lameenc")
+    enc = lameenc.Encoder()
+    enc.set_bit_rate(bitrate)
+    enc.set_in_sample_rate(sr)
+    enc.set_channels(1)
+    enc.set_quality(2)  # 2 = high quality
+    pcm = (np.clip(samples, -1.0, 1.0) * 32767).astype("<i2")
+    path.write_bytes(bytes(enc.encode(pcm.tobytes())) + bytes(enc.flush()))
+
+
+def render_to_dir(score: Score, out_dir: Path, sr: int = 44100, bit_depth: int = 16,
+                  formats: Sequence[str] = ("wav",), mp3_bitrate: int = 192) -> Dict[str, List[Path]]:
+    """Write every stem plus `mix` in each requested format. Returns {name: [files written]}."""
+    if not formats or any(f not in ("wav", "mp3") for f in formats):
+        raise ValueError("formats must be a non-empty subset of ('wav', 'mp3')")
     out_dir.mkdir(parents=True, exist_ok=True)
     stems = render_score(score, sr)
-    paths = {}
-    for name, samples in stems.items():
-        paths[name] = out_dir / f"{name}.wav"
-        write_wav(paths[name], samples, sr, bit_depth)
-    paths["mix"] = out_dir / "mix.wav"
-    write_wav(paths["mix"], mix(stems), sr, bit_depth)
-    write_player(score, paths, out_dir / "index.html")
+    stems_with_mix = {**stems, "mix": mix(stems)}
+    paths: Dict[str, List[Path]] = {}
+    for name, samples in stems_with_mix.items():
+        paths[name] = []
+        for fmt in formats:
+            p = out_dir / f"{name}.{fmt}"
+            if fmt == "wav":
+                write_wav(p, samples, sr, bit_depth)
+            else:
+                write_mp3(p, samples, sr, mp3_bitrate)
+            paths[name].append(p)
+    write_player(score, {n: fs[0] for n, fs in paths.items()}, out_dir / "index.html")
     return paths
 
 
